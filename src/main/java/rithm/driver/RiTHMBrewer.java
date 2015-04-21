@@ -88,8 +88,8 @@ public class RiTHMBrewer {
 			tParserClass = cmdLine.getOptionValue("traceParserClass");
 			if(tParserClass.equals("XML"))
 				dFactory = new XMLDataFactory(dataFile);
-			if(tParserClass.equals("CSV"))
-				dFactory =  new CSVDataFactory(dataFile);
+//			if(tParserClass.equals("CSV"))
+//				dFactory =  new CSVDataFactory(dataFile);
 		}
 		else
 		{
