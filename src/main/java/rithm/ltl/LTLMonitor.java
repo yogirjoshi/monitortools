@@ -87,7 +87,7 @@ public class LTLMonitor implements RiTHMMonitor
 		pe.SetProgStateObj(ps);
 		assert buffer != null;
 		assert pe != null;
-		buffer.add((PredicateState)pe.EvaluatePredicates());
+		buffer.add((PredicateState)pe.evaluatePredicates());
 		return false;
 	}
 	public void SetMonitorValuation(MonValuation val) {

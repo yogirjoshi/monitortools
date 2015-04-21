@@ -34,6 +34,8 @@ public class RegExMon implements RiTHMMonitor{
 		regExList = new ArrayList<RegExp>();
 		runAutomataList = new ArrayList<RunAutomaton>();
 		specStatus = new DefaultRiTHMSpecificationResult();
+		buffer = new ArrayList<PredicateState>();
+		
 	}
 	@Override
 	public boolean SetFormulas(RiTHMSpecificationCollection Specs) {
@@ -57,7 +59,10 @@ public class RegExMon implements RiTHMMonitor{
 			{
 				if(line.indexOf("=") != -1)
 				{
-					alphabetList.put(line.substring(line.indexOf("=")+1), line.charAt(0));
+					if(line.indexOf("=") == line.length()-1)
+						alphabetList.put("", line.charAt(0));
+					else
+						alphabetList.put(line.substring(line.indexOf("=")+1), line.charAt(0));
 				}
 				else
 				{
@@ -97,7 +102,8 @@ public class RegExMon implements RiTHMMonitor{
 			{
 //				System.out.println("__________________________________________________________________");
 //				System.out.println("Event " + Integer.toString(i));
-				
+				outWriter.write("Event:" + Integer.toString(i));
+				outWriter.write("<div style=\"background: #B0B0B0 \">");
 				DefaultRegExPredicateState topState = new DefaultRegExPredicateState((DefaultPredicateState)buffer.get(i));
 				Character currAlphabet = alphabetList.get(topState.getPredicateString());
 				if(currAlphabet == null)
@@ -109,9 +115,15 @@ public class RegExMon implements RiTHMMonitor{
 					int currStatee = Integer.parseInt((specStatus.getResult(new DefaultRiTHMSpecification(regExList.get(j).toString())).getTruthValueDescription()));
 					RunAutomaton r = runAutomataList.get(j);
 					currStatee = r.step(currStatee, currAlphabet);
+					if(r.isAccept(currStatee))
+						outWriter.write("Specification: " + regExList.get(j).toString() + " => " + "<font color=\"Green\">" + "Satisfied" + "</font>");
+					else
+						outWriter.write("Specification: " + regExList.get(j).toString() + " => " + "<font color=\"Red\">" + "Not Satisfied" + "</font>");
 					specStatus.setResult(new DefaultRiTHMSpecification(regExList.get(j).toString()), new DefaultRiTHMTruthValue(Integer.toString(currStatee)));
 				}
+				outWriter.write("</div>");
 			}
+
 			outWriter.write("</body>");
 			outWriter.write("</html>");
 			outWriter.close();
@@ -132,7 +144,7 @@ public class RegExMon implements RiTHMMonitor{
 	public boolean FillBuffer(ProgState ps) {
 		// TODO Auto-generated method stub
 		pe.SetProgStateObj(ps);
-		buffer.add((PredicateState)pe.EvaluatePredicates());
+		buffer.add((PredicateState)pe.evaluatePredicates());
 		return false;
 	}
 
@@ -163,7 +175,6 @@ public class RegExMon implements RiTHMMonitor{
 	@Override
 	public void setParser(ParserPlugin parser) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

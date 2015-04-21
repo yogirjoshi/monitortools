@@ -87,7 +87,7 @@ public class LTL4Monitor implements RiTHMMonitor
 		pe.SetProgStateObj(ps);
 		assert buffer != null;
 		assert pe != null;
-		buffer.add((PredicateState)pe.EvaluatePredicates());
+		buffer.add((PredicateState)pe.evaluatePredicates());
 		return false;
 	}
 	public void SetMonitorValuation(MonValuation val) {
@@ -279,11 +279,12 @@ public class LTL4Monitor implements RiTHMMonitor
 //				System.out.println("Event " + Integer.toString(i));
 				
 				DefaultPredicateState topState = (DefaultPredicateState)buffer.get(i);
-				outWriter.write("Event:" + Integer.toString(i) +" Timestamp:" + topState.gettimeStamp());
+//				outWriter.write("Event:" + Integer.toString(i) +" Timestamp:" + topState.gettimeStamp());
 //				System.out.println(currentStates.size());
 				for(int j = 0; j < currentStates.size();j++)
 				{
 					DefaultPredicateState dpPredState = new DefaultPredicateState((DefaultPredicateState)buffer.get(i));
+//					System.out.println(dpPredState);
 					ArrayList<String> predsForthisSpec = ltlParser.getPredsForSpec(specList.get(j));
 					
 					setPredState(dpPredState, predsForthisSpec);
@@ -339,7 +340,7 @@ public class LTL4Monitor implements RiTHMMonitor
 					}
 					else
 					{
-						System.err.println("State is null");
+//						System.err.println("State is null");
 					}
 				}
 			}

@@ -1,4 +1,6 @@
 package rithm.driver;
+import java.io.File;
+
 import javax.swing.DefaultBoundedRangeModel;
 
 import org.antlr.v4.parse.ANTLRParser.optionsSpec_return;
@@ -12,6 +14,7 @@ import rithm.core.RiTHMMonitor;
 import rithm.datatools.CSVDataFactory;
 import rithm.datatools.XMLDataFactory;
 import rithm.defaultcore.DefaultPredicateEvaluator;
+import rithm.defaultcore.JSPredicateEvaluator;
 import rithm.ltl.LTL3MonValuation;
 import rithm.ltl.LTL4MonValuation;
 import rithm.ltl.LTL4Monitor;
@@ -27,6 +30,8 @@ public class RiTHMBrewer {
 	public static DataFactory dFactory;
 	public static RiTHMMonitor rithmMon;
 	public static ParserPlugin rithmParser;
+	public static String pEvaluatorName;
+	public static String pEvaluatorPath;
 	public static boolean processCmdArguments(CommandLine cmdLine, Options options)
 	{
 		if(cmdLine.hasOption("help"))
@@ -40,7 +45,20 @@ public class RiTHMBrewer {
 		else
 		{
 			// TODO add code to load Predicate Evaluator using URLLoader
-			return false;
+			pEvaluatorName= cmdLine.getOptionValue("predicateEvaluator");
+			if(pEvaluatorName.equals("JS"))
+			{
+				if(!cmdLine.hasOption("predicateEvaluatorPath"))
+				{
+					hlpFormatter.printHelp("RiTHMBrewer", options);
+					return false;
+				}
+				pEvaluatorPath = cmdLine.getOptionValue("predicateEvaluatorPath");
+				File f = new File(pEvaluatorPath);
+				if(!f.exists())
+					return false;
+				pEvaluator = new JSPredicateEvaluator(pEvaluatorPath, null);
+			}
 		}
 		if(cmdLine.hasOption("specFile"))
 			specFile = cmdLine.getOptionValue("specFile");
@@ -129,8 +147,8 @@ public class RiTHMBrewer {
 		options.addOption("traceParserClass", true,"Trace Parser Plugin name");
 		options.addOption("specParserClass", true,"Specification Parser Plugin name");
 		options.addOption("help", false,"Help about RiTHM");
-		options.addOption("redicateEvaluator", false,"Predicate Evaluator Plugin name");
-		options.addOption("predicateEvaluatorPath", true,"Predicate Evaluator Plugin JAR path");
+		options.addOption("predicateEvaluator", true,"Predicate Evaluator Plugin name");
+		options.addOption("predicateEvaluatorPath", true,"Predicate Evaluator File (JAR/JavaScript/Lua) path");
 		options.addOption("predicateListFile", true,"Path to file which lists Predicate Line by Line");
 		hlpFormatter = new HelpFormatter();
 		try
@@ -142,7 +160,8 @@ public class RiTHMBrewer {
 			pe.printStackTrace();
 			return;
 		}
-		processCmdArguments(cmdLine, options);
+		if(!processCmdArguments(cmdLine, options))
+			return;
 		rithmMon.SynthesizeMonitors(specFile);
 		rithmMon.setOutFile(outputFile);
 		
