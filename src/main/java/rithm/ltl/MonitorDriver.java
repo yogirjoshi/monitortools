@@ -30,19 +30,19 @@ public class MonitorDriver {
 //		XMLDataFactory xdFactory = new XMLDataFactory("/home/y2joshi/TraceQnxThread.xml");
 		RiTHMMonitor l;
 		l = new LTLMonitor();
-		l.SetMonitorValuation(new LTL3MonValuation());
-		l.SetPredicateEvaluator(new DefaultPredicateEvaluator());
+		l.setMonitorValuation(new LTL3MonValuation());
+		l.setPredicateEvaluator(new DefaultPredicateEvaluator());
 		
 //		l.SynthesizeMonitors("/home/y2joshi/specqnx");
 //		l.setOutFile("/home/y2joshi/out.html");
 		
-		l.SynthesizeMonitors(args[0]);
+		l.synthesizeMonitors(args[0]);
 		l.setOutFile(args[2]);
 		
 		ProgState pState = dFactory.getNextProgState();
 		while( pState != null)
 		{
-			l.FillBuffer(pState);
+			l.fillBuffer(pState);
 			pState = dFactory.getNextProgState();
 		}
 		l.runMonitor();

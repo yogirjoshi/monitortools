@@ -1,79 +1,166 @@
 package rithm.mtl;
+import java.io.BufferedReader;
+import org.apache.log4j.Logger;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.antlr.v4.runtime.tree.ParseTree;
+
 import rithm.core.MonValuation;
 import rithm.core.MonitoringEventListener;
 import rithm.core.ParserPlugin;
 import rithm.core.PredicateEvaluator;
+import rithm.core.PredicateState;
 import rithm.core.ProgState;
 import rithm.core.RiTHMMonitor;
+import rithm.core.RiTHMProgStateCollection;
 import rithm.core.RiTHMResultCollection;
+import rithm.core.RiTHMSpecification;
 import rithm.core.RiTHMSpecificationCollection;
+import rithm.core.RiTHMTruthValue;
+import rithm.defaultcore.DefaultPredicateState;
+import rithm.defaultcore.DefaultProgStateCollection;
+import rithm.defaultcore.DefaultRiTHMSpecification;
+import rithm.defaultcore.DefaultRiTHMSpecificationCollection;
+import rithm.defaultcore.DefaultRiTHMSpecificationResult;
 import rithm.parsertools.mtl.*;
 public class MTLMonitor implements RiTHMMonitor{
-
+	
+	protected RiTHMResultCollection currSpecStatus;
+	protected RiTHMSpecificationCollection currSpecs;
+//	protected HashMap<String, RiTHMTruthValue> ;
+	protected RiTHMProgStateCollection buffer;
+	protected PredicateEvaluator pe;
+	protected String outFile;
+	protected MonValuation valuation;
+	protected ParserPlugin mtlParser;
+	protected RiTHMMTLVisitor mtlMon;
+	protected HashMap<RiTHMSpecification, ParseTree> specsTrees;
+	protected ArrayList<MonitoringEventListener> mlist;
+	final static Logger logger = Logger.getLogger(MTLMonitor.class);
+	public MTLMonitor()
+	{
+		mlist = new ArrayList<MonitoringEventListener>();
+		currSpecStatus = new DefaultRiTHMSpecificationResult();
+		buffer = new DefaultProgStateCollection();
+		pe = null;
+		mtlParser = new MTLParser("Metric Temporal Logic");
+		mtlMon = new RiTHMMTLVisitor(buffer);
+		specsTrees = new HashMap<RiTHMSpecification, ParseTree>();
+		currSpecs = new DefaultRiTHMSpecificationCollection();
+	}
 	@Override
-	public boolean SetFormulas(RiTHMSpecificationCollection Specs) {
+	public boolean setFormulas(RiTHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
+		currSpecs = Specs;
 		return false;
 	}
 
 	@Override
-	public boolean SynthesizeMonitors(RiTHMSpecificationCollection Specs) {
+	public boolean synthesizeMonitors(RiTHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
-		return false;
+		for(RiTHMSpecification rSpec: Specs)
+		{
+			currSpecs.add(rSpec);
+			specsTrees.put(rSpec, mtlParser.getTreeforSpec(rSpec));
+		}
+		return true;
 	}
 
 	@Override
-	public boolean SynthesizeMonitors(String Filename) {
+	public boolean synthesizeMonitors(String Filename) {
 		// TODO Auto-generated method stub
-		return false;
+		BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(Filename));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+            	RiTHMSpecification rSpec = new DefaultRiTHMSpecification(line);
+            	currSpecs.add(rSpec);
+            	specsTrees.put(rSpec, mtlParser.getTreeforSpec(rSpec));
+            }
+        } catch (IOException e) {
+        	System.err.println(e.getMessage());
+        	return false;
+        } 
+
+        finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+            	System.err.println(e.getMessage());
+            	return false;
+            }
+        }
+        return true;
 	}
 
 	@Override
 	public RiTHMResultCollection runMonitor() {
 		// TODO Auto-generated method stub
-		return null;
+		for(int i =0; i < currSpecs.length();i++)
+		{
+			String resName = mtlMon.visit(specsTrees.get(currSpecs.at(i)));
+			RiTHMTruthValue tempTval = currSpecStatus.getResult(currSpecs.at(i));
+			currSpecStatus.setResult(currSpecs.at(i), mtlMon.getTruthValuation(resName));
+			if(tempTval != null){
+				if(tempTval.getTruthValueDescription().equals(currSpecStatus.getResult(currSpecs.at(i)).getTruthValueDescription()))
+				{
+					for(MonitoringEventListener mel: mlist)
+						mel.MonValuationChanged(currSpecs.at(i), currSpecStatus.getResult(currSpecs.at(i)));
+				}
+			}
+				
+		}
+		return currSpecStatus;
 	}
 
 	@Override
-	public boolean SetTraceFile(String FileName) {
+	public boolean setTraceFile(String FileName) {
 		// TODO Auto-generated method stub
+	
 		return false;
 	}
 
 	@Override
-	public boolean FillBuffer(ProgState ps) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean fillBuffer(ProgState ps) {
+		buffer.add(ps);
+//		buffer.add((PredicateState)pe.evaluatePredicates());
+		return true;
 	}
 
 	@Override
-	public void SetMonitoringEventListener(MonitoringEventListener mel) {
+	public void setMonitoringEventListener(MonitoringEventListener mel) {
 		// TODO Auto-generated method stub
-		
+		this.mlist.add(mel);
 	}
 
 	@Override
-	public void SetMonitorValuation(MonValuation val) {
+	public void setMonitorValuation(MonValuation val) {
 		// TODO Auto-generated method stub
-		
+		this.valuation = val;
+
 	}
 
 	@Override
-	public void SetPredicateEvaluator(PredicateEvaluator pe) {
+	public void setPredicateEvaluator(PredicateEvaluator pe) {
 		// TODO Auto-generated method stub
-		
+		this.pe  = pe;
+		mtlMon.setPredicateEvaluator(pe);
 	}
 
 	@Override
 	public void setOutFile(String outFile) {
 		// TODO Auto-generated method stub
-		
+		this.outFile = outFile;
 	}
 
 	@Override
 	public void setParser(ParserPlugin parser) {
 		// TODO Auto-generated method stub
-		
+		this.mtlParser = parser;
 	}
 
 }

@@ -1,5 +1,8 @@
 package rithm.regex;
 import java.io.BufferedReader;
+
+import rithm.core.RiTHMLogMessages;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -7,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.apache.log4j.Logger;
 
 import rithm.core.*;
 import rithm.defaultcore.DefaultMonState;
@@ -16,6 +21,7 @@ import rithm.defaultcore.DefaultRiTHMSpecification;
 import rithm.defaultcore.DefaultRiTHMSpecificationCollection;
 import rithm.defaultcore.DefaultRiTHMSpecificationResult;
 import rithm.defaultcore.DefaultRiTHMTruthValue;
+import rithm.mtl.MTLMonitor;
 import dk.brics.automaton.*;
 public class RegExMon implements RiTHMMonitor{
 	
@@ -28,6 +34,9 @@ public class RegExMon implements RiTHMMonitor{
 	protected PredicateEvaluator pe;
 	protected int specCount = 0;
 	protected RiTHMResultCollection specStatus;
+	protected ArrayList<MonitoringEventListener> meList;
+	final static Logger logger = Logger.getLogger(RegExMon.class);
+	
 	public RegExMon()
 	{
 		alphabetList = new HashMap<String, Character>();
@@ -38,55 +47,71 @@ public class RegExMon implements RiTHMMonitor{
 		
 	}
 	@Override
-	public boolean SetFormulas(RiTHMSpecificationCollection Specs) {
+	public boolean setFormulas(RiTHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
-		return false;
+		for(RiTHMSpecification eachSpec:Specs)
+		{
+			if(!checkAndAddAlphabet(eachSpec.getTextDescription()))
+				synthesizeAutomaton(eachSpec.getTextDescription());
+		}
+		return true;
 	}
 
 	@Override
-	public boolean SynthesizeMonitors(RiTHMSpecificationCollection Specs) {
+	public boolean synthesizeMonitors(RiTHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
+		for(RiTHMSpecification eachSpec:Specs)
+		{
+			if(!checkAndAddAlphabet(eachSpec.getTextDescription()))
+				synthesizeAutomaton(eachSpec.getTextDescription());
+		}
+		return true;
+	}	
+	private boolean checkAndAddAlphabet(String line)
+	{
+		if(line.indexOf("=") != -1)
+		{
+			if(line.indexOf("=") == line.length()-1)
+				alphabetList.put("", line.charAt(0));
+			else
+				alphabetList.put(line.substring(line.indexOf("=")+1), line.charAt(0));
+			logger.info("Added definition of character " + line.charAt(0));
+			return true;
+		}
 		return false;
 	}
-
+	private void synthesizeAutomaton(String line)
+	{
+		RegExp rExp = new RegExp(line);
+		regExList.add(specCount,rExp);
+		RunAutomaton currAutomaton = new RunAutomaton(rExp.toAutomaton(),true);
+		runAutomataList.add(specCount++,currAutomaton);
+		RiTHMSpecification rSpec = new DefaultRiTHMSpecification(rExp.toString());
+		specStatus.setResult(rSpec, new DefaultRiTHMTruthValue(Integer.toString(currAutomaton.getInitialState())));
+		logger.info("Created Automaton for Regular expression " + line);
+	}
 	@Override
-	public boolean SynthesizeMonitors(String Filename) {
+	public boolean synthesizeMonitors(String Filename) {
 		// TODO Auto-generated method stub
 		BufferedReader reader= null;String line;
 		try {
 			reader = new BufferedReader(new FileReader(Filename));
 			while((line = reader.readLine()) != null)
-			{
-				if(line.indexOf("=") != -1)
-				{
-					if(line.indexOf("=") == line.length()-1)
-						alphabetList.put("", line.charAt(0));
-					else
-						alphabetList.put(line.substring(line.indexOf("=")+1), line.charAt(0));
-				}
-				else
-				{
-					RegExp rExp = new RegExp(line);
-					regExList.add(specCount,rExp);
-					RunAutomaton currAutomaton = new RunAutomaton(rExp.toAutomaton(),true);
-					runAutomataList.add(specCount++,currAutomaton);
-					RiTHMSpecification rSpec = new DefaultRiTHMSpecification(rExp.toString());
-					specStatus.setResult(rSpec, new DefaultRiTHMTruthValue(Integer.toString(currAutomaton.getInitialState())));
-				}
-			}
+				if(!checkAndAddAlphabet(line))
+					synthesizeAutomaton(line);
 		} catch (IOException e) {
 			// TODO: handle exception
-			System.out.println(e.getMessage());
+			logger.error(RiTHMLogMessages.RITHM_ERROR + e.getMessage());
 		}
 		finally{
 			try {
 				reader.close();
 			} catch (IOException e2) {
 				// TODO: handle exception
-				System.out.println(e2.getMessage());
+				logger.error(RiTHMLogMessages.RITHM_ERROR + e2.getMessage());
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -129,39 +154,39 @@ public class RegExMon implements RiTHMMonitor{
 			outWriter.close();
 		}catch(IOException io)
 		{
-			System.out.println(io.getMessage());
+			logger.error(RiTHMLogMessages.RITHM_ERROR + io.getMessage());
 		}
 		return specStatus;
 	}
 
 	@Override
-	public boolean SetTraceFile(String FileName) {
+	public boolean setTraceFile(String FileName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean FillBuffer(ProgState ps) {
+	public boolean fillBuffer(ProgState ps) {
 		// TODO Auto-generated method stub
 		pe.SetProgStateObj(ps);
 		buffer.add((PredicateState)pe.evaluatePredicates());
-		return false;
+		return true;
 	}
 
 	@Override
-	public void SetMonitoringEventListener(MonitoringEventListener mel) {
+	public void setMonitoringEventListener(MonitoringEventListener mel) {
+		// TODO Auto-generated method stub
+		this.meList.add(mel);
+	}
+
+	@Override
+	public void setMonitorValuation(MonValuation val) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void SetMonitorValuation(MonValuation val) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void SetPredicateEvaluator(PredicateEvaluator pe) {
+	public void setPredicateEvaluator(PredicateEvaluator pe) {
 		// TODO Auto-generated method stub
 		this.pe = pe;
 	}

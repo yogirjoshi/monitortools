@@ -2,13 +2,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>rithm</groupId>
   <artifactId>ltl</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>ltl</name>
   <url>http://maven.apache.org</url>
+  <scm>
+	<connection>scm:git:git@github.com:yogirjoshi/monitortools.git</connection>
+	<url>scm:git:git@github.com:yogirjoshi/monitortools.git</url>
+	<developerConnection>scm:git:git@github.com:yogirjoshi/monitortools.git</developerConnection>
+  </scm>
   <build>
   <plugins>
   	<plugin>
@@ -84,5 +87,16 @@
 		<version>1.11-8</version>
 		<scope>compile</scope>
 	</dependency>
+		<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
   </dependencies>
+  <parent>
+  	<groupId>rithm</groupId>
+  	<artifactId>rithm_modules</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  	<relativePath>../rithm_modules/pom.xml</relativePath>
+  </parent>
 </project>

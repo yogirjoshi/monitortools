@@ -1,0 +1,386 @@
+2015-06-10 23:53:20 DEBUG MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-10 23:53:20 DEBUG MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-11 22:10:11,590 [main] DEBUG rithm.mtl.MTLMonitor - created class rithm.mtl.MTLMonitor
+2015-06-11 22:10:11,673 [main] DEBUG rithm.mtl.MTLMonitor - created class rithm.mtl.MTLMonitor
+2015-06-11 22:14:45,158 [main] DEBUG rithm.mtl.MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-11 23:25:37,478 [main] DEBUG rithm.mtl.MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-11 23:25:37,497 [main] DEBUG rithm.mtl.MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-11 23:30:25,584 [main] DEBUG rithm.mtl.MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-11 23:30:25,603 [main] DEBUG rithm.mtl.MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-11 23:30:31,048 [main] DEBUG rithm.mtl.MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-11 23:30:46,001 [main] DEBUG rithm.mtl.MTLMonitor:44 - created class rithm.mtl.MTLMonitor
+2015-06-12 00:34:02,706 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:34:02,737 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:34:02,747 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:34:02,748 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:34:02,748 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:35:56,403 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:35:56,426 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:35:56,431 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:35:56,433 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:35:56,433 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:36:27,751 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:36:27,769 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:36:27,777 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:36:27,777 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:36:27,778 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:37:55,624 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:37:55,635 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:37:55,635 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 00:37:55,637 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:37:55,638 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:37:55,643 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:37:55,644 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:37:55,644 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:38:45,681 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:38:45,698 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:38:45,698 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 00:38:45,707 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:38:45,707 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:38:45,710 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:38:45,711 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:38:45,711 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:49:40,944 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:49:40,955 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:40,956 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,2.0}, Result into 1
+2015-06-12 00:49:40,957 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 00:49:40,959 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:40,959 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:49:40,960 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 00:49:40,961 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:40,962 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:49:40,964 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:49:40,965 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:40,965 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:49:48,541 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:49:48,554 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:48,555 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,2.0}, Result into 1
+2015-06-12 00:49:48,556 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 00:49:48,558 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:48,558 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:49:48,558 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 00:49:48,559 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:48,561 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:49:48,562 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:49:48,562 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:49:48,563 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:50:15,817 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:50:15,829 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:50:15,830 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-12 00:50:15,830 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 00:50:15,835 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:50:15,835 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:50:15,836 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 00:50:15,836 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:50:15,838 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 00:50:15,840 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:50:15,840 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:50:15,841 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 00:50:24,180 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 00:50:24,195 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 00:50:24,200 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-12 00:50:24,200 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 09:06:04,910 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:06:04,933 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:06:04,933 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-12 09:06:04,934 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 09:06:04,935 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:06:04,935 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:06:04,936 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 09:06:04,936 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:06:04,937 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:06:04,938 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:06:04,938 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:06:04,938 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 09:06:52,566 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:06:52,575 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-12 09:08:31,955 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:08:31,965 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-12 09:08:40,470 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:08:40,494 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-12 09:16:58,379 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:16:58,391 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-12 09:16:58,397 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:16:58,398 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:16:58,399 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-12 09:16:58,399 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 09:16:58,400 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:16:58,401 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:16:58,402 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 09:16:58,404 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:16:58,405 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:16:58,407 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:16:58,407 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:16:58,407 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 09:17:22,103 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:17:22,118 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-12 09:17:22,119 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-12 09:35:18,444 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:18,455 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:18,456 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-12 09:35:18,457 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-12 09:35:18,458 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-12 09:35:18,460 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:18,460 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-12 09:35:18,461 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-12 09:35:18,463 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:18,463 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-12 09:35:18,466 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:18,467 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:18,467 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-12 09:35:18,468 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 09:35:18,470 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:18,471 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:35:18,476 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 09:35:18,477 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:18,477 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:35:18,478 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:18,478 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:18,478 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 09:35:42,061 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:42,080 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:42,082 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-12 09:35:42,082 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-12 09:35:42,083 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-12 09:35:42,093 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:42,093 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-12 09:35:42,094 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-12 09:35:42,108 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:42,109 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-12 09:35:42,118 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:42,119 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:42,119 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-12 09:35:42,119 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-12 09:35:42,121 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:42,121 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:35:42,123 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-12 09:35:42,130 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:42,130 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-12 09:35:42,131 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:35:42,131 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:35:42,132 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-12 09:36:41,621 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-12 09:36:41,632 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-12 09:36:41,633 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-12 09:36:41,634 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-12 09:36:41,634 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:23:37,269 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:23:37,298 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:23:37,299 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 12:23:37,306 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:23:37,307 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:23:37,317 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:23:37,317 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:23:37,318 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 12:23:37,320 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:23:37,321 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:23:37,321 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:23:37,321 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:23:37,321 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:23:37,329 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:23:37,330 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:23:37,330 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:23:37,340 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:23:37,341 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 12:23:37,343 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:23:37,343 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:23:37,344 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 12:23:37,344 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 12:24:54,357 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:24:54,383 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:24:54,384 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:24:54,384 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:24:54,385 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:24:54,400 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:24:54,401 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:24:54,401 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:24:54,402 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:24:54,403 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 12:24:54,405 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:24:54,405 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:24:54,405 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 12:24:54,406 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 12:24:54,407 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:24:54,408 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:24:54,410 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 12:24:54,412 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:24:54,412 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:24:54,414 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:24:54,419 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:24:54,420 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 12:25:33,757 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:25:33,774 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:25:33,774 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:25:33,797 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:25:33,797 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 12:25:33,806 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:25:33,807 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:25:33,809 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 12:25:33,810 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 12:25:33,815 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:25:33,816 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:25:33,816 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 12:25:33,824 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:25:33,824 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:25:33,827 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:25:33,827 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:25:33,839 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 12:25:33,848 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:25:33,849 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:25:33,850 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:25:33,850 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:25:33,851 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:27:04,493 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:27:04,505 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:27:04,505 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:27:04,509 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:27:04,509 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 12:27:04,515 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:27:04,515 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:27:04,516 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 12:27:04,517 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 12:27:04,519 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:27:04,520 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:27:04,520 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 12:27:04,522 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:27:04,523 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:27:04,525 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:27:04,525 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:27:04,529 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 12:27:04,533 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:27:04,534 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:27:04,535 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:27:04,535 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:27:04,535 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:28:08,000 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:08,013 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:28:08,014 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:28:08,016 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:08,016 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 12:28:08,023 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:08,023 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:08,023 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 12:28:08,024 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 12:28:08,025 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:08,025 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:28:08,026 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 12:28:08,027 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:08,028 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:28:08,028 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:08,029 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:08,031 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 12:28:08,033 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:08,033 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:08,033 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:28:08,033 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:28:08,034 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:28:39,079 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:39,090 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:39,090 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:28:39,091 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:28:39,091 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:28:39,093 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:39,094 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:28:39,095 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:28:39,096 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:39,096 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 12:28:39,100 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:39,100 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:39,101 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 12:28:39,101 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 12:28:39,102 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:39,102 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:28:39,107 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 12:28:39,108 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:39,108 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:28:39,109 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:39,109 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:39,110 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 12:28:57,185 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:57,196 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:57,197 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:28:57,197 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:28:57,198 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 12:28:57,204 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:57,205 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 12:28:57,206 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 12:28:57,208 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:57,208 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:57,209 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 12:28:57,210 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:57,211 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 12:28:57,213 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 12:28:57,214 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:57,214 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 12:28:57,219 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 12:28:57,220 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:57,220 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 12:28:57,221 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 12:28:57,222 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 12:28:57,222 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 13:49:28,410 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:28,421 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:28,422 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 13:49:28,423 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 13:49:28,423 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 13:49:28,426 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:28,427 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 13:49:28,428 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 13:49:28,429 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:28,429 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 13:49:28,433 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:28,433 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:28,434 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 13:49:28,434 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 13:49:28,437 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:28,437 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 13:49:28,441 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 13:49:28,442 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:28,442 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 13:49:28,443 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:28,443 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:28,444 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 13:49:53,823 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:53,834 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:53,835 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 13:49:53,835 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 13:49:53,836 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-13 13:49:53,841 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:53,842 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 13:49:53,842 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 13:49:53,844 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:53,844 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 13:49:53,847 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:53,848 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:53,849 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 13:49:53,849 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 13:49:53,851 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:53,852 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 13:49:53,856 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 13:49:53,857 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:53,857 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 13:49:53,858 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 13:49:53,858 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 13:49:53,859 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 17:08:03,085 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 17:08:03,095 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 17:08:03,095 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 17:08:03,098 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 17:08:03,098 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for globally{1.0,2.0}, Result into 1
+2015-06-13 17:08:03,101 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 17:08:03,101 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 17:08:03,101 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,1.0}, Result into 1
+2015-06-13 17:08:03,102 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a 1 for Until{0.0,1.0}, Result into 2
+2015-06-13 17:08:03,103 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 17:08:03,103 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 17:08:03,103 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for eventually{0.0,1.0}, Result into 2
+2015-06-13 17:08:03,104 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 17:08:03,105 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed b for eventually{1.0,5.0}, Result into 1
+2015-06-13 17:08:03,105 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 17:08:03,109 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 17:08:03,111 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:261 - Processed a b for Until{1.0,2.0}, Result into 1
+2015-06-13 17:08:03,113 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed b
+2015-06-13 17:08:03,113 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:76 - Processed a
+2015-06-13 17:08:03,114 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
+2015-06-13 17:08:03,114 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
+2015-06-13 17:08:03,114 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3

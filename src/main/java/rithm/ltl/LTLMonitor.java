@@ -35,7 +35,7 @@ public class LTLMonitor implements RiTHMMonitor
 {
 
 
-	public boolean SynthesizeMonitors(RiTHMSpecificationCollection specs) {
+	public boolean synthesizeMonitors(RiTHMSpecificationCollection specs) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -82,15 +82,13 @@ public class LTLMonitor implements RiTHMMonitor
 	{
 		this.outFileName = outFile;
 	}
-	public boolean FillBuffer(ProgState ps) {
+	public boolean fillBuffer(ProgState ps) {
 		// TODO Auto-generated method stub
-		pe.SetProgStateObj(ps);
-		assert buffer != null;
-		assert pe != null;
+		pe.SetProgStateObj(ps);;
 		buffer.add((PredicateState)pe.evaluatePredicates());
 		return false;
 	}
-	public void SetMonitorValuation(MonValuation val) {
+	public void setMonitorValuation(MonValuation val) {
 		// TODO Auto-generated method stub
 		this.valuation = val;
 	}
@@ -101,12 +99,12 @@ public class LTLMonitor implements RiTHMMonitor
 		// TODO Auto-generated method stub
 		this.ltlParser = parser;
 	}
-	public void SetMonitoringEventListener(MonitoringEventListener mel) {
+	public void setMonitoringEventListener(MonitoringEventListener mel) {
 		// TODO Auto-generated method stub
 		mlist.add(mel);
 	}
 	
-	public boolean SetFormulas(RiTHMSpecificationCollection specs) {
+	public boolean setFormulas(RiTHMSpecificationCollection specs) {
 		// TODO Auto-generated method stub
 		for(int i =0; i < specs.length();i++)
 		{
@@ -210,7 +208,7 @@ public class LTLMonitor implements RiTHMMonitor
 		}
 			
 	}
-	public boolean SynthesizeMonitors(String filename) {
+	public boolean synthesizeMonitors(String filename) {
 		// TODO Auto-generated method stub
 		ArrayList<String> Filenames = new ArrayList<String>();
 		int specCount = 0;
@@ -340,11 +338,11 @@ public class LTLMonitor implements RiTHMMonitor
 		return currSpecStatus;
 	}
 
-	public boolean SetTraceFile(String FileName) {
+	public boolean setTraceFile(String FileName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public void SetPredicateEvaluator(PredicateEvaluator pe)
+	public void setPredicateEvaluator(PredicateEvaluator pe)
 	{
 		this.pe = pe;
 	}

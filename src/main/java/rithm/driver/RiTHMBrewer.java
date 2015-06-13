@@ -14,7 +14,7 @@ import rithm.core.RiTHMMonitor;
 import rithm.datatools.CSVDataFactory;
 import rithm.datatools.XMLDataFactory;
 import rithm.defaultcore.DefaultPredicateEvaluator;
-import rithm.defaultcore.JSPredicateEvaluator;
+import rithm.defaultcore.ScriptPredicateEvaluator;
 import rithm.ltl.LTL3MonValuation;
 import rithm.ltl.LTL4MonValuation;
 import rithm.ltl.LTL4Monitor;
@@ -46,19 +46,16 @@ public class RiTHMBrewer {
 		{
 			// TODO add code to load Predicate Evaluator using URLLoader
 			pEvaluatorName= cmdLine.getOptionValue("predicateEvaluator");
-			if(pEvaluatorName.equals("JS"))
+			if(!cmdLine.hasOption("predicateEvaluatorPath"))
 			{
-				if(!cmdLine.hasOption("predicateEvaluatorPath"))
-				{
-					hlpFormatter.printHelp("RiTHMBrewer", options);
-					return false;
-				}
-				pEvaluatorPath = cmdLine.getOptionValue("predicateEvaluatorPath");
-				File f = new File(pEvaluatorPath);
-				if(!f.exists())
-					return false;
-				pEvaluator = new JSPredicateEvaluator(pEvaluatorPath, null);
+				hlpFormatter.printHelp("RiTHMBrewer", options);
+				return false;
 			}
+			pEvaluatorPath = cmdLine.getOptionValue("predicateEvaluatorPath");
+			File f = new File(pEvaluatorPath);
+			if(!f.exists())
+				return false;
+			pEvaluator = new ScriptPredicateEvaluator(pEvaluatorPath, null, pEvaluatorName);
 		}
 		if(cmdLine.hasOption("specFile"))
 			specFile = cmdLine.getOptionValue("specFile");
@@ -117,15 +114,15 @@ public class RiTHMBrewer {
 			if(monClass.equals("LTL3"))
 			{
 				rithmMon = new LTLMonitor();
-				rithmMon.SetMonitorValuation(new LTL3MonValuation());
+				rithmMon.setMonitorValuation(new LTL3MonValuation());
 			}
 			if(monClass.equals("LTL4"))
 			{
 				rithmMon = new LTL4Monitor();
-				rithmMon.SetMonitorValuation(new LTL4MonValuation());
+				rithmMon.setMonitorValuation(new LTL4MonValuation());
 			}
 			rithmMon.setParser(rithmParser);
-			rithmMon.SetPredicateEvaluator(pEvaluator);
+			rithmMon.setPredicateEvaluator(pEvaluator);
 		}
 		else
 		{
@@ -162,13 +159,13 @@ public class RiTHMBrewer {
 		}
 		if(!processCmdArguments(cmdLine, options))
 			return;
-		rithmMon.SynthesizeMonitors(specFile);
+		rithmMon.synthesizeMonitors(specFile);
 		rithmMon.setOutFile(outputFile);
 		
 		ProgState pState = dFactory.getNextProgState();
 		while( pState != null)
 		{
-			rithmMon.FillBuffer(pState);
+			rithmMon.fillBuffer(pState);
 			pState = dFactory.getNextProgState();
 		}
 		rithmMon.runMonitor();

@@ -38,7 +38,7 @@ public class LTL4MonValuation implements MonValuation{
 		return this.semantics.get(rithmTruthVal.getTruthValueDescription());
 	}
 
-	public void setValues(Collection<RiTHMTruthValue> truthValues) {
+	public void setValues(ArrayList<RiTHMTruthValue> truthValues) {
 		// TODO Auto-generated method stub
 //		if(truthValues instanceof ArrayList<?>)
 //		{
