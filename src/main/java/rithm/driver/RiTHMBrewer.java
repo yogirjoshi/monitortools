@@ -19,8 +19,11 @@ import rithm.ltl.LTL3MonValuation;
 import rithm.ltl.LTL4MonValuation;
 import rithm.ltl.LTL4Monitor;
 import rithm.ltl.LTLMonitor;
+import rithm.mtl.MTLMonitor;
+import rithm.mtl.TwoValuedValuation;
 import rithm.parsertools.ltl.LTLParser;
 import rithm.parsertools.ltl.VerboseLTLParser;
+import rithm.parsertools.mtl.MTLParser;
 public class RiTHMBrewer {
 	public static PredicateEvaluator pEvaluator;
 	public static String specFile;
@@ -55,7 +58,7 @@ public class RiTHMBrewer {
 			File f = new File(pEvaluatorPath);
 			if(!f.exists())
 				return false;
-			pEvaluator = new ScriptPredicateEvaluator(pEvaluatorPath, null, pEvaluatorName);
+			pEvaluator = new ScriptPredicateEvaluator(pEvaluatorPath, pEvaluatorName, true);
 		}
 		if(cmdLine.hasOption("specFile"))
 			specFile = cmdLine.getOptionValue("specFile");
@@ -101,6 +104,8 @@ public class RiTHMBrewer {
 				rithmParser = new LTLParser("LTL");
 			if(specParserClass.equals("VLTL"))
 				rithmParser = new VerboseLTLParser("VLTL");
+			if(specParserClass.equals("MTL"))
+				rithmParser = new MTLParser("MTL");
 		}
 		else
 		{
@@ -120,6 +125,11 @@ public class RiTHMBrewer {
 			{
 				rithmMon = new LTL4Monitor();
 				rithmMon.setMonitorValuation(new LTL4MonValuation());
+			}
+			if(monClass.equals("MTL"))
+			{
+				rithmMon = new MTLMonitor();
+				rithmMon.setMonitorValuation(new TwoValuedValuation());
 			}
 			rithmMon.setParser(rithmParser);
 			rithmMon.setPredicateEvaluator(pEvaluator);
@@ -159,7 +169,7 @@ public class RiTHMBrewer {
 		}
 		if(!processCmdArguments(cmdLine, options))
 			return;
-		rithmMon.synthesizeMonitors(specFile);
+		rithmMon.synthesizeMonitors(specFile, true);
 		rithmMon.setOutFile(outputFile);
 		
 		ProgState pState = dFactory.getNextProgState();

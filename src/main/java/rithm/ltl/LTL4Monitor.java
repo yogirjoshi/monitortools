@@ -2,12 +2,15 @@ package rithm.ltl;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -210,14 +213,21 @@ public class LTL4Monitor implements RiTHMMonitor
 		}
 			
 	}
-	public boolean synthesizeMonitors(String filename) {
+	public boolean synthesizeMonitors(String specDetails, boolean isFile) {
 		// TODO Auto-generated method stub
 		ArrayList<String> Filenames = new ArrayList<String>();
 		int specCount = 0;
-		System.out.println(filename);
 		BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(filename));
+        	if(isFile)
+        	{
+        		reader = new BufferedReader(new FileReader(specDetails));
+        	}
+        	else
+        	{
+        		InputStream is = new ByteArrayInputStream(specDetails.getBytes());
+        		reader = new BufferedReader(new InputStreamReader(is));
+        	}
             String line = null;
             while ((line = reader.readLine()) != null) {
             	ltlParser.appendSpec(new DefaultRiTHMSpecification(line));

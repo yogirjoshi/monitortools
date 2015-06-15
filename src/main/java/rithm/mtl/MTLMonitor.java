@@ -1,8 +1,13 @@
 package rithm.mtl;
 import java.io.BufferedReader;
+
 import org.apache.log4j.Logger;
+
+import java.io.ByteArrayInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -70,11 +75,19 @@ public class MTLMonitor implements RiTHMMonitor{
 	}
 
 	@Override
-	public boolean synthesizeMonitors(String Filename) {
+	public boolean synthesizeMonitors(String specDetails, boolean isFile) {
 		// TODO Auto-generated method stub
 		BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(Filename));
+        	if(isFile)
+        	{
+        		reader = new BufferedReader(new FileReader(specDetails));
+        	}
+        	else
+        	{
+        		InputStream is = new ByteArrayInputStream(specDetails.getBytes());
+        		reader = new BufferedReader(new InputStreamReader(is));
+        	}
             String line = null;
             while ((line = reader.readLine()) != null) {
             	RiTHMSpecification rSpec = new DefaultRiTHMSpecification(line);

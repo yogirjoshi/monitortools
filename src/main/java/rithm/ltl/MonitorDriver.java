@@ -36,7 +36,7 @@ public class MonitorDriver {
 //		l.SynthesizeMonitors("/home/y2joshi/specqnx");
 //		l.setOutFile("/home/y2joshi/out.html");
 		
-		l.synthesizeMonitors(args[0]);
+		l.synthesizeMonitors(args[0], true);
 		l.setOutFile(args[2]);
 		
 		ProgState pState = dFactory.getNextProgState();

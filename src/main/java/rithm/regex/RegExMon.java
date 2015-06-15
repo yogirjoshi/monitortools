@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import rithm.core.RiTHMLogMessages;
 
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -91,11 +94,19 @@ public class RegExMon implements RiTHMMonitor{
 		logger.info("Created Automaton for Regular expression " + line);
 	}
 	@Override
-	public boolean synthesizeMonitors(String Filename) {
+	public boolean synthesizeMonitors(String specDetails, boolean isFile) {
 		// TODO Auto-generated method stub
 		BufferedReader reader= null;String line;
 		try {
-			reader = new BufferedReader(new FileReader(Filename));
+			if(isFile)
+        	{
+        		reader = new BufferedReader(new FileReader(specDetails));
+        	}
+        	else
+        	{
+        		InputStream is = new ByteArrayInputStream(specDetails.getBytes());
+        		reader = new BufferedReader(new InputStreamReader(is));
+        	}
 			while((line = reader.readLine()) != null)
 				if(!checkAndAddAlphabet(line))
 					synthesizeAutomaton(line);
