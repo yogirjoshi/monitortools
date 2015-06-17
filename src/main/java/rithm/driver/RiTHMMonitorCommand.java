@@ -1,5 +1,16 @@
 package rithm.driver;
 
-public class RiTHMMonitorCommand extends RiTHMCommand{
+import rithm.core.ProgState;
 
+public class RiTHMMonitorCommand extends RiTHMCommand{
+	protected ProgState currProgState;
+	public RiTHMMonitorCommand(ProgState pState)
+	{
+		super();
+		this.currProgState = pState;
+	}
+	public ProgState getProgState()
+	{
+		return currProgState;
+	}
 }

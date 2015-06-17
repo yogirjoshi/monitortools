@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import rithm.mtl.MTLMonitor;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
@@ -28,12 +29,17 @@ public class RiTHMServer extends Thread{
 			{
 				SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
 				logger.info("Connected client with IP" + sslsocket.getInetAddress().toString());
-				RiTHMClientHandler rcHandler = new RiTHMClientHandler(sslsocket);
+				RiTHMClientHandler rcHandler = new RiTHMClientHandler(sslsocket,false);
 				rcHandler.start();
 			}
-		} catch (Exception exception) {
-			exception.printStackTrace();
+		} 
+		catch (IOException ie)
+		{
+			ie.printStackTrace();
 		}
+//		catch (Exception) {
+//			exception.printStackTrace();
+//		}
     }
 	
 }
