@@ -384,3 +384,565 @@
 2015-06-13 17:08:03,114 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed a for eventually{0.0,1.0}, Result into 1
 2015-06-13 17:08:03,114 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:443 - Processed 1 for globally{1.0,2.0}, Result into 2
 2015-06-13 17:08:03,114 [main] INFO  rithm.parsertools.mtl.RiTHMMTLVisitor:159 - Processed b 2 for if, Result into 3
+2015-06-18 01:39:53,269 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 01:40:46,570 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 01:43:45,924 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 01:48:20,004 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 01:48:40,484 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 01:53:04,702 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 01:56:44,653 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 10:09:04,174 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:73 - Connected client with IP/127.0.0.1
+2015-06-18 10:39:45,763 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:43:16,203 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:44:40,494 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:45:47,646 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:46:02,184 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:49:44,717 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:50:00,776 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:51:28,790 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-18 10:54:18,178 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:118 - Connected client with IP/127.0.0.1
+2015-06-18 10:54:46,665 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:119 - Connected client with IP/127.0.0.1
+2015-06-18 10:56:43,163 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-18 10:56:43,525 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-18 23:23:03,521 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-18 23:23:29,728 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-18 23:23:30,484 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-18 23:23:38,749 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-18 23:23:39,008 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 11:35:35,235 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 11:35:36,410 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 12:45:18,172 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 12:45:18,221 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>ba->b
+2015-06-21 12:45:18,224 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 12:45:18,224 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 12:45:18,225 [main] FATAL rithm.commands.RiTHMParameterValidator:86 - monitorClass must be provided
+2015-06-21 12:46:29,133 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>ba->b
+2015-06-21 12:46:29,135 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 12:46:29,138 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 12:46:29,138 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 12:46:29,138 [main] FATAL rithm.commands.RiTHMParameterValidator:86 - monitorClass must be provided
+2015-06-21 12:46:29,395 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 12:47:01,307 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 12:47:01,310 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>ba->b
+2015-06-21 12:47:01,313 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 12:47:01,313 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 12:47:01,314 [main] FATAL rithm.commands.RiTHMParameterValidator:86 - monitorClass must be provided
+2015-06-21 13:01:35,843 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:01:35,845 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>ba->b
+2015-06-21 13:01:35,849 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 13:01:35,849 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 13:01:35,850 [main] FATAL rithm.commands.RiTHMParameterValidator:86 - monitorClass must be provided
+2015-06-21 13:02:33,491 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>ba->b
+2015-06-21 13:02:33,495 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 13:02:33,495 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 13:02:33,495 [main] FATAL rithm.commands.RiTHMParameterValidator:86 - monitorClass must be provided
+2015-06-21 13:02:33,491 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:02:50,134 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:02:50,135 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>ba->b
+2015-06-21 13:02:50,145 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 13:02:50,145 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 13:02:50,145 [main] FATAL rithm.commands.RiTHMParameterValidator:86 - monitorClass must be provided
+2015-06-21 13:06:34,724 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:06:34,728 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 13:06:34,731 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 13:06:34,731 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 13:06:34,731 [main] INFO  rithm.commands.RiTHMParameterValidator:85 - specParserClass is LTL
+2015-06-21 13:07:51,571 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:07:51,575 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 13:07:51,580 [main] INFO  rithm.commands.RiTHMParameterValidator:70 - Will listen for trace as JSON
+2015-06-21 13:07:51,580 [main] INFO  rithm.commands.RiTHMParameterValidator:80 - Data to be received on socket as JSON
+2015-06-21 13:07:51,580 [main] INFO  rithm.commands.RiTHMParameterValidator:85 - specParserClass is LTL
+2015-06-21 13:07:51,580 [main] INFO  rithm.commands.RiTHMParameterValidator:90 - monitorClass is LTL3
+2015-06-21 13:09:45,270 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 13:09:45,277 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 13:09:45,277 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 13:09:45,277 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 13:09:45,277 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 13:09:45,275 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:09:45,643 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 13:12:44,426 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:12:44,429 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 13:12:44,432 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 13:12:44,432 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 13:12:44,432 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 13:12:44,433 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 13:12:44,727 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 13:12:44,911 [Thread-1] INFO  client.RiTHMClient:137 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 13:52:17,823 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 13:52:17,825 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 13:52:17,828 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 13:52:17,829 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 13:52:17,829 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 13:52:17,829 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 13:52:18,120 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 13:52:18,284 [Thread-1] INFO  client.RiTHMClient:137 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 15:32:35,448 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 15:32:35,450 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 15:32:35,454 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 15:32:35,454 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 15:32:35,454 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 15:32:35,454 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 15:32:35,735 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 15:32:48,778 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode
+2015-06-21 15:32:48,782 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 15:32:48,784 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 15:32:48,784 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 15:32:48,784 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 15:32:48,784 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 15:32:49,048 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:114 - Connected client with IP/127.0.0.1
+2015-06-21 15:50:44,906 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:93 - Starting in SSL mode
+2015-06-21 15:50:44,909 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 15:50:44,913 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 15:50:44,913 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 15:50:44,913 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 15:50:44,913 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 15:50:45,230 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:115 - Connected client with IP/127.0.0.1
+2015-06-21 15:57:01,749 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 15:57:01,750 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 15:57:01,764 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 15:57:01,764 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 15:57:01,764 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 15:57:01,764 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 15:57:02,163 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 15:57:02,379 [Thread-1] INFO  client.RiTHMClient:141 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 15:57:02,399 [Thread-2] INFO  rithm.driver.RiTHMClientHandler:257 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 16:00:19,022 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 16:00:19,028 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 16:00:19,028 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 16:00:19,028 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 16:00:19,030 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 16:00:19,030 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 16:00:19,351 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 16:00:19,530 [Thread-1] INFO  client.RiTHMClient:141 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 16:00:19,556 [Thread-2] INFO  rithm.driver.RiTHMClientHandler:260 - a-><>b
+a->b
+2015-06-21 16:23:30,145 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 16:23:30,148 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 16:23:30,150 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 16:23:30,150 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 16:23:30,151 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 16:23:30,151 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 16:23:30,447 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 16:23:30,595 [Thread-1] INFO  client.RiTHMClient:148 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 16:23:30,620 [Thread-2] INFO  rithm.driver.RiTHMClientHandler:123 - Data to be received on socket as JSON
+2015-06-21 16:37:20,954 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 16:37:20,955 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 16:37:20,961 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 16:37:20,961 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 16:37:20,961 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 16:37:20,961 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 16:37:21,244 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 16:37:21,384 [Thread-1] INFO  client.RiTHMClient:148 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 16:37:21,410 [Thread-2] INFO  rithm.driver.RiTHMClientHandler:123 - Data to be received on socket as JSON
+2015-06-21 16:37:21,459 [Thread-1] INFO  client.RiTHMClient:150 - unknown_command
+2015-06-21 16:38:19,792 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 16:38:19,799 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 16:38:19,804 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 16:38:19,804 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 16:38:19,804 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 16:38:19,804 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 16:38:20,150 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 16:38:20,286 [Thread-1] INFO  client.RiTHMClient:148 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 16:38:20,311 [Thread-2] INFO  rithm.driver.RiTHMClientHandler:123 - Data to be received on socket as JSON
+2015-06-21 16:38:20,359 [Thread-1] INFO  client.RiTHMClient:150 - ok
+2015-06-21 18:16:39,060 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+a->b
+2015-06-21 18:16:39,067 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 18:16:39,067 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 18:16:39,067 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 18:16:39,067 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 18:16:39,065 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 18:16:39,353 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 18:16:39,498 [Thread-1] INFO  client.RiTHMClient:148 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb\na-\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 18:16:39,525 [Thread-2] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-21 18:16:39,581 [Thread-1] INFO  client.RiTHMClient:150 - ok
+2015-06-21 21:13:12,275 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 21:13:12,358 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-21 21:13:12,361 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 21:13:12,362 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 21:13:12,362 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 21:13:12,362 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 21:13:12,601 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 21:18:45,754 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 21:18:45,824 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-21 21:18:45,827 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 21:18:45,827 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 21:18:45,827 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 21:18:45,827 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 21:18:46,069 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 21:18:46,203 [main] INFO  client.RiTHMClient:141 - [B@7960847b
+2015-06-21 21:20:33,208 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 21:20:33,302 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-21 21:20:33,306 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 21:20:33,306 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 21:20:33,307 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 21:20:33,307 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 21:20:33,615 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 21:20:33,759 [main] INFO  client.RiTHMClient:141 - [B@7960847b
+2015-06-21 21:21:50,098 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 21:21:50,152 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-21 21:21:50,155 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 21:21:50,155 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 21:21:50,155 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 21:21:50,155 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 21:21:50,384 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 21:21:50,519 [main] INFO  client.RiTHMClient:141 - [B@2a33fae0
+2015-06-21 21:21:50,558 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:279 - null
+2015-06-21 21:22:22,344 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 21:22:22,423 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-21 21:22:22,426 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 21:22:22,426 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 21:22:22,426 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 21:22:22,427 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 21:22:22,773 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 21:22:22,911 [main] INFO  client.RiTHMClient:141 - [B@66a3ffec
+2015-06-21 21:24:07,972 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 21:24:08,056 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-21 21:24:08,060 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 21:24:08,060 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 21:24:08,061 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 21:24:08,061 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 21:24:08,305 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 21:24:08,439 [main] INFO  client.RiTHMClient:141 - [B@33833882
+2015-06-21 21:24:08,439 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 21:24:08,446 [main] INFO  client.RiTHMClient:141 - [B@2c13da15
+2015-06-21 21:24:08,484 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-21 21:24:08,493 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:279 - {"response":{},"commandString":"ok"}
+2015-06-21 21:24:08,497 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:279 - {"response":{},"commandString":"ok"}
+2015-06-21 21:24:08,530 [main] INFO  client.RiTHMClient:133 - [B@77556fd
+2015-06-21 21:24:45,457 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-21 21:24:45,519 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-21 21:24:45,522 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-21 21:24:45,522 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-21 21:24:45,523 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-21 21:24:45,523 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-21 21:24:45,762 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-21 21:24:45,903 [main] INFO  client.RiTHMClient:141 - [B@59f95c5d
+2015-06-21 21:24:45,903 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3"}}
+2015-06-21 21:24:45,911 [main] INFO  client.RiTHMClient:141 - [B@14899482
+2015-06-21 21:24:45,948 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-21 21:24:45,955 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:279 - {"response":{},"commandString":"ok"}
+2015-06-21 21:24:45,959 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:279 - {"response":{},"commandString":"ok"}
+2015-06-21 21:24:45,994 [main] INFO  client.RiTHMClient:133 - [B@21588809
+2015-06-21 21:24:45,995 [main] INFO  client.RiTHMClient:141 - [B@2aae9190
+2015-06-21 21:24:45,996 [main] INFO  client.RiTHMClient:133 - [B@7a7b0070
+2015-06-21 21:24:45,999 [main] INFO  client.RiTHMClient:141 - [B@39a054a5
+2015-06-21 21:24:46,035 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:279 - {"response":{},"commandString":"ok"}
+2015-06-21 21:24:46,038 [main] INFO  client.RiTHMClient:133 - [B@71bc1ae4
+2015-06-22 00:24:02,286 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 00:24:02,373 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 00:24:02,376 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 00:24:02,377 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 00:24:02,377 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 00:24:02,377 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 00:24:02,622 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 00:24:02,759 [main] INFO  client.RiTHMClient:141 - [B@33833882
+2015-06-22 00:24:02,759 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 00:24:02,766 [main] INFO  client.RiTHMClient:141 - [B@2c13da15
+2015-06-22 00:24:02,803 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 00:24:02,810 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:280 - {"response":{},"commandString":"ok"}
+2015-06-22 00:24:02,813 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:280 - {"response":{},"commandString":"ok"}
+2015-06-22 00:24:02,850 [main] INFO  client.RiTHMClient:133 - [B@77556fd
+2015-06-22 00:24:02,852 [main] INFO  client.RiTHMClient:141 - [B@368239c8
+2015-06-22 00:24:02,853 [main] INFO  client.RiTHMClient:133 - [B@7c53a9eb
+2015-06-22 00:24:02,856 [main] INFO  client.RiTHMClient:141 - [B@ed17bee
+2015-06-22 00:24:02,891 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:280 - {"response":{},"commandString":"ok"}
+2015-06-22 00:24:02,893 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:280 - {"response":{},"commandString":"ok"}
+2015-06-22 00:24:02,930 [main] INFO  client.RiTHMClient:133 - [B@2a33fae0
+2015-06-22 00:46:13,441 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 00:46:13,534 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 00:46:13,540 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 00:46:13,540 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 00:46:13,541 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 00:46:13,541 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 00:46:13,851 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 00:46:13,983 [main] INFO  client.RiTHMClient:141 - [B@1e81f4dc
+2015-06-22 00:46:13,983 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 00:46:13,991 [main] INFO  client.RiTHMClient:141 - [B@ed17bee
+2015-06-22 00:46:14,027 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 00:46:14,033 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:283 - {"response":{},"commandString":"ok"}
+2015-06-22 00:46:14,040 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:283 - {"response":{},"commandString":"ok"}
+2015-06-22 00:46:14,070 [main] INFO  client.RiTHMClient:133 - [B@2a33fae0
+2015-06-22 00:46:14,071 [main] INFO  client.RiTHMClient:141 - [B@707f7052
+2015-06-22 00:46:14,072 [main] INFO  client.RiTHMClient:133 - [B@2f333739
+2015-06-22 00:46:14,075 [main] INFO  client.RiTHMClient:141 - [B@77468bd9
+2015-06-22 00:46:14,111 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:283 - {"response":{},"commandString":"ok"}
+2015-06-22 00:46:14,113 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:283 - {"response":{},"commandString":"ok"}
+2015-06-22 00:46:14,150 [main] INFO  client.RiTHMClient:133 - [B@12bb4df8
+2015-06-22 00:48:22,378 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 00:48:22,473 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 00:48:22,476 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 00:48:22,476 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 00:48:22,476 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 00:48:22,476 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 00:48:22,833 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 00:48:22,983 [main] INFO  client.RiTHMClient:141 - [B@33833882
+2015-06-22 00:48:22,984 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 00:48:22,989 [main] INFO  client.RiTHMClient:141 - [B@2c13da15
+2015-06-22 00:48:23,026 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 00:48:23,036 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:48:23,038 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":0.0}
+2015-06-22 00:48:23,039 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:48:23,074 [main] INFO  client.RiTHMClient:133 - [B@77556fd
+2015-06-22 00:48:23,075 [main] INFO  client.RiTHMClient:141 - [B@311d617d
+2015-06-22 00:48:23,077 [main] INFO  client.RiTHMClient:133 - [B@7c53a9eb
+2015-06-22 00:48:23,078 [main] INFO  client.RiTHMClient:141 - [B@ed17bee
+2015-06-22 00:48:23,115 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{},"timestamp":1.0}
+2015-06-22 00:48:23,115 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:48:23,117 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:48:23,154 [main] INFO  client.RiTHMClient:133 - [B@2a33fae0
+2015-06-22 00:49:59,092 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 00:49:59,165 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 00:49:59,167 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 00:49:59,167 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 00:49:59,168 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 00:49:59,168 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 00:49:59,443 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 00:49:59,579 [main] INFO  client.RiTHMClient:141 - [B@16b3fc9e
+2015-06-22 00:49:59,579 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 00:49:59,623 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 00:49:59,638 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:49:59,678 [main] INFO  client.RiTHMClient:133 - [B@e2d56bf
+2015-06-22 00:49:59,680 [main] INFO  client.RiTHMClient:141 - [B@5fdef03a
+2015-06-22 00:49:59,720 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":1.0}
+2015-06-22 00:49:59,721 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:49:59,758 [main] INFO  client.RiTHMClient:133 - [B@48cf768c
+2015-06-22 00:49:59,761 [main] INFO  client.RiTHMClient:141 - [B@59f95c5d
+2015-06-22 00:49:59,799 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{},"timestamp":2.0}
+2015-06-22 00:49:59,799 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:49:59,838 [main] INFO  client.RiTHMClient:133 - [B@5ccd43c2
+2015-06-22 00:49:59,839 [main] INFO  client.RiTHMClient:141 - [B@4aa8f0b4
+2015-06-22 00:49:59,880 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:49:59,918 [main] INFO  client.RiTHMClient:133 - [B@7960847b
+2015-06-22 00:50:44,258 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 00:50:44,362 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 00:50:44,365 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 00:50:44,365 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 00:50:44,365 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 00:50:44,366 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 00:50:44,635 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 00:50:44,779 [main] INFO  client.RiTHMClient:141 - [B@244038d0
+2015-06-22 00:50:44,779 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 00:50:44,818 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 00:50:44,832 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:50:44,870 [main] INFO  client.RiTHMClient:133 - [B@5680a178
+2015-06-22 00:50:44,872 [main] INFO  client.RiTHMClient:141 - [B@1e81f4dc
+2015-06-22 00:50:44,912 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 00:50:44,913 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:50:44,950 [main] INFO  client.RiTHMClient:133 - [B@5ccd43c2
+2015-06-22 00:50:44,953 [main] INFO  client.RiTHMClient:141 - [B@4aa8f0b4
+2015-06-22 00:50:44,991 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 00:50:44,991 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:50:45,030 [main] INFO  client.RiTHMClient:133 - [B@7960847b
+2015-06-22 00:50:45,031 [main] INFO  client.RiTHMClient:141 - [B@6a6824be
+2015-06-22 00:50:45,072 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:50:45,110 [main] INFO  client.RiTHMClient:133 - [B@5c8da962
+2015-06-22 00:51:47,365 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 00:51:47,424 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 00:51:47,427 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 00:51:47,428 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 00:51:47,428 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 00:51:47,428 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 00:51:47,681 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 00:51:47,823 [main] INFO  client.RiTHMClient:141 - [B@33833882
+2015-06-22 00:51:47,823 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 00:51:47,867 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 00:51:47,897 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:51:47,938 [main] INFO  client.RiTHMClient:133 - [B@200a570f
+2015-06-22 00:51:47,941 [main] INFO  client.RiTHMClient:141 - [B@244038d0
+2015-06-22 00:51:47,980 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 00:51:47,981 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:51:48,018 [main] INFO  client.RiTHMClient:133 - [B@4d591d15
+2015-06-22 00:51:48,022 [main] INFO  client.RiTHMClient:141 - [B@65ae6ba4
+2015-06-22 00:51:48,063 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 00:51:48,063 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:51:48,102 [main] INFO  client.RiTHMClient:133 - [B@48cf768c
+2015-06-22 00:51:48,103 [main] INFO  client.RiTHMClient:141 - [B@59f95c5d
+2015-06-22 00:51:48,144 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:51:48,182 [main] INFO  client.RiTHMClient:133 - [B@5ccd43c2
+2015-06-22 00:59:05,644 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 00:59:05,720 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 00:59:05,723 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 00:59:05,723 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 00:59:05,723 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 00:59:05,724 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 00:59:06,028 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 00:59:06,168 [main] INFO  client.RiTHMClient:141 - [B@65ae6ba4
+2015-06-22 00:59:06,169 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 00:59:06,214 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 00:59:06,234 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:59:06,274 [main] INFO  client.RiTHMClient:133 - [B@48cf768c
+2015-06-22 00:59:06,276 [main] INFO  client.RiTHMClient:141 - [B@4aa8f0b4
+2015-06-22 00:59:06,316 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 00:59:06,316 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:59:06,354 [main] INFO  client.RiTHMClient:133 - [B@2c13da15
+2015-06-22 00:59:06,357 [main] INFO  client.RiTHMClient:141 - [B@77556fd
+2015-06-22 00:59:06,395 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 00:59:06,395 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:59:06,434 [main] INFO  client.RiTHMClient:133 - [B@368239c8
+2015-06-22 00:59:06,435 [main] INFO  client.RiTHMClient:141 - [B@9e89d68
+2015-06-22 00:59:06,476 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 00:59:06,514 [main] INFO  client.RiTHMClient:133 - [B@3b192d32
+2015-06-22 01:00:29,279 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 01:00:29,369 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 01:00:29,372 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 01:00:29,373 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 01:00:29,373 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 01:00:29,373 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 01:00:29,586 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 01:00:29,727 [main] INFO  client.RiTHMClient:141 - [B@244038d0
+2015-06-22 01:00:29,728 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 01:00:29,771 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 01:00:29,786 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 01:00:29,826 [main] INFO  client.RiTHMClient:133 - [B@5680a178
+2015-06-22 01:00:29,829 [main] INFO  client.RiTHMClient:141 - [B@1e81f4dc
+2015-06-22 01:00:29,867 [Thread-1] DEBUG rithm.ltl.LTLMonitor:228 - 
+2015-06-22 01:00:29,868 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 01:00:29,869 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 01:00:29,910 [main] INFO  client.RiTHMClient:133 - [B@4d591d15
+2015-06-22 01:00:29,911 [main] INFO  client.RiTHMClient:141 - [B@65ae6ba4
+2015-06-22 01:00:29,951 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:232 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 01:00:29,952 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 01:00:29,990 [main] INFO  client.RiTHMClient:133 - [B@48cf768c
+2015-06-22 01:00:29,991 [main] INFO  client.RiTHMClient:141 - [B@59f95c5d
+2015-06-22 01:00:30,031 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:286 - {"response":{},"commandString":"ok"}
+2015-06-22 01:00:30,070 [main] INFO  client.RiTHMClient:133 - [B@5ccd43c2
+2015-06-22 01:01:36,125 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 01:01:36,193 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 01:01:36,197 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 01:01:36,197 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 01:01:36,197 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 01:01:36,197 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 01:01:36,451 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 01:01:36,595 [main] INFO  client.RiTHMClient:141 - [B@33833882
+2015-06-22 01:01:36,595 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 01:01:36,639 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 01:01:36,650 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:01:36,690 [main] INFO  client.RiTHMClient:133 - [B@200a570f
+2015-06-22 01:01:36,692 [main] INFO  client.RiTHMClient:141 - [B@244038d0
+2015-06-22 01:01:36,730 [Thread-1] DEBUG rithm.ltl.LTLMonitor:228 - a-><>b
+2015-06-22 01:01:36,837 [Thread-1] DEBUG rithm.ltl.LTLMonitor:243 - a-><>b
+2015-06-22 01:01:36,840 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:235 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 01:01:36,842 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:01:36,882 [main] INFO  client.RiTHMClient:133 - [B@5680a178
+2015-06-22 01:01:36,883 [main] INFO  client.RiTHMClient:141 - [B@5fdef03a
+2015-06-22 01:01:36,885 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:235 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 01:01:36,885 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:01:36,923 [main] INFO  client.RiTHMClient:133 - [B@3b22cdd0
+2015-06-22 01:01:36,924 [main] INFO  client.RiTHMClient:141 - [B@1e81f4dc
+2015-06-22 01:01:36,965 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:01:37,007 [main] INFO  client.RiTHMClient:133 - [B@4d591d15
+2015-06-22 01:04:49,507 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 01:04:49,564 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 01:04:49,567 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 01:04:49,567 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 01:04:49,568 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 01:04:49,568 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 01:04:49,798 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 01:04:49,935 [main] INFO  client.RiTHMClient:141 - [B@65ae6ba4
+2015-06-22 01:04:49,936 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 01:04:49,978 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 01:04:49,989 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:04:50,026 [main] INFO  client.RiTHMClient:133 - [B@48cf768c
+2015-06-22 01:04:50,028 [main] INFO  client.RiTHMClient:141 - [B@4aa8f0b4
+2015-06-22 01:04:50,066 [Thread-1] DEBUG rithm.ltl.LTLMonitor:228 - a-><>b
+2015-06-22 01:04:50,147 [Thread-1] DEBUG rithm.ltl.LTLMonitor:243 - a-><>b
+2015-06-22 01:04:50,151 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:235 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 01:04:50,154 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:04:50,194 [main] INFO  client.RiTHMClient:133 - [B@7960847b
+2015-06-22 01:04:50,196 [main] INFO  client.RiTHMClient:141 - [B@6a6824be
+2015-06-22 01:04:50,197 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:235 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 01:04:50,197 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:04:50,235 [main] INFO  client.RiTHMClient:133 - [B@5c8da962
+2015-06-22 01:04:50,236 [main] INFO  client.RiTHMClient:141 - [B@512ddf17
+2015-06-22 01:04:50,277 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:04:50,314 [main] INFO  client.RiTHMClient:133 - [B@2c13da15
+2015-06-22 01:05:35,056 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 01:05:35,171 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 01:05:35,180 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 01:05:35,180 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 01:05:35,180 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 01:05:35,180 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 01:05:35,402 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 01:05:35,543 [main] INFO  client.RiTHMClient:141 - [B@33833882
+2015-06-22 01:05:35,544 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 01:05:35,587 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 01:05:35,598 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:05:35,639 [main] INFO  client.RiTHMClient:133 - [B@200a570f
+2015-06-22 01:05:35,642 [main] INFO  client.RiTHMClient:141 - [B@244038d0
+2015-06-22 01:05:35,678 [Thread-1] DEBUG rithm.ltl.LTLMonitor:228 - a-><>b
+2015-06-22 01:05:35,748 [Thread-1] DEBUG rithm.ltl.LTLMonitor:243 - a-><>b
+2015-06-22 01:05:36,099 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:235 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 01:05:36,102 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:05:36,142 [main] INFO  client.RiTHMClient:133 - [B@5680a178
+2015-06-22 01:05:36,143 [main] INFO  client.RiTHMClient:141 - [B@5fdef03a
+2015-06-22 01:05:36,144 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:235 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 01:05:36,144 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:289 - {"response":{},"commandString":"ok"}
+2015-06-22 01:05:36,183 [main] INFO  client.RiTHMClient:133 - [B@3b22cdd0
+2015-06-22 01:05:36,184 [main] INFO  client.RiTHMClient:141 - [B@1e81f4dc
+2015-06-22 01:05:36,223 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:227 - Satisfied
+2015-06-22 01:07:34,919 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:95 - Starting in SSL mode
+2015-06-22 01:07:34,992 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 01:07:34,996 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 01:07:34,996 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 01:07:34,996 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 01:07:34,996 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 01:07:35,257 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:117 - Connected client with IP/127.0.0.1
+2015-06-22 01:07:35,395 [main] INFO  client.RiTHMClient:141 - [B@33833882
+2015-06-22 01:07:35,395 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 01:07:35,440 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 01:07:35,454 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{},"commandString":"ok"}
+2015-06-22 01:07:35,494 [main] INFO  client.RiTHMClient:133 - [B@200a570f
+2015-06-22 01:07:35,496 [main] INFO  client.RiTHMClient:141 - [B@244038d0
+2015-06-22 01:07:35,535 [Thread-1] DEBUG rithm.ltl.LTLMonitor:228 - a-><>b
+2015-06-22 01:07:35,610 [Thread-1] DEBUG rithm.ltl.LTLMonitor:243 - a-><>b
+2015-06-22 01:07:35,704 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:236 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 01:07:35,709 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{},"commandString":"ok"}
+2015-06-22 01:07:35,746 [main] INFO  client.RiTHMClient:133 - [B@5680a178
+2015-06-22 01:07:35,747 [main] INFO  client.RiTHMClient:141 - [B@5fdef03a
+2015-06-22 01:07:35,748 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:236 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 01:07:35,748 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{},"commandString":"ok"}
+2015-06-22 01:07:35,786 [main] INFO  client.RiTHMClient:133 - [B@3b22cdd0
+2015-06-22 01:07:35,787 [main] INFO  client.RiTHMClient:141 - [B@1e81f4dc
+2015-06-22 01:07:35,828 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:228 - Satisfied
+2015-06-22 01:07:35,828 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{"a-\u003e\u003c\u003eb":"Satisfied"},"commandString":"ok"}
+2015-06-22 01:07:35,866 [main] INFO  client.RiTHMClient:133 - [B@4d591d15
+2015-06-22 22:11:12,915 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:92 - Starting in SSL mode:true
+2015-06-22 22:11:13,341 [main] INFO  rithm.commands.RiTHMParameterValidator:54 - Loading specifications from a-><>b
+2015-06-22 22:11:13,361 [main] INFO  rithm.commands.RiTHMParameterValidator:73 - Will listen for trace as JSON
+2015-06-22 22:11:13,362 [main] INFO  rithm.commands.RiTHMParameterValidator:86 - Data to be received on socket as JSON
+2015-06-22 22:11:13,362 [main] INFO  rithm.commands.RiTHMParameterValidator:94 - specParserClass is LTL
+2015-06-22 22:11:13,362 [main] INFO  rithm.commands.RiTHMParameterValidator:102 - monitorClass is LTL3
+2015-06-22 22:11:14,203 [Thread-0] INFO  rithm.driver.RiTHMSecureServer:116 - Connected client with IP/127.0.0.1
+2015-06-22 22:11:14,339 [main] INFO  client.RiTHMClient:141 - [B@1e81f4dc
+2015-06-22 22:11:14,339 [main] INFO  client.RiTHMClient:157 - {"commandString":"config","rtParams":{"userName":"\"rithm\"","keyword":"\"uwaterloo\"","specString":"a-\u003e\u003c\u003eb","specsFromFile":false,"dataFormat":"JSON","isProcessingDatafile":false,"specParserClass":"LTL","monitorClass":"LTL3","outFileName":"defaultMonitorOutput.log"}}
+2015-06-22 22:11:14,397 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:125 - Data to be received on socket as JSON
+2015-06-22 22:11:14,486 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{},"commandString":"ok"}
+2015-06-22 22:11:14,526 [main] INFO  client.RiTHMClient:133 - [B@4d591d15
+2015-06-22 22:11:14,528 [main] INFO  client.RiTHMClient:141 - [B@59f95c5d
+2015-06-22 22:11:14,528 [Thread-1] DEBUG rithm.ltl.LTLMonitor:228 - a-><>b
+2015-06-22 22:11:14,623 [Thread-1] DEBUG rithm.ltl.LTLMonitor:243 - a-><>b
+2015-06-22 22:11:14,950 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:236 - {"field_dictionary":{"a":"1","b":"0"},"timestamp":1.0}
+2015-06-22 22:11:14,955 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{},"commandString":"ok"}
+2015-06-22 22:11:14,994 [main] INFO  client.RiTHMClient:133 - [B@5ccd43c2
+2015-06-22 22:11:14,995 [main] INFO  client.RiTHMClient:141 - [B@4aa8f0b4
+2015-06-22 22:11:14,997 [Thread-1] DEBUG rithm.driver.RiTHMClientHandler:236 - {"field_dictionary":{"a":"0","b":"1"},"timestamp":2.0}
+2015-06-22 22:11:14,997 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{},"commandString":"ok"}
+2015-06-22 22:11:15,038 [main] INFO  client.RiTHMClient:133 - [B@7960847b
+2015-06-22 22:11:15,039 [main] INFO  client.RiTHMClient:141 - [B@6a6824be
+2015-06-22 22:11:15,081 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:228 - Satisfied
+2015-06-22 22:11:15,081 [Thread-1] INFO  rithm.driver.RiTHMClientHandler:290 - {"response":{"a-\u003e\u003c\u003eb":"Satisfied"},"commandString":"ok"}
+2015-06-22 22:11:15,119 [main] INFO  client.RiTHMClient:133 - [B@5c8da962

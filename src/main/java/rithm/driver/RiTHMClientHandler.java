@@ -1,13 +1,25 @@
 package rithm.driver;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.security.spec.PSSParameterSpec;
+import java.util.Iterator;
 
+import rithm.commands.RiTHMMonitorCommand;
+import rithm.commands.RiTHMParameters;
+import rithm.commands.RiTHMReplyCommand;
+import rithm.commands.RiTHMSetupCommand;
+import rithm.commands.RiTHMParameterValidator;
+import rithm.core.DataFactory;
+import rithm.core.ParserPlugin;
+import rithm.core.PredicateEvaluator;
 import rithm.core.ProgState;
-import rithm.core.RiTHMParameters;
+import rithm.core.RiTHMMonitor;
 import rithm.core.RiTHMResultCollection;
 import rithm.core.RiTHMSpecification;
 import rithm.datatools.CSVDataFactory;
@@ -36,228 +48,267 @@ public class RiTHMClientHandler extends Thread {
 	protected boolean confByClient;
 	protected SSLSocket cliSecureSocket;
 	protected Socket cliSocket;
-	protected ObjectInputStream oInStream;
-	protected ObjectOutputStream oOutStream;
-	protected RiTHMParameters rithParams;	
+	protected DataInputStream dInStream;
+	protected DataOutputStream dOutStream;
+	
+	protected RiTHMParameters rtParams;	
+	protected DataFactory dFactory;
+	protected ParserPlugin rithmParser;
+	protected RiTHMMonitor rithmMon;
+	protected PredicateEvaluator pEvaluator = null;
+	
 	protected boolean specsFromFile;
 	protected boolean isProcessingDatafile;
 	protected boolean toDisconnect;
 	protected boolean monStarted;
-	protected boolean monJsonMode;
+	final static char CONFIG ='C';
+	final static char DISCONNECT ='D';
+	final static char RUNMONITOR ='M';
+	final static char JSONDATA ='J';
 	final static Logger logger = Logger.getLogger(RiTHMClientHandler.class);
-	public RiTHMClientHandler(SSLSocket cliSocket, boolean monJsonMode)
+	public RiTHMClientHandler(SSLSocket cliSocket)
 	{
 		super();
 		this.cliSecureSocket = cliSocket;
-		initializeParams(false, monJsonMode);
+		initializeParams(false);
 		isSecureMode = true;
+	}
+	public RiTHMClientHandler(Socket cliSocket)
+	{
+		super();
+		this.cliSocket = cliSocket;
+		initializeParams(false);
+		isSecureMode = false;
 
 	}
-	public RiTHMClientHandler(Socket cliSocket, boolean monJsonMode)
-	{
-		super();
-		this.cliSocket = cliSocket;
-		initializeParams(false, monJsonMode);
-		isSecureMode = false;
-	}
-	public RiTHMClientHandler(SSLSocket cliSocket, boolean confByClient, boolean monJsonMode)
+	public RiTHMClientHandler(SSLSocket cliSocket, boolean confByClient)
 	{
 		super();
 		this.cliSecureSocket = cliSocket;
-		initializeParams(confByClient, monJsonMode);
+		initializeParams(confByClient);
 		isSecureMode = true;
 	}
-	public RiTHMClientHandler(Socket cliSocket, boolean confByClient, boolean monJsonMode)
+	public RiTHMClientHandler(Socket cliSocket, boolean confByClient)
 	{
 		super();
 		this.cliSocket = cliSocket;
-		initializeParams(confByClient, monJsonMode);
+		initializeParams(confByClient);
 		isSecureMode = false;
 	}
-	private void initializeParams(boolean confByClient, boolean monJsonMode)
+	private void initializeParams(boolean confByClient)
 	{
 		toDisconnect = false;
 		monStarted = false;
-		rithParams = new RiTHMParameters();
 		this.confByClient = confByClient;
-		this.monJsonMode = monJsonMode;
 	}
 	public RiTHMReplyCommand processCommand(RiTHMSetupCommand commandObj)
 	{
 		RiTHMReplyCommand replyObj = new RiTHMReplyCommand("ok");
 		String commandSting = commandObj.getCommandString();
 		switch (commandSting) {
-		case "disConnect":
-			toDisconnect = true;
-			if(monStarted)
-				monStarted = false;
-			break;
-		case "specContents":
-			rithParams.specFile = (String)commandObj.getParam("specifications");
-			specsFromFile =false;
-			break;
-		case "specFile":
-			rithParams.specFile = (String)commandObj.getParam("filename");
-			specsFromFile = true;
-			break;
-		case "dataFile":
-			isProcessingDatafile = true;
-			rithParams.dataFile = (String)commandObj.getParam("filename");
-			break;	
-		case "traceParserClass":
-			String typeF = (String)commandObj.getParam("type");
-			switch (typeF) {
-			case "XML":
-				rithParams.dFactory = new XMLDataFactory(rithParams.dataFile);
-				break;
-			case "CSV":
-				rithParams.dFactory = new CSVDataFactory(rithParams.dataFile);
-				break;
-			default:
-				break;
+		case "config":
+			rtParams = commandObj.getRiTHMParameters(); 
+			if(rtParams.isProcessingDatafile){
+				switch (rtParams.dataFile) {
+				case "XML":
+					dFactory = new XMLDataFactory(rtParams.dataFile);
+					break;
+				case "CSV":
+					dFactory = new CSVDataFactory(rtParams.dataFile);
+					break;
+				default:
+					break;
+				}
+				break;	
 			}
-			break;	
-		case "specParserClass":
-			typeF = (String)commandObj.getParam("type");
-			switch (typeF) {
+			else
+				logger.info("Data to be received on socket as "+ rtParams.dataFormat);
+
+			switch (rtParams.specParserClass) {
 				case "LTL":
-					rithParams.rithmParser = new LTLParser("LTL");
+					rithmParser = new LTLParser("LTL");
 					break;
 				case "VLTL":
-					rithParams.rithmParser = new VerboseLTLParser("Verbose LTL");
+					rithmParser = new VerboseLTLParser("Verbose LTL");
 					break;
 				case "MTL":
-					rithParams.rithmParser = new MTLParser("MTL");
+					rithmParser = new MTLParser("MTL");
 					break;
 			}
-		case "monitorClass":
-			typeF = (String)commandObj.getParam("type");
-			switch (typeF) {
+
+			switch (rtParams.monitorClass) {
 			case "LTL3":
-				rithParams.rithmMon = new LTLMonitor();
-				rithParams.rithmMon.setMonitorValuation(new LTL3MonValuation());
+				rithmMon = new LTLMonitor();
+				rithmMon.setMonitorValuation(new LTL3MonValuation());
 				break;
 			case "LTL4":
-				rithParams.rithmMon = new LTL4Monitor();
-				rithParams.rithmMon.setMonitorValuation(new LTL4MonValuation());
+				rithmMon = new LTL4Monitor();
+				rithmMon.setMonitorValuation(new LTL4MonValuation());
 				break;
 			case "MTL":	
-				rithParams.rithmMon = new MTLMonitor();
-				rithParams.rithmMon.setMonitorValuation(new TwoValuedValuation());
+				rithmMon = new MTLMonitor();
+				rithmMon.setMonitorValuation(new TwoValuedValuation());
 				
 				break;
 			default:
 				break;
 			}
-
-			break;	
-		case "predicateEvaluator":
-			typeF = (String)commandObj.getParam("type");
-			String scriptStr = (String)commandObj.getParam("script");
-			switch (typeF) {
-			case "lua":	
-				rithParams.pEvaluator = new ScriptPredicateEvaluator(scriptStr, "luaj", false);
-				break;
-			case "js":
-				rithParams.pEvaluator = new ScriptPredicateEvaluator(scriptStr, "JavaScript", false);
-				break;
-			default:
-				break;
-			}
+			if(rtParams.pEvaluatorName != null)
+				switch (rtParams.pEvaluatorName) {
+				case "lua":	
+					pEvaluator = 
+					new ScriptPredicateEvaluator(rtParams.pEvaluatorPath, "luaj", false);
+					break;
+				case "js":
+					pEvaluator = 
+					new ScriptPredicateEvaluator(rtParams.pEvaluatorPath, "JavaScript", false);
+					break;
+				default:
+					break;
+				}
+			break;
 		default:
-			replyObj.commandString = "unknown_command";
+			replyObj.setCommandString("unknown_command");
 			break;
 		}
 		return replyObj;
 	}
-	public RiTHMReplyCommand startMonitorThread(RiTHMMonitorCommand commandObj, String JSONStr)
+	public RiTHMReplyCommand startMonitorThread(String JSONStr)
 	{
 		// TODO: Start monitor thread on a port and wait for stop monitor setup command
 		// TODO stop thread when stop command is issued
 		// TODO: Wait for thread to process prog states/ jsons
 		// TODO: Add condition class to create trigger for monitoring
 		RiTHMReplyCommand replyObj = new RiTHMReplyCommand("ok");
+		RiTHMResultCollection rRes ;
 		if(!monStarted)
 		{
-			rithParams.rithmMon.setParser(rithParams.rithmParser);
-			if(rithParams.pEvaluator == null)
-				rithParams.pEvaluator = new DefaultPredicateEvaluator();
-			rithParams.rithmMon.setPredicateEvaluator(rithParams.pEvaluator);
+			rithmMon.setParser(rithmParser);
+			if(pEvaluator == null)
+				pEvaluator = new DefaultPredicateEvaluator();
+			rithmMon.setPredicateEvaluator(pEvaluator);
 //			rithParams.rithmParser.
-			rithParams.rithmMon.synthesizeMonitors(rithParams.specFile , specsFromFile);
+			rithmMon.setOutFile(rtParams.outFileName);
+			if(rtParams.specsFromFile)
+				rithmMon.synthesizeMonitors(rtParams.specFile , rtParams.specsFromFile);
+			else
+				rithmMon.synthesizeMonitors(rtParams.specString , rtParams.specsFromFile);
 			monStarted = true;
 		}
 		if(isProcessingDatafile)
 		{
 			
-			ProgState pState = rithParams.dFactory.getNextProgState();
+			ProgState pState = dFactory.getNextProgState();
 			while( pState != null)
 			{
-				rithParams.rithmMon.fillBuffer(pState);
-				pState = rithParams.dFactory.getNextProgState();
+				rithmMon.fillBuffer(pState);
+				pState = dFactory.getNextProgState();
+				if(pState.getTimestamp()< 0)
+					rithmMon.runMonitor();
 			}
-			rithParams.rithmMon.runMonitor();
+			rRes = rithmMon.runMonitor();
+			Iterator<RiTHMSpecification> rSpecIter = rRes.iterator();
+			while(rSpecIter.hasNext())
+				replyObj.response.put(rSpecIter.next().getTextDescription(), rRes.getResult(rSpecIter.next()).getTruthValueDescription());
 		}
 		else
 		{
 			//start monitor thread and change to mon mode and keep accepting data commands
 			//when receive next status command send reply with truth values
 			ProgState pState;
-			if(!monJsonMode)
-			{
-				pState = commandObj.getProgState();
-			}
-			else
-			{
-				Gson gson = new Gson();
-				pState = gson.fromJson(JSONStr,DefaultProgramState.class);
-			}
+			Gson gson = new Gson();
+			pState = gson.fromJson(JSONStr,DefaultProgramState.class);
 			if(pState.getTimestamp() < 0)
 			{
-				RiTHMResultCollection rRes = rithParams.rithmMon.runMonitor();
+				rRes = rithmMon.runMonitor();
+				Iterator<RiTHMSpecification> rSpecIter = rRes.iterator();
+				while(rSpecIter.hasNext())
+				{
+					RiTHMSpecification rSpec = rSpecIter.next();
+					logger.info(rRes.getResult(rSpec).getTruthValueDescription());
+					replyObj.response.put(rSpec.getTextDescription(), rRes.getResult(rSpec).getTruthValueDescription());
+				}
 //				for(RiTHMSpecification rSpec: rithParams.rithmParser.getSpecs())
 				//TODO add result object to reply
 			}
 			else
-				rithParams.rithmMon.fillBuffer(pState);
+			{
+				logger.debug(JSONStr);
+				rithmMon.fillBuffer(pState);
+			}
 		}
 		return replyObj;
+	}
+	private byte[] readMessage() throws IOException
+	{
+		short size = dInStream.readShort();
+		byte[] message = new byte[size];
+		dInStream.readFully(message);
+		return message;
 	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		Gson gs = new Gson();
+		RiTHMReplyCommand replyCommand =null ;
 		try {
 			if(isSecureMode)
 			{
-				oInStream = new ObjectInputStream(cliSecureSocket.getInputStream());
-				oOutStream = new ObjectOutputStream(cliSecureSocket.getOutputStream());
+				dInStream = new DataInputStream(cliSecureSocket.getInputStream());
+				dOutStream = new DataOutputStream(cliSecureSocket.getOutputStream());
 			}
 			else
 			{
-				oInStream = new ObjectInputStream(cliSocket.getInputStream());
-				oOutStream = new ObjectOutputStream(cliSocket.getOutputStream());
+				dInStream = new DataInputStream(cliSocket.getInputStream());
+				dOutStream = new DataOutputStream(cliSocket.getOutputStream());
 			}
 
 			while(!toDisconnect){
 				if(!confByClient && !monStarted)
-					startMonitorThread(null, null);
-				Object cliObj = oInStream.readObject();
-				RiTHMReplyCommand replyObj = null;
-				if(cliObj instanceof RiTHMSetupCommand)
-					replyObj = processCommand((RiTHMSetupCommand)cliObj);
-				if(cliObj instanceof RiTHMMonitorCommand)
-					replyObj = startMonitorThread((RiTHMMonitorCommand)cliObj,null);
-				if(cliObj instanceof String)
-					replyObj = startMonitorThread(null,(String)cliObj);
-				
-				
-				oOutStream.writeObject(replyObj);
+					startMonitorThread(null);		
+				byte[] message;
+				char command = dInStream.readChar();
+				switch (command) {
+				case CONFIG:
+					message = readMessage();
+					RiTHMSetupCommand rsCommand =
+							gs.fromJson(new String(message), RiTHMSetupCommand.class);
+					replyCommand = processCommand(rsCommand);
+					break;
+				case DISCONNECT:
+					toDisconnect=true;
+					break;
+				case RUNMONITOR:
+					break;	
+				case JSONDATA:
+					message = readMessage();
+					replyCommand = startMonitorThread(new String(message));
+					break;
+				default:
+					break;
+				}
+				logger.info(gs.toJson(replyCommand));
+				dOutStream.writeShort(gs.toJson(replyCommand).getBytes().length);
+				dOutStream.write(gs.toJson(replyCommand).getBytes());
+				dOutStream.flush();
 			}
-		} catch (IOException e) {
-			// TODO: handle exception
 		}
-		catch (ClassNotFoundException e) {
+		catch(EOFException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				dInStream.close();dOutStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

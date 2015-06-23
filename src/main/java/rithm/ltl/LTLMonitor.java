@@ -19,6 +19,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Properties;
 
+import org.apache.log4j.HTMLLayout;
+import org.apache.log4j.Logger;
+import org.apache.log4j.RollingFileAppender;
+import org.apache.log4j.SimpleLayout;
+
 import rithm.core.MonState;
 import rithm.core.MonValuation;
 import rithm.core.MonitoringEventListener;
@@ -33,6 +38,8 @@ import rithm.core.RiTHMSpecificationCollection;
 import rithm.core.RiTHMTruthValue;
 import rithm.parsertools.ltl.LTLParser;
 import rithm.defaultcore.*;
+import rithm.driver.RiTHMClientHandler;
+import rithm.driver.RiTHMSecureServer;
 
 public class LTLMonitor implements RiTHMMonitor
 {
@@ -59,6 +66,8 @@ public class LTLMonitor implements RiTHMMonitor
 	protected ArrayList<String> specList;
 	
 	protected String outFileName;
+	
+	final static Logger logger = Logger.getLogger(LTLMonitor.class);
 	public LTLMonitor()
 	{
 		buffer = new ArrayList<PredicateState>();
@@ -69,8 +78,9 @@ public class LTLMonitor implements RiTHMMonitor
 		propSet = new Properties();
 		try
 		{
-//			propSet.load(this.getClass().getResourceAsStream("ltl3tools.properties"));
-			propSet.load(new FileInputStream("ltl3tools.properties"));
+			propSet.load(this.getClass().getResourceAsStream("ltl3tools.properties"));
+//			propSet.load(new FileInputStream(
+//					this.getClass().getClassLoader().getResource("ltl3tools.properties").getFile()));
 			ltltoolsDirname = (String)propSet.getProperty("ltl3toolsDirectory");
 			ltlMonOutDirname = (String)propSet.getProperty("ltl3MonOutputDirectory");
 		}
@@ -215,6 +225,7 @@ public class LTLMonitor implements RiTHMMonitor
 		// TODO Auto-generated method stub
 		ArrayList<String> Filenames = new ArrayList<String>();
 		int specCount = 0;
+		logger.debug(specDetails);
 		BufferedReader reader = null;
         try {
         	if(isFile)
@@ -229,6 +240,7 @@ public class LTLMonitor implements RiTHMMonitor
             String line = null;
             while ((line = reader.readLine()) != null) {
             	ltlParser.appendSpec(new DefaultRiTHMSpecification(line));
+	            logger.debug(line);	
             	String origFormat = line;
             	line = ltlParser.rewriteSpec(new DefaultRiTHMSpecification(line));
             	createMonsfromTools(line,origFormat, Filenames, specCount);
