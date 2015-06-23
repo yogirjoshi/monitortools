@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 
@@ -44,6 +46,8 @@ public class MTLMonitor implements RiTHMMonitor{
 	protected RiTHMMTLVisitor mtlMon;
 	protected HashMap<RiTHMSpecification, ParseTree> specsTrees;
 	protected ArrayList<MonitoringEventListener> mlist;
+	protected HashMap<RiTHMSpecification, String> specToTreeNode;
+	
 	final static Logger logger = Logger.getLogger(MTLMonitor.class);
 	public MTLMonitor()
 	{
@@ -55,6 +59,7 @@ public class MTLMonitor implements RiTHMMonitor{
 		mtlMon = new RiTHMMTLVisitor(buffer);
 		specsTrees = new HashMap<RiTHMSpecification, ParseTree>();
 		currSpecs = new DefaultRiTHMSpecificationCollection();
+		specToTreeNode = new HashMap<>();
 	}
 	@Override
 	public boolean setFormulas(RiTHMSpecificationCollection Specs) {
@@ -62,7 +67,13 @@ public class MTLMonitor implements RiTHMMonitor{
 		currSpecs = Specs;
 		return false;
 	}
-
+	
+	@Override
+	public RiTHMTruthValue getTruthValueAt(
+			RiTHMSpecification spec, int i) {
+		// TODO Auto-generated method stub
+		return mtlMon.getTruthValuation(specToTreeNode.get(spec), i);
+	}
 	@Override
 	public boolean synthesizeMonitors(RiTHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
@@ -117,7 +128,8 @@ public class MTLMonitor implements RiTHMMonitor{
 		{
 			String resName = mtlMon.visit(specsTrees.get(currSpecs.at(i)));
 			RiTHMTruthValue tempTval = currSpecStatus.getResult(currSpecs.at(i));
-			currSpecStatus.setResult(currSpecs.at(i), mtlMon.getTruthValuation(resName));
+			currSpecStatus.setResult(currSpecs.at(i), mtlMon.getTruthValuation(resName,0));
+			specToTreeNode.put(currSpecs.at(i), resName);
 			if(tempTval != null){
 				if(tempTval.getTruthValueDescription().equals(currSpecStatus.getResult(currSpecs.at(i)).getTruthValueDescription()))
 				{
@@ -156,7 +168,16 @@ public class MTLMonitor implements RiTHMMonitor{
 		this.valuation = val;
 
 	}
-
+	
+	@Override
+	public List<RiTHMTruthValue> getTruthValueCollection(RiTHMSpecification spec) {
+		// TODO Auto-generated method stub
+		ArrayList<RiTHMTruthValue> specTruthValues = new ArrayList<>();
+		for(int j = 0; j < buffer.length();j++){
+			specTruthValues.add(j,mtlMon.getTruthValuation(specToTreeNode.get(spec), j));
+		}
+		return specTruthValues;
+	}
 	@Override
 	public void setPredicateEvaluator(PredicateEvaluator pe) {
 		// TODO Auto-generated method stub

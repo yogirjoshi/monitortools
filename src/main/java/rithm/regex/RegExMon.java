@@ -1,8 +1,5 @@
 package rithm.regex;
 import java.io.BufferedReader;
-
-import rithm.core.RiTHMLogMessages;
-
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -13,19 +10,30 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import rithm.core.*;
-import rithm.defaultcore.DefaultMonState;
+import rithm.core.MonState;
+import rithm.core.MonValuation;
+import rithm.core.MonitoringEventListener;
+import rithm.core.ParserPlugin;
+import rithm.core.PredicateEvaluator;
+import rithm.core.PredicateState;
+import rithm.core.ProgState;
+import rithm.core.RiTHMLogMessages;
+import rithm.core.RiTHMMonitor;
+import rithm.core.RiTHMResultCollection;
+import rithm.core.RiTHMSpecification;
+import rithm.core.RiTHMSpecificationCollection;
+import rithm.core.RiTHMTruthValue;
 import rithm.defaultcore.DefaultPredicateState;
 import rithm.defaultcore.DefaultRegExPredicateState;
 import rithm.defaultcore.DefaultRiTHMSpecification;
-import rithm.defaultcore.DefaultRiTHMSpecificationCollection;
 import rithm.defaultcore.DefaultRiTHMSpecificationResult;
 import rithm.defaultcore.DefaultRiTHMTruthValue;
-import rithm.mtl.MTLMonitor;
-import dk.brics.automaton.*;
+import dk.brics.automaton.RegExp;
+import dk.brics.automaton.RunAutomaton;
 public class RegExMon implements RiTHMMonitor{
 	
 	protected HashMap<String, Character> alphabetList;
@@ -49,6 +57,16 @@ public class RegExMon implements RiTHMMonitor{
 		buffer = new ArrayList<PredicateState>();
 		
 	}
+	
+	
+	@Override
+	public RiTHMTruthValue getTruthValueAt(
+			RiTHMSpecification spec, int i) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+
 	@Override
 	public boolean setFormulas(RiTHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
@@ -169,6 +187,13 @@ public class RegExMon implements RiTHMMonitor{
 		}
 		return specStatus;
 	}
+	
+	@Override
+	public List<RiTHMTruthValue> getTruthValueCollection(RiTHMSpecification spec) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
 
 	@Override
 	public boolean setTraceFile(String FileName) {

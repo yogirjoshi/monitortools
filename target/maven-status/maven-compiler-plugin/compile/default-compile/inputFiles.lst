@@ -1,9 +1,12 @@
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTL3MonValuation.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/regex/RegExMon.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RiTHMClientHandler.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTL4Monitor.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RiTHMAbstractServer.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTL4MonValuation.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RiTHMBrewer.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/mtl/MTLMonitor.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RiTHMSecureServer.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/mtl/TwoValuedValuation.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/MonitorDriver.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTLMonitor.java

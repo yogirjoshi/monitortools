@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,10 +13,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.Properties;
+
+import org.antlr.v4.parse.ANTLRParser.throwsSpec_return;
 
 import rithm.core.MonState;
 import rithm.core.MonValuation;
@@ -31,8 +33,11 @@ import rithm.core.RiTHMResultCollection;
 import rithm.core.RiTHMSpecification;
 import rithm.core.RiTHMSpecificationCollection;
 import rithm.core.RiTHMTruthValue;
-import rithm.parsertools.ltl.LTLParser;
-import rithm.defaultcore.*;
+import rithm.defaultcore.DefaultMonState;
+import rithm.defaultcore.DefaultPredicateState;
+import rithm.defaultcore.DefaultRiTHMSpecification;
+import rithm.defaultcore.DefaultRiTHMSpecificationResult;
+import rithm.defaultcore.DefaultRiTHMTruthValue;
 
 public class LTL4Monitor implements RiTHMMonitor
 {
@@ -99,6 +104,18 @@ public class LTL4Monitor implements RiTHMMonitor
 	}
 	
 	
+	@Override
+	public RiTHMTruthValue getTruthValueAt(
+			RiTHMSpecification spec, int i) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+	
+	@Override
+	public List<RiTHMTruthValue> getTruthValueCollection(RiTHMSpecification spec) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 	@Override
 	public void setParser(ParserPlugin parser) {
 		// TODO Auto-generated method stub

@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -124,6 +125,19 @@ public class LTLMonitor implements RiTHMMonitor
 			currSpecStatus.setResult(new DefaultRiTHMSpecification(specs.at(i).getTextDescription()), this.valuation.getDefaultValuation());
 		}
 		return false;
+	}
+	
+	@Override
+	public RiTHMTruthValue getTruthValueAt(
+			RiTHMSpecification spec, int i) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+	
+	@Override
+	public List<RiTHMTruthValue> getTruthValueCollection(RiTHMSpecification spec) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 	protected void createMonsfromTools(String line, String origFormat, ArrayList<String> Filenames, int specCount) throws IOException, InterruptedException
 	{
