@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import rithm.basemonitors.RiTHMBaseMonitor;
 import rithm.core.MonState;
 import rithm.core.MonValuation;
 import rithm.core.MonitoringEventListener;
@@ -34,7 +35,7 @@ import rithm.defaultcore.DefaultRiTHMSpecificationResult;
 import rithm.defaultcore.DefaultRiTHMTruthValue;
 import dk.brics.automaton.RegExp;
 import dk.brics.automaton.RunAutomaton;
-public class RegExMon implements RiTHMMonitor{
+public class RegExMon extends RiTHMBaseMonitor implements RiTHMMonitor{
 	
 	protected HashMap<String, Character> alphabetList;
 	protected ArrayList<RegExp> regExList;
@@ -45,7 +46,7 @@ public class RegExMon implements RiTHMMonitor{
 	protected PredicateEvaluator pe;
 	protected int specCount = 0;
 	protected RiTHMResultCollection specStatus;
-	protected ArrayList<MonitoringEventListener> meList;
+
 	final static Logger logger = Logger.getLogger(RegExMon.class);
 	
 	public RegExMon()
@@ -58,18 +59,10 @@ public class RegExMon implements RiTHMMonitor{
 		
 	}
 	
-	
-	@Override
-	public RiTHMTruthValue getTruthValueAt(
-			RiTHMSpecification spec, int i) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-
 	@Override
 	public boolean setFormulas(RiTHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
+		super.setFormulas(Specs);
 		for(RiTHMSpecification eachSpec:Specs)
 		{
 			if(!checkAndAddAlphabet(eachSpec.getTextDescription()))
@@ -189,53 +182,11 @@ public class RegExMon implements RiTHMMonitor{
 	}
 	
 	@Override
-	public List<RiTHMTruthValue> getTruthValueCollection(RiTHMSpecification spec) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-
-	@Override
-	public boolean setTraceFile(String FileName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean fillBuffer(ProgState ps) {
 		// TODO Auto-generated method stub
 		pe.SetProgStateObj(ps);
 		buffer.add((PredicateState)pe.evaluatePredicates());
 		return true;
-	}
-
-	@Override
-	public void setMonitoringEventListener(MonitoringEventListener mel) {
-		// TODO Auto-generated method stub
-		this.meList.add(mel);
-	}
-
-	@Override
-	public void setMonitorValuation(MonValuation val) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPredicateEvaluator(PredicateEvaluator pe) {
-		// TODO Auto-generated method stub
-		this.pe = pe;
-	}
-
-	@Override
-	public void setOutFile(String outFile) {
-		// TODO Auto-generated method stub
-		this.outFileName = outFile;
-	}
-
-	@Override
-	public void setParser(ParserPlugin parser) {
-		// TODO Auto-generated method stub
 	}
 
 }

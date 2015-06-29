@@ -1,9 +1,14 @@
+rithm/driver/RiTHMAbstractServer.class
+rithm/driver/RiTHMCommandHandler.class
 rithm/mtl/TwoValuedValuation.class
 rithm/ltl/LTL3MonValuation.class
+rithm/driver/RiTHMSecureServer.class
 rithm/ltl/LTL4MonValuation.class
 rithm/ltl/LTLMonitor.class
 rithm/ltl/LTL4Monitor.class
 rithm/ltl/MonitorDriver.class
 rithm/regex/RegExMon.class
 rithm/driver/RiTHMBrewer.class
+rithm/basemonitors/RiTHMBaseMonitor.class
 rithm/mtl/MTLMonitor.class
+rithm/driver/RiTHMClientHandler.class

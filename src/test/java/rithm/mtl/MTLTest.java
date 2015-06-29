@@ -2,6 +2,7 @@ package rithm.mtl;
 
 import rithm.core.*;
 import rithm.defaultcore.*;
+import rithm.parsertools.mtl.MTLParser;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,21 +11,25 @@ public class MTLTest extends TestCase {
 	protected MTLMonitor mtlM;
 	protected RiTHMSpecificationCollection rsColl;
 	RiTHMResultCollection rresColl;
+	ParserPlugin parser;
     public MTLTest( String testName )
     {
         super( testName );
     	mtlM = new MTLMonitor();
     	rsColl = new DefaultRiTHMSpecificationCollection();
-
+    	parser = new MTLParser("Metric Temporal Logic (Past & Future)");
+    	mtlM.setOutFile("test1.log");
+    	mtlM.setPlotFile("test2.log");
+    	mtlM.setParser(parser);
        	mtlM.setMonitorValuation(new TwoValuedValuation());
-    	mtlM.setPredicateEvaluator(new DefaultPredicateEvaluator(true));
+    	mtlM.setPredicateEvaluator(new DefaultPredicateEvaluator());
     }
 
     /**
      * @return the suite of tests being tested
      */
     public static Test suite()
-    {
+    {	
         return new TestSuite( MTLTest.class );
     }
 
@@ -192,6 +197,35 @@ public class MTLTest extends TestCase {
     	ProgState ps3= new DefaultProgramState(2);
     	ps3.setValue("a", "1");
     	ps3.setValue("b", "1");
+    	mtlM.fillBuffer(ps3);
+    	
+    	rresColl = mtlM.runMonitor();
+//    	System.out.println(rresColl.getResult(rSpec1).getTruthValueDescription());
+    	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
+    }
+    public void testEventuallyPaseBasic1()
+    {
+
+    	
+    	RiTHMSpecification rSpec1 = new DefaultRiTHMSpecification("[]{0,2}(a-><*>{0,2}b)");
+    	rsColl.add(rSpec1);
+//    	mtlM.setFormulas(rsColl);
+    	mtlM.synthesizeMonitors(rsColl);
+    	
+    	ProgState ps1= new DefaultProgramState(0);
+    	ps1.setValue("a", "1");
+    	ps1.setValue("b", "1");
+    	mtlM.fillBuffer(ps1);
+//    	System.out.println(ps1);
+    	
+    	ProgState ps2= new DefaultProgramState(1);
+    	ps2.setValue("a", "1");
+    	ps2.setValue("b", "0");
+    	mtlM.fillBuffer(ps2);
+    	
+    	ProgState ps3= new DefaultProgramState(2);
+    	ps3.setValue("a", "1");
+    	ps3.setValue("b", "0");
     	mtlM.fillBuffer(ps3);
     	
     	rresColl = mtlM.runMonitor();

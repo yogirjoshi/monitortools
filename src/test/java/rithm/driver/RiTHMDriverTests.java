@@ -2,7 +2,7 @@ package rithm.driver;
 
 import java.io.IOException;
 
-import client.RiTHMClient;
+import rithm.client.RiTHMClient;
 import rithm.core.ProgState;
 import rithm.defaultcore.DefaultPredicateEvaluator;
 import rithm.defaultcore.DefaultProgramState;
@@ -46,14 +46,14 @@ public class RiTHMDriverTests extends TestCase {
 
     	ProgState ps1 = new DefaultProgramState(1);
     	ps1.setValue("a", "1");
-    	ps1.setValue("b", "0");
+//    	ps1.setValue("b", "0");
     	
     	ProgState ps2 = new DefaultProgramState(2);
-    	ps2.setValue("a", "0");
+//    	ps2.setValue("a", "0");
     	ps2.setValue("b", "1");
     	
     	ProgState ps3 = new DefaultProgramState(-1);
-    	ps3.setValue("a", "0");
+//    	ps3.setValue("a", "0");
     	ps3.setValue("b", "1");
     	
     	try {

@@ -1,5 +1,7 @@
 package rithm.driver;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.DefaultBoundedRangeModel;
 
@@ -24,139 +26,31 @@ import rithm.mtl.TwoValuedValuation;
 import rithm.parsertools.ltl.LTLParser;
 import rithm.parsertools.ltl.VerboseLTLParser;
 import rithm.parsertools.mtl.MTLParser;
+
 public class RiTHMBrewer {
-	public static PredicateEvaluator pEvaluator;
-	public static String specFile;
-	public static String dataFile;
-	public static String outputFile;
+
 	public static HelpFormatter hlpFormatter;
-	public static DataFactory dFactory;
-	public static RiTHMMonitor rithmMon;
-	public static ParserPlugin rithmParser;
-	public static String pEvaluatorName;
-	public static String pEvaluatorPath;
-	public static boolean processCmdArguments(CommandLine cmdLine, Options options)
-	{
-		if(cmdLine.hasOption("help"))
-		{
-			hlpFormatter.printHelp("RiTHMBrewer", options);
-		}
-		if(!cmdLine.hasOption("predicateEvaluator"))
-		{
-			pEvaluator = new DefaultPredicateEvaluator();
-		}
-		else
-		{
-			// TODO add code to load Predicate Evaluator using URLLoader
-			pEvaluatorName= cmdLine.getOptionValue("predicateEvaluator");
-			if(!cmdLine.hasOption("predicateEvaluatorPath"))
-			{
-				hlpFormatter.printHelp("RiTHMBrewer", options);
-				return false;
-			}
-			pEvaluatorPath = cmdLine.getOptionValue("predicateEvaluatorPath");
-			File f = new File(pEvaluatorPath);
-			if(!f.exists())
-				return false;
-			pEvaluator = new ScriptPredicateEvaluator(pEvaluatorPath, pEvaluatorName, true);
-		}
-		if(cmdLine.hasOption("specFile"))
-			specFile = cmdLine.getOptionValue("specFile");
-		else
-		{
-			hlpFormatter.printHelp("RiTHMBrewer", options);
-			return false;
-		}
-		if(cmdLine.hasOption("dataFile"))
-			dataFile = cmdLine.getOptionValue("dataFile");
-		else
-		{
-			hlpFormatter.printHelp("RiTHMBrewer", options);
-			return false;
-		}
-		if(cmdLine.hasOption("outputFile"))
-			outputFile = cmdLine.getOptionValue("outputFile");
-		else
-		{
-			hlpFormatter.printHelp("RiTHMBrewer", options);
-			return false;
-		}
-		
-		if(cmdLine.hasOption("traceParserClass"))
-		{
-			String tParserClass;
-			tParserClass = cmdLine.getOptionValue("traceParserClass");
-			if(tParserClass.equals("XML"))
-				dFactory = new XMLDataFactory(dataFile);
-//			if(tParserClass.equals("CSV"))
-//				dFactory =  new CSVDataFactory(dataFile);
-		}
-		else
-		{
-			hlpFormatter.printHelp("RiTHMBrewer", options);
-			return false;
-		}
-		if(cmdLine.hasOption("specParserClass"))
-		{
-			String specParserClass;
-			specParserClass = cmdLine.getOptionValue("specParserClass");
-			if(specParserClass.equals("LTL"))
-				rithmParser = new LTLParser("LTL");
-			if(specParserClass.equals("VLTL"))
-				rithmParser = new VerboseLTLParser("VLTL");
-			if(specParserClass.equals("MTL"))
-				rithmParser = new MTLParser("MTL");
-		}
-		else
-		{
-			hlpFormatter.printHelp("RiTHMBrewer", options);
-			return false;
-		}
-		if(cmdLine.hasOption("monitorClass"))
-		{
-			String monClass;
-			monClass = cmdLine.getOptionValue("monitorClass");
-			if(monClass.equals("LTL3"))
-			{
-				rithmMon = new LTLMonitor();
-				rithmMon.setMonitorValuation(new LTL3MonValuation());
-			}
-			if(monClass.equals("LTL4"))
-			{
-				rithmMon = new LTL4Monitor();
-				rithmMon.setMonitorValuation(new LTL4MonValuation());
-			}
-			if(monClass.equals("MTL"))
-			{
-				rithmMon = new MTLMonitor();
-				rithmMon.setMonitorValuation(new TwoValuedValuation());
-			}
-			rithmMon.setParser(rithmParser);
-			rithmMon.setPredicateEvaluator(pEvaluator);
-		}
-		else
-		{
-			hlpFormatter.printHelp("RiTHMBrewer", options);
-			return false;
-		}
-		return true;
-	}
-	public static void main(String args[])
+
+	public static void main(String args[]) throws InterruptedException, FileNotFoundException, IOException
 	{
 		Options options = new Options();
 		CommandLine cmdLine;
 		CommandLineParser parser = new GnuParser();
 		
-		options.addOption("specFile",true,"File containing specifications to be verified");
-		options.addOption("dataFile", true, "Datafile containing trace to be validated");
-		options.addOption("outputFile", true, "Monitor output to be written in this file");
-		options.addOption("monitorClass", true,"Monitor Plugin name");
-		options.addOption("traceParserClass", true,"Trace Parser Plugin name");
-		options.addOption("specParserClass", true,"Specification Parser Plugin name");
+		options.addOption("specFile",true,"file containing specifications to be verified");
+		options.addOption("specifications",true,"specifications to be verified");
+		options.addOption("dataFile", true, "file containing trace to be validated");
+		options.addOption("dataFormat", true, "format of dataFile (e.g. JSON)");
+		options.addOption("outputFile", true, "output log of the monitor");
+		options.addOption("monitorClass", true,"monitor plugin name (e.g. LTL/MTL)");
+		options.addOption("traceParserClass", true,"trace parser plugin name (e.g. XML/CSV)");
+		options.addOption("specParserClass", true,"specification parser plugin name (e.g. LTL/MTL)");
+		options.addOption("serverMode", true,"Start RiTHM as server (e.g. true/false)");
+		options.addOption("pipeMode", true,"Piping between monitors (e.g. true/false)");
+		options.addOption("configFile", true,"file containing configuration parameters");
 		options.addOption("help", false,"Help about RiTHM");
-		options.addOption("predicateEvaluator", true,"Predicate Evaluator Plugin name");
-		options.addOption("predicateEvaluatorPath", true,"Predicate Evaluator File (JAR/JavaScript/Lua) path");
-		options.addOption("predicateListFile", true,"Path to file which lists Predicate Line by Line");
+		options.addOption("predicateEvaluatorType", true,"predicate evaluator type name (lua/js)");
+		options.addOption("predicateEvaluatorScriptFile", true,"predicate evaluator script file path");
 		hlpFormatter = new HelpFormatter();
 		try
 		{
@@ -167,17 +61,27 @@ public class RiTHMBrewer {
 			pe.printStackTrace();
 			return;
 		}
-		if(!processCmdArguments(cmdLine, options))
-			return;
-		rithmMon.synthesizeMonitors(specFile, true);
-		rithmMon.setOutFile(outputFile);
-		
-		ProgState pState = dFactory.getNextProgState();
-		while( pState != null)
+		RiTHMCommandHandler rCmdHandler = new RiTHMCommandHandler(cmdLine, options, hlpFormatter);
+		String confFile = rCmdHandler.rValidator.fetchConfigFile();
+		if(confFile != null)
+			rCmdHandler.rValidator.loadPropFile(confFile);
+		if(rCmdHandler.rValidator.fetchBoolDualMode("serverMode") || rCmdHandler.rValidator.fetchBoolDualMode("pipeMode"))
 		{
-			rithmMon.fillBuffer(pState);
-			pState = dFactory.getNextProgState();
+			if(confFile == null)
+			{
+				hlpFormatter.printHelp("RiTHMBrewer","RiTHM Options",options,"Check RiTHMLog for more log messages",true);
+				System.err.println("serverMode/pipeMode should be used with configFile ONLY");
+				return;
+			}
+			RiTHMSecureServer rsRiTHMSecureServer = new RiTHMSecureServer(confFile);
+			rsRiTHMSecureServer.start();
+			rsRiTHMSecureServer.join();
 		}
-		rithmMon.runMonitor();
+		else
+		{
+			rCmdHandler.run();
+			rCmdHandler.join();
+		}
+
 	}
 }

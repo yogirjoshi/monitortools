@@ -13,6 +13,15 @@
 	<developerConnection>scm:git:git@github.com:yogirjoshi/monitortools.git</developerConnection>
   </scm>
   <build>
+  <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <excludes>
+                <exclude>*.properties</exclude>
+            </excludes>
+            <filtering>false</filtering>
+        </resource>
+   </resources>
   <plugins>
   	<plugin>
         <groupId>org.apache.maven.plugins</groupId>

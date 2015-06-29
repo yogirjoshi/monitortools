@@ -101,6 +101,7 @@ public class RiTHMClientHandler extends Thread {
 		monStarted = false;
 		this.confByClient = confByClient;
 	}
+
 	public RiTHMReplyCommand processCommand(RiTHMSetupCommand commandObj)
 	{
 		RiTHMReplyCommand replyObj = new RiTHMReplyCommand("ok");
@@ -203,8 +204,9 @@ public class RiTHMClientHandler extends Thread {
 			{
 				rithmMon.fillBuffer(pState);
 				pState = dFactory.getNextProgState();
-				if(pState.getTimestamp()< 0)
-					rithmMon.runMonitor();
+				if(pState != null)
+					if(pState.getTimestamp()< 0)
+						rithmMon.runMonitor();
 			}
 			rRes = rithmMon.runMonitor();
 			Iterator<RiTHMSpecification> rSpecIter = rRes.iterator();
@@ -225,7 +227,7 @@ public class RiTHMClientHandler extends Thread {
 				while(rSpecIter.hasNext())
 				{
 					RiTHMSpecification rSpec = rSpecIter.next();
-					logger.info(rRes.getResult(rSpec).getTruthValueDescription());
+					logger.debug(rRes.getResult(rSpec).getTruthValueDescription());
 					replyObj.response.put(rSpec.getTextDescription(), rRes.getResult(rSpec).getTruthValueDescription());
 				}
 //				for(RiTHMSpecification rSpec: rithParams.rithmParser.getSpecs())
@@ -265,14 +267,20 @@ public class RiTHMClientHandler extends Thread {
 
 			while(!toDisconnect){
 				if(!confByClient && !monStarted)
-					startMonitorThread(null);		
+				{
+//					rtParams = confiure rtparams from config file
+					startMonitorThread(null);	
+				}
 				byte[] message;
 				char command = dInStream.readChar();
+				String messageStr;
 				switch (command) {
 				case CONFIG:
 					message = readMessage();
+					messageStr = new String(message);
 					RiTHMSetupCommand rsCommand =
-							gs.fromJson(new String(message), RiTHMSetupCommand.class);
+							gs.fromJson(messageStr, RiTHMSetupCommand.class);
+					logger.debug(rsCommand.getRiTHMParameters().specsForPipes);
 					replyCommand = processCommand(rsCommand);
 					break;
 				case DISCONNECT:
@@ -287,7 +295,7 @@ public class RiTHMClientHandler extends Thread {
 				default:
 					break;
 				}
-				logger.info(gs.toJson(replyCommand));
+				logger.debug(gs.toJson(replyCommand));
 				dOutStream.writeShort(gs.toJson(replyCommand).getBytes().length);
 				dOutStream.write(gs.toJson(replyCommand).getBytes());
 				dOutStream.flush();

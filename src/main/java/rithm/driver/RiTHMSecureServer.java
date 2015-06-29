@@ -28,22 +28,24 @@ public class RiTHMSecureServer extends RiTHMAbstractServer{
 	protected boolean isSecureMode;
 	protected boolean confByClient;
 	protected int portNo;
+	protected String propFileName = null;
 	public RiTHMSecureServer(String propFileName)
 	{
 		super();
+		this.propFileName = propFileName;
 		InputStream is = null;
 		try
 		{
 			is = new FileInputStream(propFileName);
 			Properties prop = new Properties();
 			prop.load(is);
-			isSecureMode = Boolean.getBoolean(prop.getProperty("secure"));
+			isSecureMode = Boolean.getBoolean(prop.getProperty("secureMode"));
 			portNo = Integer.parseInt(prop.getProperty("port"));
-			confByClient = Boolean.getBoolean(prop.getProperty("remoteconfig"));
+			confByClient = Boolean.getBoolean(prop.getProperty("remoteConfig"));
 			if(isSecureMode)
 			{
-				keyStorePath = prop.getProperty("key_store");
-				keyStorePass = prop.getProperty("key_store_password");
+				keyStorePath = prop.getProperty("keyStore");
+				keyStorePass = prop.getProperty("keyStorePassword");
 				System.setProperty("javax.net.ssl.keyStore", keyStorePath); 
 				System.setProperty("javax.net.ssl.keyStorePassword", keyStorePass);
 			}	
@@ -113,13 +115,13 @@ public class RiTHMSecureServer extends RiTHMAbstractServer{
 				{
 					sslsocket = (SSLSocket) sslserversocket.accept();
 					rcHandler = new RiTHMClientHandler(sslsocket,confByClient);
-					logger.info("Connected client with IP" + sslsocket.getInetAddress().toString());
+					logger.info("New client connected with IP:" + sslsocket.getInetAddress().toString());
 				}
 				else
 				{
 					nonsslsocket = serverSocket.accept();
 					rcHandler = new RiTHMClientHandler(nonsslsocket,confByClient);
-					logger.info("Connected client with IP" + nonsslsocket.getInetAddress().toString());
+					logger.info("New client connected with IP:" + nonsslsocket.getInetAddress().toString());
 				}
 
 				
@@ -130,11 +132,9 @@ public class RiTHMSecureServer extends RiTHMAbstractServer{
 		} 
 		catch (IOException ie)
 		{
-			ie.printStackTrace();
+			logger.fatal(ie.getMessage());
 		}
-//		catch (Exception) {
-//			exception.printStackTrace();
-//		}
+
     }
 	
 }

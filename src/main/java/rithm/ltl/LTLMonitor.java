@@ -25,6 +25,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.RollingFileAppender;
 import org.apache.log4j.SimpleLayout;
 
+import rithm.basemonitors.RiTHMBaseMonitor;
 import rithm.core.MonState;
 import rithm.core.MonValuation;
 import rithm.core.MonitoringEventListener;
@@ -42,31 +43,20 @@ import rithm.defaultcore.*;
 import rithm.driver.RiTHMClientHandler;
 import rithm.driver.RiTHMSecureServer;
 
-public class LTLMonitor implements RiTHMMonitor
+public class LTLMonitor extends RiTHMBaseMonitor implements RiTHMMonitor
 {
 
-
-	public boolean synthesizeMonitors(RiTHMSpecificationCollection specs) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	protected RiTHMResultCollection currSpecStatus; 
-	protected MonValuation valuation;
-	protected ArrayList<PredicateState> buffer;
-	protected PredicateEvaluator pe;
+	
 	
 	protected HashMap<String, MonState> initialStates;
 	protected HashMap<String, MonState> currentStates;
-	protected ArrayList<MonitoringEventListener> mlist;
 	
 	protected Properties propSet;
 	protected String ltltoolsDirname;
 	protected String ltlMonOutDirname;
 	
-	protected ParserPlugin ltlParser;
 	protected ArrayList<String> specList;
-	
-	protected String outFileName;
 	
 	final static Logger logger = Logger.getLogger(LTLMonitor.class);
 	public LTLMonitor()
@@ -79,9 +69,8 @@ public class LTLMonitor implements RiTHMMonitor
 		propSet = new Properties();
 		try
 		{
-			propSet.load(this.getClass().getResourceAsStream("ltl3tools.properties"));
-//			propSet.load(new FileInputStream(
-//					this.getClass().getClassLoader().getResource("ltl3tools.properties").getFile()));
+			propSet.load(Thread.currentThread().getContextClassLoader()
+		             .getResourceAsStream("ltl3tools.properties"));
 			ltltoolsDirname = (String)propSet.getProperty("ltl3toolsDirectory");
 			ltlMonOutDirname = (String)propSet.getProperty("ltl3MonOutputDirectory");
 		}
@@ -89,12 +78,11 @@ public class LTLMonitor implements RiTHMMonitor
 		{
 			System.err.println(ioException.getMessage());
 		}
-//		ltlParser = new LTLParser("LTL");
 		specList = new ArrayList<String>();
 	}
-	public void setOutFile(String outFile)
-	{
-		this.outFileName = outFile;
+	public boolean synthesizeMonitors(RiTHMSpecificationCollection specs) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Not yet supported");
 	}
 	public boolean fillBuffer(ProgState ps) {
 		// TODO Auto-generated method stub
@@ -102,46 +90,18 @@ public class LTLMonitor implements RiTHMMonitor
 		buffer.add((PredicateState)pe.evaluatePredicates());
 		return false;
 	}
-	public void setMonitorValuation(MonValuation val) {
-		// TODO Auto-generated method stub
-		this.valuation = val;
-	}
-	
-	
-	@Override
-	public void setParser(ParserPlugin parser) {
-		// TODO Auto-generated method stub
-		this.ltlParser = parser;
-	}
-	public void setMonitoringEventListener(MonitoringEventListener mel) {
-		// TODO Auto-generated method stub
-		mlist.add(mel);
-	}
 	
 	public boolean setFormulas(RiTHMSpecificationCollection specs) {
 		// TODO Auto-generated method stub
+		super.setFormulas(specs);
 		for(int i =0; i < specs.length();i++)
-		{
-			currSpecStatus.setResult(new DefaultRiTHMSpecification(specs.at(i).getTextDescription()), this.valuation.getDefaultValuation());
-		}
+			currSpecStatus.setResult(specs.at(i), this.valuation.getDefaultValuation());
 		return false;
 	}
 	
-	@Override
-	public RiTHMTruthValue getTruthValueAt(
-			RiTHMSpecification spec, int i) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-	
-	@Override
-	public List<RiTHMTruthValue> getTruthValueCollection(RiTHMSpecification spec) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
+
 	protected void createMonsfromTools(String line, String origFormat, ArrayList<String> Filenames, int specCount) throws IOException, InterruptedException
 	{
-		System.out.println(line);
     	ProcessBuilder p = new ProcessBuilder();
     	p.directory(new File(ltltoolsDirname));
     	p.command("/bin/bash", "./ltl2monLTL3", "\""+ line +"\"");
@@ -152,7 +112,7 @@ public class LTLMonitor implements RiTHMMonitor
     	ps.waitFor();
 	}
 	protected void createLookupTable(ArrayList<DefaultMonState> states, ArrayList<String> Filenames) throws IOException {
-		String Pattern1 = "(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+->[ ]+(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+\\[label[ ]+=[ ]+\"\\(([a-z]+(&&[a-z]+)*)\\)\"\\]";
+		String Pattern1 = "(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+->[ ]+(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+\\[label[ ]+=[ ]+\"\\(([0-9a-z]+(&&[0-9a-z]+)*)\\)\"\\]";
 		String Pattern2 = "(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+->[ ]+(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+\\[label[ ]+=[ ]+\"(\\(<empty>\\))\"\\]";
 		String Pattern3 = "(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+\\[label=\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\",[ ]+style=[a-z]+,[ ]+color=([a-z]+)\\]";
 		int spec_count = 0;
@@ -169,8 +129,6 @@ public class LTLMonitor implements RiTHMMonitor
 			String spec = br.readLine();
 			while((line  = br.readLine()) != null)
 			{
-				System.out.println("---------------------------------------------");
-				System.out.println(line);
 				Matcher m1 = regex1.matcher(line);
 				Matcher m2 = regex2.matcher(line);
 				Matcher m3 = regex3.matcher(line);
@@ -192,10 +150,10 @@ public class LTLMonitor implements RiTHMMonitor
 					DefaultPredicateState dp1 = new DefaultPredicateState();
 					for (String retval: m1.group(3).split("&&")){
 						dp1.setValue(retval, true);
-						System.out.println("Predicate ->" + retval );
+						logger.debug("Predicate ->" + retval );
 					}
 					ds1.SetTransition(dp1, ds2);
-					System.out.println(ds1.getState() + " to " + ds2.getState() );
+					logger.debug(ds1.getState() + " to " + ds2.getState() );
 				}
 				if(m2.find())
 				{
@@ -213,20 +171,20 @@ public class LTLMonitor implements RiTHMMonitor
 						ds2 = states.get(states.indexOf(ds2));
 
 					ds1.SetTransition(new DefaultPredicateState(),ds2);
-					System.out.println(ds1.getState() + " to " + ds2.getState() );
+					logger.debug("Predicate ->" + "<empty>" );
+					logger.debug(ds1.getState() + " to " + ds2.getState() );
 				}
 				if(m3.find())
 				{
 					int id = states.indexOf(new DefaultMonState(m3.group(1), ""));
 					DefaultMonState state = states.get(id);
 					state.setValuation(this.valuation.getSemanticDescription(new DefaultRiTHMTruthValue(m3.group(2))));
-					System.out.println(state.getState() + " valuation ->" + state.getValuation());
+					logger.debug(state.getState() + " valuation ->" + state.getValuation());
 					if(state.getState().contains("(0, 0)"))
 					{
 						this.initialStates.put(Integer.toString(spec_count), state);
 						this.currentStates.put(Integer.toString(spec_count), state);
 						currSpecStatus.setResult(new DefaultRiTHMSpecification(specList.get(spec_count)), this.valuation.getDefaultValuation());
-						//							System.out.println(state.State + " set initial value " + state.Valuation);
 					}
 				}
 			}
@@ -253,26 +211,26 @@ public class LTLMonitor implements RiTHMMonitor
         	}
             String line = null;
             while ((line = reader.readLine()) != null) {
-            	ltlParser.appendSpec(new DefaultRiTHMSpecification(line));
+            	parser.appendSpec(new DefaultRiTHMSpecification(line));
 	            logger.debug(line);	
             	String origFormat = line;
-            	line = ltlParser.rewriteSpec(new DefaultRiTHMSpecification(line));
+            	line = parser.rewriteSpec(new DefaultRiTHMSpecification(line));
             	createMonsfromTools(line,origFormat, Filenames, specCount);
             	specCount++;
             }
         } catch (IOException e) {
-        	System.err.println(e.getMessage());
+        	logger.debug(e.getMessage());
         	return false;
         } 
         catch(InterruptedException e){
-        	System.err.println(e.getMessage());
+        	logger.debug(e.getMessage());
         	return false;
         }
         finally {
             try {
                 reader.close();
             } catch (Exception e) {
-            	System.err.println(e.getMessage());
+            	logger.debug(e.getMessage());
             	return false;
             }
         }
@@ -283,7 +241,7 @@ public class LTLMonitor implements RiTHMMonitor
 		}
 		catch(IOException e)
 		{
-			System.err.println(e.getMessage());
+			logger.debug(e.getMessage());
 			return false;
 		}
 		return true;
@@ -301,85 +259,68 @@ public class LTLMonitor implements RiTHMMonitor
 	}
 	public RiTHMResultCollection runMonitor() {
 		// TODO Auto-generated method stub
-		BufferedWriter outWriter;
+		BufferedWriter outWriter = null, plotWriter = null;
 		try
 		{
 			outWriter = new BufferedWriter(new FileWriter(new File(outFileName)));
+			plotWriter = new BufferedWriter(new FileWriter(new File(plotFileName)));
 			outWriter.write("<html>");
 			outWriter.write("<body>");
 			for(int i =0; i < buffer.size();i++)
 			{
-//				System.out.println("__________________________________________________________________");
-//				System.out.println("Event " + Integer.toString(i));
-				
 				DefaultPredicateState topState = (DefaultPredicateState)buffer.get(i);
 				outWriter.write("Event:" + Integer.toString(i) +" Timestamp:" + topState.gettimeStamp());
 				for(int j = 0; j < currentStates.size();j++)
 				{
 					DefaultPredicateState dpPredState = new DefaultPredicateState((DefaultPredicateState)buffer.get(i));
-					ArrayList<String> predsForthisSpec = ltlParser.getPredsForSpec(specList.get(j));
+
+					ArrayList<String> predsForthisSpec = parser.getPredsForSpec(specList.get(j));
 					
 					setPredState(dpPredState, predsForthisSpec);
-					
+//					System.out.println(dpPredState);
 					DefaultMonState nextState = (DefaultMonState)currentStates.get(Integer.toString(j)).GetNextMonState(dpPredState);
 					
 					if(nextState != null)
 					{
 						currentStates.put(Integer.toString(j),nextState);
 						DefaultMonState ms1 = (DefaultMonState)currentStates.get(Integer.toString(j));
-//						System.out.println("Specification: " + specList.get(j) + " => " + ms1.Valuation);
-	//					System.out.println("State " + Integer.toString(i) + " " + dpPredState.toString());
 						outWriter.write("<div style=\"background: #B0B0B0 \">");
 						
 						if(ms1.getValuation().equals("Satisfied"))
-						{
-//							outWriter.write("<div style=\"background: LightGreen\">");
 							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Lime\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
 						if(ms1.getValuation().equals("Violated"))
-						{
-//							outWriter.write("<div style=\"background: #FF9900\">");
 							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Red\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
 						if(ms1.getValuation().equals("Validation status Unknown"))
-						{
-//							outWriter.write("<div style=\"background: yellow\">");
 							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Yellow\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
 						outWriter.write("</div>");
 						currSpecStatus.setResult(new DefaultRiTHMSpecification(specList.get(j)),new DefaultRiTHMTruthValue(ms1.getValuation()));
 						
+						plotWriter.write(specList.get(j) + "," + topState.gettimeStamp() + "," + ms1.getValuation() + "\n");
 						
 						for(MonitoringEventListener ml: mlist)
-						{
 							ml.MonValuationChanged(new DefaultRiTHMSpecification(specList.get(j)), new DefaultRiTHMTruthValue(ms1.getValuation()));
-						}
 					}
 					else
 					{
-						System.err.println("State is null");
+						logger.fatal("State is null !! Something is wrong!!");
 					}
 				}
 			}
 			outWriter.write("</body>");
 			outWriter.write("</html>");
-			outWriter.close();
 		}catch(IOException io)
 		{
-			System.out.println(io.getMessage());
+			logger.fatal(io.getMessage());
+		}finally{
+			try {
+				outWriter.close();
+				plotWriter.close();
+			} catch (IOException ie) {
+				// TODO Auto-generated catch block
+				logger.fatal(ie.getMessage());
+			}
 		}
 		return currSpecStatus;
 	}
 
-	public boolean setTraceFile(String FileName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	public void setPredicateEvaluator(PredicateEvaluator pe)
-	{
-		this.pe = pe;
-	}
 }
