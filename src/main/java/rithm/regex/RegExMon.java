@@ -14,7 +14,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import rithm.basemonitors.RiTHMBaseMonitor;
+import rithm.basemonitors.RitHMBaseMonitor;
 import rithm.core.MonState;
 import rithm.core.MonValuation;
 import rithm.core.MonitoringEventListener;
@@ -22,12 +22,12 @@ import rithm.core.ParserPlugin;
 import rithm.core.PredicateEvaluator;
 import rithm.core.PredicateState;
 import rithm.core.ProgState;
-import rithm.core.RiTHMLogMessages;
-import rithm.core.RiTHMMonitor;
-import rithm.core.RiTHMResultCollection;
-import rithm.core.RiTHMSpecification;
-import rithm.core.RiTHMSpecificationCollection;
-import rithm.core.RiTHMTruthValue;
+import rithm.core.RitHMLogMessages;
+import rithm.core.RitHMMonitor;
+import rithm.core.RitHMResultCollection;
+import rithm.core.RitHMSpecification;
+import rithm.core.RitHMSpecificationCollection;
+import rithm.core.RitHMTruthValue;
 import rithm.defaultcore.DefaultPredicateState;
 import rithm.defaultcore.DefaultRegExPredicateState;
 import rithm.defaultcore.DefaultRiTHMSpecification;
@@ -35,20 +35,46 @@ import rithm.defaultcore.DefaultRiTHMSpecificationResult;
 import rithm.defaultcore.DefaultRiTHMTruthValue;
 import dk.brics.automaton.RegExp;
 import dk.brics.automaton.RunAutomaton;
-public class RegExMon extends RiTHMBaseMonitor implements RiTHMMonitor{
-	
-	protected HashMap<String, Character> alphabetList;
-	protected ArrayList<RegExp> regExList;
-	protected ArrayList<RunAutomaton> runAutomataList;
-	protected String outFileName;
-	protected HashMap<String, MonState> currentStates;
-	protected ArrayList<PredicateState> buffer;
-	protected PredicateEvaluator pe;
-	protected int specCount = 0;
-	protected RiTHMResultCollection specStatus;
+// TODO: Auto-generated Javadoc
 
+/**
+ * The Class RegExMon.
+ */
+public class RegExMon extends RitHMBaseMonitor implements RitHMMonitor{
+	
+	/** The alphabet list. */
+	protected HashMap<String, Character> alphabetList;
+	
+	/** The reg ex list. */
+	protected ArrayList<RegExp> regExList;
+	
+	/** The run automata list. */
+	protected ArrayList<RunAutomaton> runAutomataList;
+	
+	/** The out file name. */
+	protected String outFileName;
+	
+	/** The current states. */
+	protected HashMap<String, MonState> currentStates;
+	
+	/** The buffer. */
+	protected ArrayList<PredicateState> buffer;
+	
+	/** The pe. */
+	protected PredicateEvaluator pe;
+	
+	/** The spec count. */
+	protected int specCount = 0;
+	
+	/** The spec status. */
+	protected RitHMResultCollection specStatus;
+
+	/** The Constant logger. */
 	final static Logger logger = Logger.getLogger(RegExMon.class);
 	
+	/**
+	 * Instantiates a new reg ex mon.
+	 */
 	public RegExMon()
 	{
 		alphabetList = new HashMap<String, Character>();
@@ -59,11 +85,14 @@ public class RegExMon extends RiTHMBaseMonitor implements RiTHMMonitor{
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see rithm.basemonitors.RiTHMBaseMonitor#setFormulas(rithm.core.RiTHMSpecificationCollection)
+	 */
 	@Override
-	public boolean setFormulas(RiTHMSpecificationCollection Specs) {
+	public boolean setFormulas(RitHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
 		super.setFormulas(Specs);
-		for(RiTHMSpecification eachSpec:Specs)
+		for(RitHMSpecification eachSpec:Specs)
 		{
 			if(!checkAndAddAlphabet(eachSpec.getTextDescription()))
 				synthesizeAutomaton(eachSpec.getTextDescription());
@@ -71,16 +100,26 @@ public class RegExMon extends RiTHMBaseMonitor implements RiTHMMonitor{
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#synthesizeMonitors(rithm.core.RiTHMSpecificationCollection)
+	 */
 	@Override
-	public boolean synthesizeMonitors(RiTHMSpecificationCollection Specs) {
+	public boolean synthesizeMonitors(RitHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
-		for(RiTHMSpecification eachSpec:Specs)
+		for(RitHMSpecification eachSpec:Specs)
 		{
 			if(!checkAndAddAlphabet(eachSpec.getTextDescription()))
 				synthesizeAutomaton(eachSpec.getTextDescription());
 		}
 		return true;
 	}	
+	
+	/**
+	 * Check and add alphabet.
+	 *
+	 * @param line the line
+	 * @return true, if successful
+	 */
 	private boolean checkAndAddAlphabet(String line)
 	{
 		if(line.indexOf("=") != -1)
@@ -94,16 +133,26 @@ public class RegExMon extends RiTHMBaseMonitor implements RiTHMMonitor{
 		}
 		return false;
 	}
+	
+	/**
+	 * Synthesize automaton.
+	 *
+	 * @param line the line
+	 */
 	private void synthesizeAutomaton(String line)
 	{
 		RegExp rExp = new RegExp(line);
 		regExList.add(specCount,rExp);
 		RunAutomaton currAutomaton = new RunAutomaton(rExp.toAutomaton(),true);
 		runAutomataList.add(specCount++,currAutomaton);
-		RiTHMSpecification rSpec = new DefaultRiTHMSpecification(rExp.toString());
+		RitHMSpecification rSpec = new DefaultRiTHMSpecification(rExp.toString());
 		specStatus.setResult(rSpec, new DefaultRiTHMTruthValue(Integer.toString(currAutomaton.getInitialState())));
 		logger.info("Created Automaton for Regular expression " + line);
 	}
+	
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#synthesizeMonitors(java.lang.String, boolean)
+	 */
 	@Override
 	public boolean synthesizeMonitors(String specDetails, boolean isFile) {
 		// TODO Auto-generated method stub
@@ -123,21 +172,24 @@ public class RegExMon extends RiTHMBaseMonitor implements RiTHMMonitor{
 					synthesizeAutomaton(line);
 		} catch (IOException e) {
 			// TODO: handle exception
-			logger.error(RiTHMLogMessages.RITHM_ERROR + e.getMessage());
+			logger.error(RitHMLogMessages.RITHM_ERROR + e.getMessage());
 		}
 		finally{
 			try {
 				reader.close();
 			} catch (IOException e2) {
 				// TODO: handle exception
-				logger.error(RiTHMLogMessages.RITHM_ERROR + e2.getMessage());
+				logger.error(RitHMLogMessages.RITHM_ERROR + e2.getMessage());
 			}
 		}
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#runMonitor()
+	 */
 	@Override
-	public RiTHMResultCollection runMonitor() {
+	public RitHMResultCollection runMonitor() {
 		// TODO Auto-generated method stub
 		BufferedWriter outWriter;
 		try
@@ -176,11 +228,14 @@ public class RegExMon extends RiTHMBaseMonitor implements RiTHMMonitor{
 			outWriter.close();
 		}catch(IOException io)
 		{
-			logger.error(RiTHMLogMessages.RITHM_ERROR + io.getMessage());
+			logger.error(RitHMLogMessages.RITHM_ERROR + io.getMessage());
 		}
 		return specStatus;
 	}
 	
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#fillBuffer(rithm.core.ProgState)
+	 */
 	@Override
 	public boolean fillBuffer(ProgState ps) {
 		// TODO Auto-generated method stub

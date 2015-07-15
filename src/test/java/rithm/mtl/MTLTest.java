@@ -7,11 +7,29 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MTLTest.
+ */
 public class MTLTest extends TestCase {
+	
+	/** The mtl m. */
 	protected MTLMonitor mtlM;
-	protected RiTHMSpecificationCollection rsColl;
-	RiTHMResultCollection rresColl;
+	
+	/** The rs coll. */
+	protected RitHMSpecificationCollection rsColl;
+	
+	/** The rres coll. */
+	RitHMResultCollection rresColl;
+	
+	/** The parser. */
 	ParserPlugin parser;
+    
+    /**
+     * Instantiates a new MTL test.
+     *
+     * @param testName the test name
+     */
     public MTLTest( String testName )
     {
         super( testName );
@@ -26,6 +44,8 @@ public class MTLTest extends TestCase {
     }
 
     /**
+     * Suite.
+     *
      * @return the suite of tests being tested
      */
     public static Test suite()
@@ -34,11 +54,11 @@ public class MTLTest extends TestCase {
     }
 
     /**
-     * Rigourous Test :-)
+     * Rigourous Test :-).
      */
     public void testTemporalBooleanCombination1()
     {
-    	RiTHMSpecification rSpec1 =  new DefaultRiTHMSpecification("b->[]{1,2}(<>{0,1}a)");
+    	RitHMSpecification rSpec1 =  new DefaultRiTHMSpecification("b->[]{1,2}(<>{0,1}a)");
     	rsColl.add(rSpec1);
     	mtlM.synthesizeMonitors(rsColl);
     	
@@ -61,9 +81,12 @@ public class MTLTest extends TestCase {
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
+    /**
+     * Test globally nested1.
+     */
     public void testGloballyNested1()
     {
-    	RiTHMSpecification rSpec1 =  new DefaultRiTHMSpecification("[]{1,2}(<>{0,1}a)");
+    	RitHMSpecification rSpec1 =  new DefaultRiTHMSpecification("[]{1,2}(<>{0,1}a)");
     	rsColl.add(rSpec1);
     	mtlM.synthesizeMonitors(rsColl);
     	
@@ -82,9 +105,13 @@ public class MTLTest extends TestCase {
     	rresColl = mtlM.runMonitor();
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
+    
+    /**
+     * Test globally simle1.
+     */
     public void testGloballySimle1()
     {
-    	RiTHMSpecification rSpec1 =  new DefaultRiTHMSpecification("[]{1,2}a");
+    	RitHMSpecification rSpec1 =  new DefaultRiTHMSpecification("[]{1,2}a");
     	rsColl.add(rSpec1);
     	mtlM.synthesizeMonitors(rsColl);
     	
@@ -103,9 +130,13 @@ public class MTLTest extends TestCase {
     	rresColl = mtlM.runMonitor();
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
+    
+    /**
+     * Test eventually nested2.
+     */
     public void testEventuallyNested2()
     {
-    	RiTHMSpecification rSpec1 = new DefaultRiTHMSpecification("aU{0,1}(<>{1,1}b)");
+    	RitHMSpecification rSpec1 = new DefaultRiTHMSpecification("aU{0,1}(<>{1,1}b)");
     	rsColl.add(rSpec1);
     	mtlM.synthesizeMonitors(rsColl);
     	
@@ -129,9 +160,12 @@ public class MTLTest extends TestCase {
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
+    /**
+     * Test eventually nested1.
+     */
     public void testEventuallyNested1()
     {
-    	RiTHMSpecification rSpec1 = new DefaultRiTHMSpecification("<>{0,1}(<>{1,5}b)");
+    	RitHMSpecification rSpec1 = new DefaultRiTHMSpecification("<>{0,1}(<>{1,5}b)");
     	rsColl.add(rSpec1);
     	mtlM.synthesizeMonitors(rsColl);
     	
@@ -152,9 +186,12 @@ public class MTLTest extends TestCase {
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
+    /**
+     * Test eventually basic1.
+     */
     public void testEventuallyBasic1()
     {
-    	RiTHMSpecification rSpec1 = new DefaultRiTHMSpecification("<>{1,5}b");
+    	RitHMSpecification rSpec1 = new DefaultRiTHMSpecification("<>{1,5}b");
     	rsColl.add(rSpec1);
     	mtlM.synthesizeMonitors(rsColl);
     	
@@ -174,11 +211,15 @@ public class MTLTest extends TestCase {
     	rresColl = mtlM.runMonitor();
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
+    
+    /**
+     * Test until basic1.
+     */
     public void testUntilBasic1()
     {
 
     	
-    	RiTHMSpecification rSpec1 = new DefaultRiTHMSpecification("aU{1,2}b");
+    	RitHMSpecification rSpec1 = new DefaultRiTHMSpecification("aU{1,2}b");
     	rsColl.add(rSpec1);
 //    	mtlM.setFormulas(rsColl);
     	mtlM.synthesizeMonitors(rsColl);
@@ -203,11 +244,15 @@ public class MTLTest extends TestCase {
 //    	System.out.println(rresColl.getResult(rSpec1).getTruthValueDescription());
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
+    
+    /**
+     * Test eventually pase basic1.
+     */
     public void testEventuallyPaseBasic1()
     {
 
     	
-    	RiTHMSpecification rSpec1 = new DefaultRiTHMSpecification("[]{0,2}(a-><*>{0,2}b)");
+    	RitHMSpecification rSpec1 = new DefaultRiTHMSpecification("[]{0,2}(a-><*>{0,2}b)");
     	rsColl.add(rSpec1);
 //    	mtlM.setFormulas(rsColl);
     	mtlM.synthesizeMonitors(rsColl);

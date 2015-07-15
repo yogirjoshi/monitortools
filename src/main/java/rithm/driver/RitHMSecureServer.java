@@ -20,16 +20,40 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
-public class RiTHMSecureServer extends RiTHMAbstractServer{
+// TODO: Auto-generated Javadoc
 
-	final static Logger logger = Logger.getLogger(RiTHMSecureServer.class);
+/**
+ * The Class RiTHMSecureServer.
+ */
+public class RitHMSecureServer extends RitHMAbstractServer{
+
+	/** The Constant logger. */
+	final static Logger logger = Logger.getLogger(RitHMSecureServer.class);
+	
+	/** The key store path. */
 	protected String keyStorePath;
+	
+	/** The key store pass. */
 	protected String keyStorePass;
+	
+	/** The is secure mode. */
 	protected boolean isSecureMode;
+	
+	/** The conf by client. */
 	protected boolean confByClient;
+	
+	/** The port no. */
 	protected int portNo;
+	
+	/** The prop file name. */
 	protected String propFileName = null;
-	public RiTHMSecureServer(String propFileName)
+	
+	/**
+	 * Instantiates a new ri thm secure server.
+	 *
+	 * @param propFileName the prop file name
+	 */
+	public RitHMSecureServer(String propFileName)
 	{
 		super();
 		this.propFileName = propFileName;
@@ -69,7 +93,17 @@ public class RiTHMSecureServer extends RiTHMAbstractServer{
 			}
 		}
 	}
-	public RiTHMSecureServer(int portNo, boolean isSecureMode, boolean confByClient, String keyStorePath, String keyStorePass)
+	
+	/**
+	 * Instantiates a new ri thm secure server.
+	 *
+	 * @param portNo the port no
+	 * @param isSecureMode the is secure mode
+	 * @param confByClient the conf by client
+	 * @param keyStorePath the key store path
+	 * @param keyStorePass the key store pass
+	 */
+	public RitHMSecureServer(int portNo, boolean isSecureMode, boolean confByClient, String keyStorePath, String keyStorePass)
 	{
 		super();
 		this.portNo = portNo;
@@ -83,6 +117,10 @@ public class RiTHMSecureServer extends RiTHMAbstractServer{
 			System.setProperty("javax.net.ssl.keyStorePassword", keyStorePass);
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -108,23 +146,22 @@ public class RiTHMSecureServer extends RiTHMAbstractServer{
 			}
 			while(!Thread.interrupted())
 			{
-				RiTHMClientHandler rcHandler=null;
+				RitHMClientHandler rcHandler=null;
 				SSLSocket sslsocket = null;
 				Socket nonsslsocket = null;
 				if(isSecureMode)
 				{
 					sslsocket = (SSLSocket) sslserversocket.accept();
-					rcHandler = new RiTHMClientHandler(sslsocket,confByClient);
+					rcHandler = new RitHMClientHandler(sslsocket,confByClient);
 					logger.info("New client connected with IP:" + sslsocket.getInetAddress().toString());
 				}
 				else
 				{
 					nonsslsocket = serverSocket.accept();
-					rcHandler = new RiTHMClientHandler(nonsslsocket,confByClient);
+					rcHandler = new RitHMClientHandler(nonsslsocket,confByClient);
 					logger.info("New client connected with IP:" + nonsslsocket.getInetAddress().toString());
 				}
 
-				
 				addClientThread(rcHandler);
 				rcHandler.start();
 			}

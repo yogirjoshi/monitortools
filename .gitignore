@@ -1,1 +1,5 @@
 /target/
+RiTHMLog.log
+RiTHMDataToolsLog.log
+/CANDataRiTHM.csv
+/CANData.csv

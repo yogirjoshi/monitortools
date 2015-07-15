@@ -19,49 +19,70 @@ import java.util.List;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import rithm.basemonitors.RiTHMBaseMonitor;
+import rithm.basemonitors.RitHMBaseMonitor;
 import rithm.core.MonValuation;
 import rithm.core.MonitoringEventListener;
 import rithm.core.ParserPlugin;
 import rithm.core.PredicateEvaluator;
 import rithm.core.PredicateState;
 import rithm.core.ProgState;
-import rithm.core.RiTHMMonitor;
-import rithm.core.RiTHMProgStateCollection;
-import rithm.core.RiTHMResultCollection;
-import rithm.core.RiTHMSpecification;
-import rithm.core.RiTHMSpecificationCollection;
-import rithm.core.RiTHMTruthValue;
+import rithm.core.RitHMMonitor;
+import rithm.core.RitHMProgStateCollection;
+import rithm.core.RitHMResultCollection;
+import rithm.core.RitHMSpecification;
+import rithm.core.RitHMSpecificationCollection;
+import rithm.core.RitHMTruthValue;
 import rithm.defaultcore.DefaultPredicateState;
 import rithm.defaultcore.DefaultProgStateCollection;
 import rithm.defaultcore.DefaultRiTHMSpecification;
 import rithm.defaultcore.DefaultRiTHMSpecificationCollection;
 import rithm.defaultcore.DefaultRiTHMSpecificationResult;
 import rithm.parsertools.mtl.*;
-public class MTLMonitor extends RiTHMBaseMonitor implements RiTHMMonitor{
-	
-	protected RiTHMResultCollection currSpecStatus;
-	protected RiTHMProgStateCollection bufferProgs;
+// TODO: Auto-generated Javadoc
 
-	protected RiTHMMTLVisitor mtlMon;
-	protected HashMap<RiTHMSpecification, ParseTree> specsTrees;
-	protected HashMap<RiTHMSpecification, String> specToTreeNode;
+/**
+ * The Class MTLMonitor.
+ */
+public class MTLMonitor extends RitHMBaseMonitor implements RitHMMonitor{
 	
+	/** The curr spec status. */
+	protected RitHMResultCollection currSpecStatus;
+	
+	/** The buffer progs. */
+	protected RitHMProgStateCollection bufferProgs;
+
+	/** The mtl mon. */
+	protected RitHMMTLVisitor mtlMon;
+	
+	/** The specs trees. */
+	protected HashMap<RitHMSpecification, ParseTree> specsTrees;
+	
+	/** The spec to tree node. */
+	protected HashMap<RitHMSpecification, String> specToTreeNode;
+	
+	/** The Constant logger. */
 	final static Logger logger = Logger.getLogger(MTLMonitor.class);
+	
+	/**
+	 * Instantiates a new MTL monitor.
+	 */
 	public MTLMonitor()
 	{
 		currSpecStatus = new DefaultRiTHMSpecificationResult();
 		bufferProgs = new DefaultProgStateCollection();
-		mtlMon = new RiTHMMTLVisitor(bufferProgs);
-		specsTrees = new HashMap<RiTHMSpecification, ParseTree>();
+		mtlMon = new RitHMMTLVisitor(bufferProgs);
+		specsTrees = new HashMap<RitHMSpecification, ParseTree>();
 		currSpecs = new DefaultRiTHMSpecificationCollection();
 		specToTreeNode = new HashMap<>();
 	}
 	
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#synthesizeMonitors(rithm.core.RiTHMSpecificationCollection)
+	 */
 	@Override
-	public boolean synthesizeMonitors(RiTHMSpecificationCollection Specs) {
+	public boolean synthesizeMonitors(RitHMSpecificationCollection Specs) {
 		// TODO Auto-generated method stub
-		for(RiTHMSpecification rSpec: Specs)
+		for(RitHMSpecification rSpec: Specs)
 		{
 			currSpecs.add(rSpec);
 			specsTrees.put(rSpec, parser.getTreeforSpec(rSpec));
@@ -69,6 +90,9 @@ public class MTLMonitor extends RiTHMBaseMonitor implements RiTHMMonitor{
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#synthesizeMonitors(java.lang.String, boolean)
+	 */
 	@Override
 	public boolean synthesizeMonitors(String specDetails, boolean isFile) {
 		// TODO Auto-generated method stub
@@ -85,7 +109,7 @@ public class MTLMonitor extends RiTHMBaseMonitor implements RiTHMMonitor{
         	}
             String line = null;
             while ((line = reader.readLine()) != null) {
-            	RiTHMSpecification rSpec = new DefaultRiTHMSpecification(line);
+            	RitHMSpecification rSpec = new DefaultRiTHMSpecification(line);
             	currSpecs.add(rSpec);
             	specsTrees.put(rSpec, parser.getTreeforSpec(rSpec));
             }
@@ -105,15 +129,18 @@ public class MTLMonitor extends RiTHMBaseMonitor implements RiTHMMonitor{
         return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#runMonitor()
+	 */
 	@Override
-	public RiTHMResultCollection runMonitor() {
+	public RitHMResultCollection runMonitor() {
 		// TODO Auto-generated method stub
 
  		for(int i =0; i < currSpecs.length();i++)
 		{
 			String resName = mtlMon.visit(specsTrees.get(currSpecs.at(i)));
 			
-			RiTHMTruthValue tempTval = currSpecStatus.getResult(currSpecs.at(i));
+			RitHMTruthValue tempTval = currSpecStatus.getResult(currSpecs.at(i));
 			currSpecStatus.setResult(currSpecs.at(i), mtlMon.getTruthValuation(resName,0));
 			specToTreeNode.put(currSpecs.at(i), resName);
 			if(tempTval != null){
@@ -173,12 +200,18 @@ public class MTLMonitor extends RiTHMBaseMonitor implements RiTHMMonitor{
 		return currSpecStatus;
 	}
 
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#fillBuffer(rithm.core.ProgState)
+	 */
 	@Override
 	public boolean fillBuffer(ProgState ps) {
 		bufferProgs.add(ps);
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see rithm.basemonitors.RiTHMBaseMonitor#setPredicateEvaluator(rithm.core.PredicateEvaluator)
+	 */
 	@Override
 	public void setPredicateEvaluator(PredicateEvaluator pe) {
 		// TODO Auto-generated method stub

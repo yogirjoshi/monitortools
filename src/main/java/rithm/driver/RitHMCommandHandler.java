@@ -14,20 +14,20 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import rithm.commands.RiTHMMonitorCommand;
-import rithm.commands.RiTHMParameters;
-import rithm.commands.RiTHMReplyCommand;
-import rithm.commands.RiTHMSetupCommand;
-import rithm.commands.RiTHMParameterValidator;
+import rithm.commands.RitHMMonitorCommand;
+import rithm.commands.RitHMParameters;
+import rithm.commands.RitHMReplyCommand;
+import rithm.commands.RitHMSetupCommand;
+import rithm.commands.RitHMParameterValidator;
 import rithm.core.DataFactory;
 import rithm.core.ParserPlugin;
 import rithm.core.PredicateEvaluator;
 import rithm.core.PredicateState;
 import rithm.core.ProgState;
-import rithm.core.RiTHMMonitor;
-import rithm.core.RiTHMResultCollection;
-import rithm.core.RiTHMSpecification;
-import rithm.core.RiTHMTruthValue;
+import rithm.core.RitHMMonitor;
+import rithm.core.RitHMResultCollection;
+import rithm.core.RitHMSpecification;
+import rithm.core.RitHMTruthValue;
 import rithm.datatools.CSVDataFactory;
 import rithm.datatools.XMLDataFactory;
 import rithm.defaultcore.DefaultPredicateEvaluator;
@@ -53,41 +53,99 @@ import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 
-public class RiTHMCommandHandler extends Thread {
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RiTHMCommandHandler.
+ */
+public class RitHMCommandHandler extends Thread {
 	
-	public RiTHMParameterValidator rValidator;
+	/** The r validator. */
+	public RitHMParameterValidator rValidator;
 	
-	protected RiTHMResultCollection rRes;
-	protected RiTHMParameters rtParams;	
+	/** The r res. */
+	protected RitHMResultCollection rRes;
+	
+	/** The rt params. */
+	protected RitHMParameters rtParams;	
+	
+	/** The d factory. */
 	protected DataFactory dFactory;
+	
+	/** The rithm parser. */
 	protected ParserPlugin rithmParser;
-	protected RiTHMMonitor rithmMon;
+	
+	/** The rithm mon. */
+	protected RitHMMonitor rithmMon;
+	
+	/** The p evaluator. */
 	protected PredicateEvaluator pEvaluator = null;
 
+	/** The pipe mode. */
 	protected boolean pipeMode = false;
+	
+	/** The specs from file. */
 	protected boolean specsFromFile;
+	
+	/** The is processing datafile. */
 	protected boolean isProcessingDatafile;
+	
+	/** The cmd line. */
 	protected CommandLine cmdLine;
+	
+	/** The options. */
 	protected Options options;
+	
+	/** The hlp formatter. */
 	protected HelpFormatter hlpFormatter;
 	
-	protected ArrayList<ArrayList<RiTHMSpecification>> specPipes;
-	protected HashMap<RiTHMSpecification, String> resSpecMap;
-	protected HashMap<RiTHMSpecification, String> specParserMap;
-	protected HashMap<RiTHMSpecification, String> specMonMap;
-	protected HashMap<RiTHMSpecification,String> specPredEvalTypeMap;
-	protected HashMap<RiTHMSpecification, String> specPredEvalPathMap;
+	/** The spec pipes. */
+	protected ArrayList<ArrayList<RitHMSpecification>> specPipes;
 	
-	final static Logger logger = Logger.getLogger(RiTHMCommandHandler.class);
+	/** The res spec map. */
+	protected HashMap<RitHMSpecification, String> resSpecMap;
+	
+	/** The spec parser map. */
+	protected HashMap<RitHMSpecification, String> specParserMap;
+	
+	/** The spec mon map. */
+	protected HashMap<RitHMSpecification, String> specMonMap;
+	
+	/** The spec pred eval type map. */
+	protected HashMap<RitHMSpecification,String> specPredEvalTypeMap;
+	
+	/** The spec pred eval path map. */
+	protected HashMap<RitHMSpecification, String> specPredEvalPathMap;
+	
+	/** The Constant logger. */
+	final static Logger logger = Logger.getLogger(RitHMCommandHandler.class);
 
-	public RiTHMCommandHandler(CommandLine cmdLine, Options options,HelpFormatter hlpFormatter)
+	/**
+	 * Instantiates a new ri thm command handler.
+	 *
+	 * @param cmdLine the cmd line
+	 * @param options the options
+	 * @param hlpFormatter the hlp formatter
+	 */
+	public RitHMCommandHandler(CommandLine cmdLine, Options options,HelpFormatter hlpFormatter)
 	{
 		this.cmdLine = cmdLine;
 		this.options = options;
 		this.hlpFormatter = hlpFormatter;
-		rValidator = new RiTHMParameterValidator((short)2);
+		rValidator = new RitHMParameterValidator((short)2);
 		rValidator.setCmdOptions(cmdLine, options, hlpFormatter);
 	}
+	
+	/**
+	 * Sets the up mon instance.
+	 *
+	 * @param isProcessingDatafile the is processing datafile
+	 * @param dataFile the data file
+	 * @param specParserClass the spec parser class
+	 * @param monitorClass the monitor class
+	 * @param traceParserClass the trace parser class
+	 * @param pEvaluatorName the evaluator name
+	 * @param pEvaluatorPath the evaluator path
+	 */
 	protected void setUpMonInstance(boolean isProcessingDatafile, 
 									  String dataFile,
 									  String specParserClass,
@@ -107,6 +165,7 @@ public class RiTHMCommandHandler extends Thread {
 				dFactory = new CSVDataFactory(rtParams.dataFile);
 				break;
 			default:
+				dFactory = (DataFactory)PluginLoader.loadPluginWithType(DataFactory.class, traceParserClass);
 				break;
 			}
 		}
@@ -123,6 +182,9 @@ public class RiTHMCommandHandler extends Thread {
 		case "MTL":
 			rithmParser = new MTLParser("MTL");
 			break;
+		default:
+			rithmParser = (ParserPlugin)PluginLoader.loadPluginWithType(ParserPlugin.class, specParserClass);
+			break;
 		}
 
 		switch (monitorClass) {
@@ -137,9 +199,10 @@ public class RiTHMCommandHandler extends Thread {
 		case "MTL":	
 			rithmMon = new MTLMonitor();
 			rithmMon.setMonitorValuation(new TwoValuedValuation());
-
 			break;
 		default:
+			rithmMon = (RitHMMonitor)PluginLoader.loadPluginWithType(RitHMMonitor.class, monitorClass);
+			//Assumed that valuation is set internally by the plugin
 			break;
 		}
 		if(pipeMode){
@@ -156,9 +219,16 @@ public class RiTHMCommandHandler extends Thread {
 				new ScriptPredicateEvaluator(pEvaluatorPath, "JavaScript", false);
 				break;
 			default:
+				pEvaluator = (PredicateEvaluator)PluginLoader.loadPluginWithType(PredicateEvaluator.class, pEvaluatorName);
 				break;
 			}
 	}
+	
+	/**
+	 * Process command.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean processCommand()
 	{
 		if(rtParams.pipeCount > 0)
@@ -173,9 +243,9 @@ public class RiTHMCommandHandler extends Thread {
 							 rtParams.pEvaluatorName, 
 							 rtParams.pEvaluatorPath  
 							 );
-			runMonitor(rtParams.outFileName, rtParams.specsFromFile, true,rtParams.outFileName, null);
+			runMonitor(rtParams.outFileName, rtParams.specsFromFile, true,rtParams.plotFileName, null);
 		}else{
-			specPipes = new ArrayList<ArrayList<RiTHMSpecification>>();
+			specPipes = new ArrayList<ArrayList<RitHMSpecification>>();
 			resSpecMap = new HashMap<>();
 			specMonMap = new HashMap<>();
 			specParserMap = new HashMap<>();   
@@ -191,7 +261,7 @@ public class RiTHMCommandHandler extends Thread {
 				String predType = rtParams.predEvalNamesrPipes.get(i);
 				String predScriptPath = rtParams.predEvalsForPipes.get(i);
 				
-				ArrayList<RiTHMSpecification> specListthisPipe = new ArrayList<>();
+				ArrayList<RitHMSpecification> specListthisPipe = new ArrayList<>();
 				j = 0;
 				for(String specWithRes: Arrays.asList(specsAsString))
 				{
@@ -201,7 +271,7 @@ public class RiTHMCommandHandler extends Thread {
 						logger.fatal("In-valid syntax " + specWithRes);
 						return false;
 					}	
-					RiTHMSpecification currSpec = new DefaultRiTHMSpecification(splitByeq[1]);
+					RitHMSpecification currSpec = new DefaultRiTHMSpecification(splitByeq[1]);
 					specListthisPipe.add(currSpec);
 					resSpecMap.put(currSpec, splitByeq[0]);
 					logger.debug(splitByeq[0] + "=" + currSpec.getTextDescription());
@@ -217,11 +287,11 @@ public class RiTHMCommandHandler extends Thread {
 			}
 			ArrayList<PredicateState> nextList; 
 			int i = 0;
-			for(ArrayList<RiTHMSpecification> specListPipe: specPipes)
+			for(ArrayList<RitHMSpecification> specListPipe: specPipes)
 			{
 				j = 0;
 				nextList = null;
-				for(RiTHMSpecification rSpec: specListPipe)
+				for(RitHMSpecification rSpec: specListPipe)
 				{
 					if(j > 0)
 						nextList = (ArrayList<PredicateState>)rithmMon.getTruthValueasPredicate();
@@ -256,6 +326,16 @@ public class RiTHMCommandHandler extends Thread {
 		}
 		return true;
 	}
+	
+	/**
+	 * Run monitor.
+	 *
+	 * @param outFileName the out file name
+	 * @param specsFromFile the specs from file
+	 * @param firstStage the first stage
+	 * @param plotFilename the plot filename
+	 * @param predicatesNextStage the predicates next stage
+	 */
 	public void runMonitor(String outFileName, 
 							boolean specsFromFile, 
 							boolean firstStage,
@@ -269,6 +349,8 @@ public class RiTHMCommandHandler extends Thread {
 		// TODO: Add condition class to create trigger for monitoring
 		rRes = null;
 		rithmMon.setParser(rithmParser);
+		if(rtParams.resetOnViolation)
+			rithmMon.setResetOnViolation(rtParams.resetOnViolation);
 		if(pEvaluator == null)
 			pEvaluator = new DefaultPredicateEvaluator();
 		rithmMon.setPredicateEvaluator(pEvaluator);
@@ -309,6 +391,9 @@ public class RiTHMCommandHandler extends Thread {
 		pEvaluator=null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -322,7 +407,8 @@ public class RiTHMCommandHandler extends Thread {
 			rValidator.setMode((short)1);
 			rtParams = rValidator.validate(confFile);
 		}
-		processCommand();
+		if(rtParams != null)
+			processCommand();
 	}
 	
 }

@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 import org.antlr.v4.parse.ANTLRParser.throwsSpec_return;
 import org.apache.log4j.Logger;
 
-import rithm.basemonitors.RiTHMBaseMonitor;
+import rithm.basemonitors.RitHMBaseMonitor;
 import rithm.core.MonState;
 import rithm.core.MonValuation;
 import rithm.core.MonitoringEventListener;
@@ -30,29 +30,51 @@ import rithm.core.ParserPlugin;
 import rithm.core.PredicateEvaluator;
 import rithm.core.PredicateState;
 import rithm.core.ProgState;
-import rithm.core.RiTHMMonitor;
-import rithm.core.RiTHMResultCollection;
-import rithm.core.RiTHMSpecification;
-import rithm.core.RiTHMSpecificationCollection;
-import rithm.core.RiTHMTruthValue;
+import rithm.core.RitHMMonitor;
+import rithm.core.RitHMResultCollection;
+import rithm.core.RitHMSpecification;
+import rithm.core.RitHMSpecificationCollection;
+import rithm.core.RitHMTruthValue;
 import rithm.defaultcore.DefaultMonState;
 import rithm.defaultcore.DefaultPredicateState;
 import rithm.defaultcore.DefaultRiTHMSpecification;
 import rithm.defaultcore.DefaultRiTHMSpecificationResult;
 import rithm.defaultcore.DefaultRiTHMTruthValue;
 
-public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LTL4Monitor.
+ */
+public class LTL4Monitor extends RitHMBaseMonitor implements RitHMMonitor
 {
-	protected RiTHMResultCollection currSpecStatus; 
+	
+	/** The curr spec status. */
+	protected RitHMResultCollection currSpecStatus; 
+	
+	/** The initial states. */
 	protected HashMap<String, MonState> initialStates;
+	
+	/** The current states. */
 	protected HashMap<String, MonState> currentStates;
 	
+	/** The prop set. */
 	protected Properties propSet;
+	
+	/** The ltltools dirname. */
 	protected String ltltoolsDirname;
+	
+	/** The ltl mon out dirname. */
 	protected String ltlMonOutDirname;
 
+	/** The spec list. */
 	protected ArrayList<String> specList;
-	final static Logger logger = Logger.getLogger(LTLMonitor.class);
+	
+	/** The Constant logger. */
+	final static Logger logger = Logger.getLogger(LTL4Monitor.class);
+	
+	/**
+	 * Instantiates a new LT l4 monitor.
+	 */
 	public LTL4Monitor()
 	{
 		buffer = new ArrayList<PredicateState>();
@@ -74,10 +96,18 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 		}
 		specList = new ArrayList<String>();
 	}
-	public boolean synthesizeMonitors(RiTHMSpecificationCollection specs) {
+	
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#synthesizeMonitors(rithm.core.RiTHMSpecificationCollection)
+	 */
+	public boolean synthesizeMonitors(RitHMSpecificationCollection specs) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Not yet supported");
 	}
+	
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#fillBuffer(rithm.core.ProgState)
+	 */
 	public boolean fillBuffer(ProgState ps) {
 		// TODO Auto-generated method stub
 		pe.SetProgStateObj(ps);
@@ -85,13 +115,27 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 		return true;
 	}
 
-	public boolean setFormulas(RiTHMSpecificationCollection specs) {
+	/* (non-Javadoc)
+	 * @see rithm.basemonitors.RiTHMBaseMonitor#setFormulas(rithm.core.RiTHMSpecificationCollection)
+	 */
+	public boolean setFormulas(RitHMSpecificationCollection specs) {
 		// TODO Auto-generated method stub
 		super.setFormulas(specs);
 		for(int i =0; i < specs.length();i++)
 			currSpecStatus.setResult(specs.at(i), this.valuation.getDefaultValuation());
 		return false;
 	}
+	
+	/**
+	 * Creates the monsfrom tools.
+	 *
+	 * @param line the line
+	 * @param origFormat the orig format
+	 * @param Filenames the filenames
+	 * @param specCount the spec count
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException the interrupted exception
+	 */
 	protected void createMonsfromTools(String line, String origFormat, ArrayList<String> Filenames, int specCount) throws IOException, InterruptedException
 	{
 		System.out.println(line);
@@ -99,11 +143,20 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
     	p.directory(new File(ltltoolsDirname));
     	p.command("/bin/bash", "./ltl2monLTL4", "\""+ line +"\"");
     	p.redirectOutput(new File(ltlMonOutDirname + Integer.toString(specCount) + ".txt"));
+    	p.redirectError(new File(ltlMonOutDirname + Integer.toString(specCount) + "err.txt"));
     	Filenames.add(ltlMonOutDirname + Integer.toString(specCount) + ".txt");
     	specList.add(specCount, origFormat);
     	Process ps = p.start();
     	ps.waitFor();
 	}
+	
+	/**
+	 * Creates the lookup table.
+	 *
+	 * @param states the states
+	 * @param Filenames the filenames
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected void createLookupTable(ArrayList<DefaultMonState> states, ArrayList<String> Filenames) throws IOException {
 		String Pattern1 = "(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+->[ ]+(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+\\[label[ ]+=[ ]+\"\\(([0-9a-z]+(&&[0-9a-z]+)*)\\)\"\\]";
 		String Pattern2 = "(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+->[ ]+(\"\\([-]*[0-9]+,[ ]+[-]*[0-9]+\\)\")[ ]+\\[label[ ]+=[ ]+\"(\\(<empty>\\))\"\\]";
@@ -116,7 +169,9 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 		Pattern regex3 = Pattern.compile(Pattern3);
 		for(String Filename: Filenames)
 		{
-
+			File errFile = new File(ltlMonOutDirname + Integer.toString(spec_count) + "err.txt");
+			if(errFile.length() > 0)
+				logger.fatal("Error in running ltl3tools! Please contact the support team!");
 			states.clear();
 			br = new BufferedReader(new FileReader(Filename));
 			String spec = br.readLine();
@@ -186,6 +241,10 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 		}
 			
 	}
+	
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#synthesizeMonitors(java.lang.String, boolean)
+	 */
 	public boolean synthesizeMonitors(String specDetails, boolean isFile) {
 		// TODO Auto-generated method stub
 		ArrayList<String> Filenames = new ArrayList<String>();
@@ -238,6 +297,12 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 		return true;
 	}
 
+	/**
+	 * Sets the pred state.
+	 *
+	 * @param dpState the dp state
+	 * @param predsNeeded the preds needed
+	 */
 	public void setPredState(DefaultPredicateState dpState,ArrayList<String> predsNeeded)
 	{
 		Iterator it = dpState.getpredValues().entrySet().iterator();
@@ -248,7 +313,11 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 				it.remove();
 		}
 	}
-	public RiTHMResultCollection runMonitor() {
+	
+	/* (non-Javadoc)
+	 * @see rithm.core.RiTHMMonitor#runMonitor()
+	 */
+	public RitHMResultCollection runMonitor() {
 		// TODO Auto-generated method stub
 		BufferedWriter outWriter = null, plotWriter = null;
 		try
@@ -277,8 +346,13 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 					
 					if(nextState != null)
 					{
-						currentStates.put(Integer.toString(j),nextState);
-						DefaultMonState ms1 = (DefaultMonState)currentStates.get(Integer.toString(j));
+						if(nextState.getValuation().equals("Violated") && isResetOnViolation())
+							currentStates.put(Integer.toString(j),initialStates.get(Integer.toString(j)));
+						else
+							currentStates.put(Integer.toString(j),nextState);
+						
+//						DefaultMonState ms1 = (DefaultMonState)currentStates.get(Integer.toString(j));
+						DefaultMonState ms1 = nextState;
 //						System.out.println("Specification: " + specList.get(j) + " => " + ms1.Valuation);
 	//					System.out.println("State " + Integer.toString(i) + " " + dpPredState.toString());
 						outWriter.write("<div style=\"background: #B0B0B0 \">");
@@ -324,7 +398,7 @@ public class LTL4Monitor extends RiTHMBaseMonitor implements RiTHMMonitor
 					}
 					else
 					{
-						logger.fatal("State is null !! Something is wrong!!");
+						logger.fatal("State is null !! FSM based monitor creation for LTL failed !!");
 					}
 				}
 			}

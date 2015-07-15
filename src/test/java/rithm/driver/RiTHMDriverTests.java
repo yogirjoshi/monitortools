@@ -2,7 +2,7 @@ package rithm.driver;
 
 import java.io.IOException;
 
-import rithm.client.RiTHMClient;
+import rithm.client.RitHMClient;
 import rithm.core.ProgState;
 import rithm.defaultcore.DefaultPredicateEvaluator;
 import rithm.defaultcore.DefaultProgramState;
@@ -14,7 +14,17 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RiTHMDriverTests.
+ */
 public class RiTHMDriverTests extends TestCase {
+	
+	/**
+	 * Instantiates a new ri thm driver tests.
+	 *
+	 * @param testName the test name
+	 */
 	public RiTHMDriverTests( String testName )
     {
         super( testName );
@@ -22,22 +32,28 @@ public class RiTHMDriverTests extends TestCase {
     }
 
     /**
+     * Suite.
+     *
      * @return the suite of tests being tested
      */
     public static Test suite()
     {
         return new TestSuite( RiTHMDriverTests.class );
     }
+    
+    /**
+     * Test server connection.
+     */
     public void testServerConnection()
     {
-    	RiTHMSecureServer rServer = 
-    			new RiTHMSecureServer(7800, true, true, "/home/y2joshi/YJkeystore.jks","123456");
+    	RitHMSecureServer rServer = 
+    			new RitHMSecureServer(7800, true, true, "/home/y2joshi/YJkeystore.jks","123456");
     	rServer.start();
-    	RiTHMClient rClient = 
-    			new RiTHMClient("localhost", 7800, 
+    	RitHMClient rClient = 
+    			new RitHMClient("localhost", 7800, 
     					"/home/y2joshi/truststore.jks","123456");
     	String propfilePath = 
-    			RiTHMSecureServer.class.getClassLoader().getResource("rithm.properties").getFile();
+    			RitHMSecureServer.class.getClassLoader().getResource("rithm.properties").getFile();
     	if(propfilePath != null)
     		assertTrue(rClient.readPropertyFile(propfilePath));
     	else

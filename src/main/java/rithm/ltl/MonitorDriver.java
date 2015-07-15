@@ -5,13 +5,24 @@ import java.util.HashMap;
 
 import rithm.core.DataFactory;
 import rithm.core.ProgState;
-import rithm.core.RiTHMMonitor;
-import rithm.core.RiTHMSpecification;
-import rithm.core.RiTHMTruthValue;
+import rithm.core.RitHMMonitor;
+import rithm.core.RitHMSpecification;
+import rithm.core.RitHMTruthValue;
 import rithm.datatools.CSVDataFactory;
 import rithm.datatools.XMLDataFactory;
 import rithm.defaultcore.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class MonitorDriver.
+ */
 public class MonitorDriver {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		DataFactory dFactory = null;
 		if(args.length < 4)
@@ -28,7 +39,7 @@ public class MonitorDriver {
 //		XMLDataFactory xdFactory = new XMLDataFactory("/home/y2joshi/Input1.xml");
 //		XMLDataFactory xdFactory = new XMLDataFactory("/home/y2joshi/TestDataTools.xml");
 //		XMLDataFactory xdFactory = new XMLDataFactory("/home/y2joshi/TraceQnxThread.xml");
-		RiTHMMonitor l;
+		RitHMMonitor l;
 		l = new LTLMonitor();
 		l.setMonitorValuation(new LTL3MonValuation());
 		l.setPredicateEvaluator(new DefaultPredicateEvaluator());

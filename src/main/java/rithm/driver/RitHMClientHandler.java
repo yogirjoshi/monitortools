@@ -10,18 +10,18 @@ import java.net.Socket;
 import java.security.spec.PSSParameterSpec;
 import java.util.Iterator;
 
-import rithm.commands.RiTHMMonitorCommand;
-import rithm.commands.RiTHMParameters;
-import rithm.commands.RiTHMReplyCommand;
-import rithm.commands.RiTHMSetupCommand;
-import rithm.commands.RiTHMParameterValidator;
+import rithm.commands.RitHMMonitorCommand;
+import rithm.commands.RitHMParameters;
+import rithm.commands.RitHMReplyCommand;
+import rithm.commands.RitHMSetupCommand;
+import rithm.commands.RitHMParameterValidator;
 import rithm.core.DataFactory;
 import rithm.core.ParserPlugin;
 import rithm.core.PredicateEvaluator;
 import rithm.core.ProgState;
-import rithm.core.RiTHMMonitor;
-import rithm.core.RiTHMResultCollection;
-import rithm.core.RiTHMSpecification;
+import rithm.core.RitHMMonitor;
+import rithm.core.RitHMResultCollection;
+import rithm.core.RitHMSpecification;
 import rithm.datatools.CSVDataFactory;
 import rithm.datatools.XMLDataFactory;
 import rithm.defaultcore.DefaultPredicateEvaluator;
@@ -43,37 +43,91 @@ import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 
-public class RiTHMClientHandler extends Thread {
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RiTHMClientHandler.
+ */
+public class RitHMClientHandler extends Thread {
+	
+	/** The is secure mode. */
 	protected boolean isSecureMode;
+	
+	/** The conf by client. */
 	protected boolean confByClient;
+	
+	/** The cli secure socket. */
 	protected SSLSocket cliSecureSocket;
+	
+	/** The cli socket. */
 	protected Socket cliSocket;
+	
+	/** The d in stream. */
 	protected DataInputStream dInStream;
+	
+	/** The d out stream. */
 	protected DataOutputStream dOutStream;
 	
-	protected RiTHMParameters rtParams;	
+	/** The rt params. */
+	protected RitHMParameters rtParams;	
+	
+	/** The d factory. */
 	protected DataFactory dFactory;
+	
+	/** The rithm parser. */
 	protected ParserPlugin rithmParser;
-	protected RiTHMMonitor rithmMon;
+	
+	/** The rithm mon. */
+	protected RitHMMonitor rithmMon;
+	
+	/** The p evaluator. */
 	protected PredicateEvaluator pEvaluator = null;
 	
+	/** The specs from file. */
 	protected boolean specsFromFile;
+	
+	/** The is processing datafile. */
 	protected boolean isProcessingDatafile;
+	
+	/** The to disconnect. */
 	protected boolean toDisconnect;
+	
+	/** The mon started. */
 	protected boolean monStarted;
+	
+	/** The Constant CONFIG. */
 	final static char CONFIG ='C';
+	
+	/** The Constant DISCONNECT. */
 	final static char DISCONNECT ='D';
+	
+	/** The Constant RUNMONITOR. */
 	final static char RUNMONITOR ='M';
+	
+	/** The Constant JSONDATA. */
 	final static char JSONDATA ='J';
-	final static Logger logger = Logger.getLogger(RiTHMClientHandler.class);
-	public RiTHMClientHandler(SSLSocket cliSocket)
+	
+	/** The Constant logger. */
+	final static Logger logger = Logger.getLogger(RitHMClientHandler.class);
+	
+	/**
+	 * Instantiates a new ri thm client handler.
+	 *
+	 * @param cliSocket the cli socket
+	 */
+	public RitHMClientHandler(SSLSocket cliSocket)
 	{
 		super();
 		this.cliSecureSocket = cliSocket;
 		initializeParams(false);
 		isSecureMode = true;
 	}
-	public RiTHMClientHandler(Socket cliSocket)
+	
+	/**
+	 * Instantiates a new ri thm client handler.
+	 *
+	 * @param cliSocket the cli socket
+	 */
+	public RitHMClientHandler(Socket cliSocket)
 	{
 		super();
 		this.cliSocket = cliSocket;
@@ -81,20 +135,40 @@ public class RiTHMClientHandler extends Thread {
 		isSecureMode = false;
 
 	}
-	public RiTHMClientHandler(SSLSocket cliSocket, boolean confByClient)
+	
+	/**
+	 * Instantiates a new ri thm client handler.
+	 *
+	 * @param cliSocket the cli socket
+	 * @param confByClient the conf by client
+	 */
+	public RitHMClientHandler(SSLSocket cliSocket, boolean confByClient)
 	{
 		super();
 		this.cliSecureSocket = cliSocket;
 		initializeParams(confByClient);
 		isSecureMode = true;
 	}
-	public RiTHMClientHandler(Socket cliSocket, boolean confByClient)
+	
+	/**
+	 * Instantiates a new ri thm client handler.
+	 *
+	 * @param cliSocket the cli socket
+	 * @param confByClient the conf by client
+	 */
+	public RitHMClientHandler(Socket cliSocket, boolean confByClient)
 	{
 		super();
 		this.cliSocket = cliSocket;
 		initializeParams(confByClient);
 		isSecureMode = false;
 	}
+	
+	/**
+	 * Initialize params.
+	 *
+	 * @param confByClient the conf by client
+	 */
 	private void initializeParams(boolean confByClient)
 	{
 		toDisconnect = false;
@@ -102,11 +176,18 @@ public class RiTHMClientHandler extends Thread {
 		this.confByClient = confByClient;
 	}
 
-	public RiTHMReplyCommand processCommand(RiTHMSetupCommand commandObj)
+	/**
+	 * Process command.
+	 *
+	 * @param commandObj the command obj
+	 * @return the ri thm reply command
+	 */
+	public RitHMReplyCommand processCommand(RitHMSetupCommand commandObj)
 	{
-		RiTHMReplyCommand replyObj = new RiTHMReplyCommand("ok");
+		RitHMReplyCommand replyObj = new RitHMReplyCommand("ok");
 		String commandSting = commandObj.getCommandString();
-		switch (commandSting) {
+
+		switch (commandSting){
 		case "config":
 			rtParams = commandObj.getRiTHMParameters(); 
 			if(rtParams.isProcessingDatafile){
@@ -120,7 +201,6 @@ public class RiTHMClientHandler extends Thread {
 				default:
 					break;
 				}
-				break;	
 			}
 			else
 				logger.info("Data to be received on socket as "+ rtParams.dataFormat);
@@ -136,23 +216,21 @@ public class RiTHMClientHandler extends Thread {
 					rithmParser = new MTLParser("MTL");
 					break;
 			}
-
 			switch (rtParams.monitorClass) {
-			case "LTL3":
-				rithmMon = new LTLMonitor();
-				rithmMon.setMonitorValuation(new LTL3MonValuation());
-				break;
-			case "LTL4":
-				rithmMon = new LTL4Monitor();
-				rithmMon.setMonitorValuation(new LTL4MonValuation());
-				break;
-			case "MTL":	
-				rithmMon = new MTLMonitor();
-				rithmMon.setMonitorValuation(new TwoValuedValuation());
-				
-				break;
-			default:
-				break;
+				case "LTL3":
+					rithmMon = new LTLMonitor();
+					rithmMon.setMonitorValuation(new LTL3MonValuation());
+					break;
+				case "LTL4":
+					rithmMon = new LTL4Monitor();
+					rithmMon.setMonitorValuation(new LTL4MonValuation());
+					break;
+				case "MTL":	
+					rithmMon = new MTLMonitor();
+					rithmMon.setMonitorValuation(new TwoValuedValuation());
+					break;
+				default:
+					break;
 			}
 			if(rtParams.pEvaluatorName != null)
 				switch (rtParams.pEvaluatorName) {
@@ -165,6 +243,7 @@ public class RiTHMClientHandler extends Thread {
 					new ScriptPredicateEvaluator(rtParams.pEvaluatorPath, "JavaScript", false);
 					break;
 				default:
+					pEvaluator = new DefaultPredicateEvaluator();
 					break;
 				}
 			break;
@@ -174,14 +253,21 @@ public class RiTHMClientHandler extends Thread {
 		}
 		return replyObj;
 	}
-	public RiTHMReplyCommand startMonitorThread(String JSONStr)
+	
+	/**
+	 * Start monitor thread.
+	 *
+	 * @param JSONStr the JSON str
+	 * @return the ri thm reply command
+	 */
+	public RitHMReplyCommand runMonitorThread(String JSONStr)
 	{
 		// TODO: Start monitor thread on a port and wait for stop monitor setup command
 		// TODO stop thread when stop command is issued
 		// TODO: Wait for thread to process prog states/ jsons
 		// TODO: Add condition class to create trigger for monitoring
-		RiTHMReplyCommand replyObj = new RiTHMReplyCommand("ok");
-		RiTHMResultCollection rRes ;
+		RitHMReplyCommand replyObj = new RitHMReplyCommand("ok");
+		RitHMResultCollection rRes ;
 		if(!monStarted)
 		{
 			rithmMon.setParser(rithmParser);
@@ -209,7 +295,7 @@ public class RiTHMClientHandler extends Thread {
 						rithmMon.runMonitor();
 			}
 			rRes = rithmMon.runMonitor();
-			Iterator<RiTHMSpecification> rSpecIter = rRes.iterator();
+			Iterator<RitHMSpecification> rSpecIter = rRes.iterator();
 			while(rSpecIter.hasNext())
 				replyObj.response.put(rSpecIter.next().getTextDescription(), rRes.getResult(rSpecIter.next()).getTruthValueDescription());
 		}
@@ -223,10 +309,10 @@ public class RiTHMClientHandler extends Thread {
 			if(pState.getTimestamp() < 0)
 			{
 				rRes = rithmMon.runMonitor();
-				Iterator<RiTHMSpecification> rSpecIter = rRes.iterator();
+				Iterator<RitHMSpecification> rSpecIter = rRes.iterator();
 				while(rSpecIter.hasNext())
 				{
-					RiTHMSpecification rSpec = rSpecIter.next();
+					RitHMSpecification rSpec = rSpecIter.next();
 					logger.debug(rRes.getResult(rSpec).getTruthValueDescription());
 					replyObj.response.put(rSpec.getTextDescription(), rRes.getResult(rSpec).getTruthValueDescription());
 				}
@@ -241,6 +327,13 @@ public class RiTHMClientHandler extends Thread {
 		}
 		return replyObj;
 	}
+	
+	/**
+	 * Read message.
+	 *
+	 * @return the byte[]
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private byte[] readMessage() throws IOException
 	{
 		short size = dInStream.readShort();
@@ -248,11 +341,15 @@ public class RiTHMClientHandler extends Thread {
 		dInStream.readFully(message);
 		return message;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		Gson gs = new Gson();
-		RiTHMReplyCommand replyCommand =null ;
+		RitHMReplyCommand replyCommand =null ;
 		try {
 			if(isSecureMode)
 			{
@@ -269,7 +366,7 @@ public class RiTHMClientHandler extends Thread {
 				if(!confByClient && !monStarted)
 				{
 //					rtParams = confiure rtparams from config file
-					startMonitorThread(null);	
+					runMonitorThread(null);	
 				}
 				byte[] message;
 				char command = dInStream.readChar();
@@ -278,9 +375,9 @@ public class RiTHMClientHandler extends Thread {
 				case CONFIG:
 					message = readMessage();
 					messageStr = new String(message);
-					RiTHMSetupCommand rsCommand =
-							gs.fromJson(messageStr, RiTHMSetupCommand.class);
-					logger.debug(rsCommand.getRiTHMParameters().specsForPipes);
+					RitHMSetupCommand rsCommand =
+							gs.fromJson(messageStr, RitHMSetupCommand.class);
+					logger.debug(rsCommand.getRiTHMParameters().specParserClass);
 					replyCommand = processCommand(rsCommand);
 					break;
 				case DISCONNECT:
@@ -290,7 +387,7 @@ public class RiTHMClientHandler extends Thread {
 					break;	
 				case JSONDATA:
 					message = readMessage();
-					replyCommand = startMonitorThread(new String(message));
+					replyCommand = runMonitorThread(new String(message));
 					break;
 				default:
 					break;
@@ -303,11 +400,11 @@ public class RiTHMClientHandler extends Thread {
 		}
 		catch(EOFException e)
 		{
-			e.printStackTrace();
+			logger.fatal(e.getMessage());
 		}
 		catch (IOException e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			logger.fatal(e.getMessage());
 		}
 		finally
 		{
