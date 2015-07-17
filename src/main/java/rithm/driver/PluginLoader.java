@@ -5,7 +5,11 @@ import java.util.ServiceLoader;
 import org.apache.log4j.Logger;
 
 import rithm.commands.RitHMParameterValidator;
+import rithm.core.DataFactory;
+import rithm.core.MonitoringEventListener;
 import rithm.core.ParserPlugin;
+import rithm.core.PredicateEvaluator;
+import rithm.core.RitHMMonitor;
 import rithm.core.RitHMPlugin;
 public class PluginLoader {
 	final static Logger logger = Logger.getLogger(PluginLoader.class);
@@ -30,5 +34,32 @@ public class PluginLoader {
 			throw new IllegalArgumentException(pluginName + "is Not a valid RitHM Plugin!!!");
 		}
 		return result;
+	}
+	public static void main(String args[]){
+		ServiceLoader<RitHMPlugin> srvLoader = ServiceLoader.load(RitHMPlugin.class);
+		
+		String leftAlignFormat = "| %-20s | %-20s |%n";
+
+		System.out.format("+----------------------+----------------------+%n");
+		System.out.printf("| Plugin Name          | Plugin Type          |%n");
+		System.out.format("+----------------------+----------------------+%n");
+
+		StringBuilder name = new StringBuilder();
+		for(RitHMPlugin genPlugin: srvLoader){
+
+			if(genPlugin instanceof RitHMMonitor)
+				name.append("monitorClass");
+			if(genPlugin instanceof DataFactory)
+				name.append("traceParserClass");
+			if(genPlugin instanceof ParserPlugin)
+				name.append("specParserClass");
+			if(genPlugin instanceof PredicateEvaluator)
+				name.append("predicateEvaluator");
+			if(genPlugin instanceof MonitoringEventListener)
+				name.append("monEventListener");
+			System.out.format(leftAlignFormat, genPlugin.getName(),name.toString());
+			name.setLength(0);
+			System.out.format("+----------------------+----------------------+%n");
+		}
 	}
 }

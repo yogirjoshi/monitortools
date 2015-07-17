@@ -133,9 +133,9 @@ public class MTLMonitor extends RitHMBaseMonitor implements RitHMMonitor{
 	 * @see rithm.core.RiTHMMonitor#runMonitor()
 	 */
 	@Override
-	public RitHMResultCollection runMonitor() {
+	public RitHMResultCollection runMonitor(boolean isLastInvocation) {
 		// TODO Auto-generated method stub
-
+		openVerboseFiles();	
  		for(int i =0; i < currSpecs.length();i++)
 		{
 			String resName = mtlMon.visit(specsTrees.get(currSpecs.at(i)));
@@ -152,50 +152,39 @@ public class MTLMonitor extends RitHMBaseMonitor implements RitHMMonitor{
 			}
 				
 		}
-		BufferedWriter outWriter =null, plotWriter = null;
- 		try{
 
- 			outWriter = new BufferedWriter(new FileWriter(new File(outFileName)));
- 			plotWriter = new BufferedWriter(new FileWriter(new File(plotFileName)));
- 			outWriter.write("<html>");
- 			outWriter.write("<body>");
-	
-	 		for(int j = 0 ; j < currSpecs.length();j++)
-	 		{
-	 			for(int i =0; i < bufferProgs.length();i++)
-	 			{
-	 				String res = specToTreeNode.get(currSpecs.at(j));
-	 				if(pipeMode){
-		 					if(resPred.size() <= i)
-		 						resPred.add(new DefaultPredicateState());
-		 				
-		 				if(Boolean.parseBoolean(mtlMon.getTruthValuation(res, i).getTruthValueDescription()))
-		 					resPred.get(i).setValue(specResmap.get(currSpecs.at(j)), 
-		 					Boolean.parseBoolean(mtlMon.getTruthValuation(res, i).getTruthValueDescription()));
-	 				
-		 				resPred.get(i).setTimestamp(mtlMon.getTruthValuation(res, i).getTimetamp());
-	 				}
-	 				outWriter.write("Event-No:<b>" + (i+1) +"</b><br>");
-	 				outWriter.write("timestamp: " + mtlMon.getTruthValuation(res, i).getTimetamp() + "<br>");
-	 				outWriter.write("<div style=\"background: #B0B0B0 \">");
-	 				if(mtlMon.getTruthValuation(res, i).getTruthValueDescription().equals("true"))
-	 					outWriter.write(currSpecs.at(j).getTextDescription() + ":" + "<font color=\"Lime\">"+  mtlMon.getTruthValuation(res, i).getTruthValueDescription() + "</font>");
-	 				else
-	 					outWriter.write(currSpecs.at(j).getTextDescription() + ":" + "<font color=\"Red\">"+  mtlMon.getTruthValuation(res, i).getTruthValueDescription() + "</font>");
-	 				outWriter.write("</div>");
-	 				
-	 				plotWriter.write(currSpecs.at(j).getTextDescription() + "," + mtlMon.getTruthValuation(res, i).getTimetamp()+ "," + mtlMon.getTruthValuation(res, i).getTruthValueDescription()+ "\n");
-	 			}
-	 		}
- 		}catch(IOException ioe){
- 			logger.fatal(ioe.getMessage());
- 		}finally{
- 			try {
-				outWriter.close();
-				plotWriter.close();
-			} catch (IOException ioe) {
-				logger.fatal(ioe.getMessage());
+		for(int j = 0 ; j < currSpecs.length();j++)
+		{
+			for(int i =0; i < bufferProgs.length();i++)
+			{
+				String res = specToTreeNode.get(currSpecs.at(j));
+				if(pipeMode){
+					if(resPred.size() <= i)
+						resPred.add(new DefaultPredicateState());
+
+					if(Boolean.parseBoolean(mtlMon.getTruthValuation(res, i).getTruthValueDescription()))
+						resPred.get(i).setValue(specResmap.get(currSpecs.at(j)), 
+								Boolean.parseBoolean(mtlMon.getTruthValuation(res, i).getTruthValueDescription()));
+
+					resPred.get(i).setTimestamp(mtlMon.getTruthValuation(res, i).getTimetamp());
+				}
+				writeMonitoriLogFile("Event-No:<b>" + (i+1) +"</b><br>");
+				writeMonitoriLogFile("timestamp: " + mtlMon.getTruthValuation(res, i).getTimetamp() + "<br>");
+				writeMonitoriLogFile("<div style=\"background: #B0B0B0 \">");
+				if(mtlMon.getTruthValuation(res, i).getTruthValueDescription().equals("true"))
+					writeMonitoriLogFile(currSpecs.at(j).getTextDescription() + ":" + "<font color=\"Lime\">"+  mtlMon.getTruthValuation(res, i).getTruthValueDescription() + "</font>");
+				else
+					writeMonitoriLogFile(currSpecs.at(j).getTextDescription() + ":" + "<font color=\"Red\">"+  mtlMon.getTruthValuation(res, i).getTruthValueDescription() + "</font>");
+				writeMonitoriLogFile("</div>");
+
+				writeMonitorPlotFile(currSpecs.at(j).getTextDescription() + "," + mtlMon.getTruthValuation(res, i).getTimetamp()+ "," + mtlMon.getTruthValuation(res, i).getTruthValueDescription()+ "\n");
 			}
+		}
+ 		try {
+ 			if(isLastInvocation)
+ 				closeVerboseFiles();
+ 		} catch (IOException ioe) {
+ 			logger.fatal(ioe.getMessage());
  		}
 		return currSpecStatus;
 	}

@@ -292,9 +292,10 @@ public class RitHMClientHandler extends Thread {
 				pState = dFactory.getNextProgState();
 				if(pState != null)
 					if(pState.getTimestamp()< 0)
-						rithmMon.runMonitor();
+						rithmMon.runMonitor(false);
 			}
-			rRes = rithmMon.runMonitor();
+			rRes = rithmMon.runMonitor(true);
+			dFactory.closeDataSource();
 			Iterator<RitHMSpecification> rSpecIter = rRes.iterator();
 			while(rSpecIter.hasNext())
 				replyObj.response.put(rSpecIter.next().getTextDescription(), rRes.getResult(rSpecIter.next()).getTruthValueDescription());
@@ -308,7 +309,7 @@ public class RitHMClientHandler extends Thread {
 			pState = gson.fromJson(JSONStr,DefaultProgramState.class);
 			if(pState.getTimestamp() < 0)
 			{
-				rRes = rithmMon.runMonitor();
+				rRes = rithmMon.runMonitor(true);
 				Iterator<RitHMSpecification> rSpecIter = rRes.iterator();
 				while(rSpecIter.hasNext())
 				{

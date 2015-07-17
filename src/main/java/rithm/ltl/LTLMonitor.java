@@ -319,54 +319,53 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 	/* (non-Javadoc)
 	 * @see rithm.core.RiTHMMonitor#runMonitor()
 	 */
-	public RitHMResultCollection runMonitor() {
+	public RitHMResultCollection runMonitor(boolean isLastInvocation) {
 		// TODO Auto-generated method stub
-		BufferedWriter outWriter = null, plotWriter = null;
-		try
-		{
-			outWriter = new BufferedWriter(new FileWriter(new File(outFileName)));
-			plotWriter = new BufferedWriter(new FileWriter(new File(plotFileName)));
-			outWriter.write("<html>");
-			outWriter.write("<body>");
+			openVerboseFiles();
+			writeMonitoriLogFile("<html>");
+			writeMonitoriLogFile("<body>");
 			for(int i =0; i < buffer.size();i++)
 			{
 				DefaultPredicateState topState = (DefaultPredicateState)buffer.get(i);
-				outWriter.write("Event:" + Integer.toString(i) +" Timestamp:" + topState.gettimeStamp());
+				writeMonitoriLogFile("Event:" + Integer.toString(i) +" Timestamp:" + topState.gettimeStamp());
 				for(int j = 0; j < currentStates.size();j++)
 				{
-					
+
 					DefaultPredicateState dpPredState = new DefaultPredicateState((DefaultPredicateState)buffer.get(i));
 
 					ArrayList<String> predsForthisSpec = parser.getPredsForSpec(specList.get(j));
-					
+
 					setPredState(dpPredState, predsForthisSpec);
-//					System.out.println(dpPredState);
+					//					System.out.println(dpPredState);
 					DefaultMonState nextState = (DefaultMonState)currentStates.get(Integer.toString(j)).GetNextMonState(dpPredState);
-					
+
 					if(nextState != null)
 					{
+
+						for(MonitoringEventListener ml: mlist)
+							if(nextState != currentStates.get(Integer.toString(j)))
+								ml.MonValuationChanged(new DefaultRiTHMSpecification(specList.get(j)), new DefaultRiTHMTruthValue(nextState.getValuation()));
+
 						if(nextState.getValuation().equals("Violated") && isResetOnViolation())
 							currentStates.put(Integer.toString(j),initialStates.get(Integer.toString(j)));
 						else
 							currentStates.put(Integer.toString(j),nextState);
 
-//						DefaultMonState ms1 = (DefaultMonState)currentStates.get(Integer.toString(j));
+						//						DefaultMonState ms1 = (DefaultMonState)currentStates.get(Integer.toString(j));
 						DefaultMonState ms1 = nextState;
-						outWriter.write("<div style=\"background: #B0B0B0 \">");
-						
+						writeMonitoriLogFile("<div style=\"background: #B0B0B0 \">");
+
 						if(ms1.getValuation().equals("Satisfied"))
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Lime\">" + ms1.getValuation() + "</font>");
+							writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Lime\">" + ms1.getValuation() + "</font>");
 						if(ms1.getValuation().equals("Violated"))
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Red\">" + ms1.getValuation() + "</font>");
+							writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Red\">" + ms1.getValuation() + "</font>");
 						if(ms1.getValuation().equals("Validation status Unknown"))
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Yellow\">" + ms1.getValuation() + "</font>");
-						outWriter.write("</div>");
+							writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Yellow\">" + ms1.getValuation() + "</font>");
+						writeMonitoriLogFile("</div>");
 						currSpecStatus.setResult(new DefaultRiTHMSpecification(specList.get(j)),new DefaultRiTHMTruthValue(ms1.getValuation()));
-						
-						plotWriter.write(specList.get(j) + "," + topState.gettimeStamp() + "," + ms1.getValuation() + "\n");
-						
-						for(MonitoringEventListener ml: mlist)
-							ml.MonValuationChanged(new DefaultRiTHMSpecification(specList.get(j)), new DefaultRiTHMTruthValue(ms1.getValuation()));
+
+						writeMonitorPlotFile(specList.get(j) + "," + topState.gettimeStamp() + "," + ms1.getValuation() + "\n");
+
 					}
 					else
 					{
@@ -374,20 +373,15 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 					}
 				}
 			}
-			outWriter.write("</body>");
-			outWriter.write("</html>");
-		}catch(IOException io)
-		{
-			logger.fatal(io.getMessage());
-		}finally{
+			writeMonitoriLogFile("</body>");
+			writeMonitoriLogFile("</html>");
 			try {
-				outWriter.close();
-				plotWriter.close();
+				if(isLastInvocation)
+					closeVerboseFiles();
 			} catch (IOException ie) {
 				// TODO Auto-generated catch block
 				logger.fatal(ie.getMessage());
 			}
-		}
 		return currSpecStatus;
 	}
 

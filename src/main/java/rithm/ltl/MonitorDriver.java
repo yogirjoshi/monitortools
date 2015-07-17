@@ -56,6 +56,6 @@ public class MonitorDriver {
 			l.fillBuffer(pState);
 			pState = dFactory.getNextProgState();
 		}
-		l.runMonitor();
+		l.runMonitor(true);
 	}
 }

@@ -138,7 +138,7 @@ public class LTL4Monitor extends RitHMBaseMonitor implements RitHMMonitor
 	 */
 	protected void createMonsfromTools(String line, String origFormat, ArrayList<String> Filenames, int specCount) throws IOException, InterruptedException
 	{
-		System.out.println(line);
+//		System.out.println(line);
     	ProcessBuilder p = new ProcessBuilder();
     	p.directory(new File(ltltoolsDirname));
     	p.command("/bin/bash", "./ltl2monLTL4", "\""+ line +"\"");
@@ -317,104 +317,88 @@ public class LTL4Monitor extends RitHMBaseMonitor implements RitHMMonitor
 	/* (non-Javadoc)
 	 * @see rithm.core.RiTHMMonitor#runMonitor()
 	 */
-	public RitHMResultCollection runMonitor() {
+	public RitHMResultCollection runMonitor(boolean isLastInvocation) {
 		// TODO Auto-generated method stub
-		BufferedWriter outWriter = null, plotWriter = null;
-		try
+		openVerboseFiles();
+		writeMonitoriLogFile("<html>");
+		writeMonitoriLogFile("<body>");
+		for(int i =0; i < buffer.size();i++)
 		{
-			outWriter = new BufferedWriter(new FileWriter(new File(outFileName)));
-			plotWriter = new BufferedWriter(new FileWriter(new File(plotFileName)));
-			outWriter.write("<html>");
-			outWriter.write("<body>");
-			for(int i =0; i < buffer.size();i++)
+
+			DefaultPredicateState topState = (DefaultPredicateState)buffer.get(i);
+			writeMonitoriLogFile("Event:" + Integer.toString(i) +" Timestamp:" + topState.gettimeStamp());
+			for(int j = 0; j < currentStates.size();j++)
 			{
-//				System.out.println("__________________________________________________________________");
-//				System.out.println("Event " + Integer.toString(i));
-				
-				DefaultPredicateState topState = (DefaultPredicateState)buffer.get(i);
-				outWriter.write("Event:" + Integer.toString(i) +" Timestamp:" + topState.gettimeStamp());
-//				System.out.println(currentStates.size());
-				for(int j = 0; j < currentStates.size();j++)
+				DefaultPredicateState dpPredState = new DefaultPredicateState((DefaultPredicateState)buffer.get(i));
+				ArrayList<String> predsForthisSpec = parser.getPredsForSpec(specList.get(j));
+
+				setPredState(dpPredState, predsForthisSpec);
+
+				DefaultMonState nextState = (DefaultMonState)currentStates.get(Integer.toString(j)).GetNextMonState(dpPredState);
+
+				if(nextState != null)
 				{
-					DefaultPredicateState dpPredState = new DefaultPredicateState((DefaultPredicateState)buffer.get(i));
-//					System.out.println(dpPredState);
-					ArrayList<String> predsForthisSpec = parser.getPredsForSpec(specList.get(j));
-					
-					setPredState(dpPredState, predsForthisSpec);
-					
-					DefaultMonState nextState = (DefaultMonState)currentStates.get(Integer.toString(j)).GetNextMonState(dpPredState);
-					
-					if(nextState != null)
-					{
-						if(nextState.getValuation().equals("Violated") && isResetOnViolation())
-							currentStates.put(Integer.toString(j),initialStates.get(Integer.toString(j)));
-						else
-							currentStates.put(Integer.toString(j),nextState);
-						
-//						DefaultMonState ms1 = (DefaultMonState)currentStates.get(Integer.toString(j));
-						DefaultMonState ms1 = nextState;
-//						System.out.println("Specification: " + specList.get(j) + " => " + ms1.Valuation);
-	//					System.out.println("State " + Integer.toString(i) + " " + dpPredState.toString());
-						outWriter.write("<div style=\"background: #B0B0B0 \">");
-						
-						if(ms1.getValuation().equals("Satisfied"))
-						{
-//							outWriter.write("<div style=\"background: LightGreen\">");
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Lime\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
-						if(ms1.getValuation().equals("Violated"))
-						{
-//							outWriter.write("<div style=\"background: #FF9900\">");
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Red\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
-						if(ms1.getValuation().equals("Validation status Unknown"))
-						{
-//							outWriter.write("<div style=\"background: yellow\">");
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Yellow\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
-						if(ms1.getValuation().equals("Presumably Satisfied"))
-						{
-//							outWriter.write("<div style=\"background: yellow\">");
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"#728C00\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
-						if(ms1.getValuation().equals("Presumably Violated"))
-						{
-//							outWriter.write("<div style=\"background: yellow\">");
-							outWriter.write("Specification: " + specList.get(j) + " => " + "<font color=\"Brown\">" + ms1.getValuation() + "</font>");
-//							outWriter.write("</div>");
-						}
-						outWriter.write("</div>");
-						currSpecStatus.setResult(new DefaultRiTHMSpecification(specList.get(j)),new DefaultRiTHMTruthValue(ms1.getValuation()));
-						
-						plotWriter.write(specList.get(j) + "," + topState.gettimeStamp() + "," + ms1.getValuation() + "\n");
-						for(MonitoringEventListener ml: mlist)
-						{
-							ml.MonValuationChanged(new DefaultRiTHMSpecification(specList.get(j)), new DefaultRiTHMTruthValue(ms1.getValuation()));
-						}
-					}
+					for(MonitoringEventListener ml: mlist)
+						if(nextState != currentStates.get(Integer.toString(j)))
+							ml.MonValuationChanged(new DefaultRiTHMSpecification(specList.get(j)), new DefaultRiTHMTruthValue(nextState.getValuation()));
+
+					if(nextState.getValuation().equals("Violated") && isResetOnViolation())
+						currentStates.put(Integer.toString(j),initialStates.get(Integer.toString(j)));
 					else
+						currentStates.put(Integer.toString(j),nextState);
+					DefaultMonState ms1 = nextState;
+					writeMonitoriLogFile("<div style=\"background: #B0B0B0 \">");
+
+					if(ms1.getValuation().equals("Satisfied"))
 					{
-						logger.fatal("State is null !! FSM based monitor creation for LTL failed !!");
+						//							outWriter.write("<div style=\"background: LightGreen\">");
+						writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Lime\">" + ms1.getValuation() + "</font>");
+						//							outWriter.write("</div>");
 					}
+					if(ms1.getValuation().equals("Violated"))
+					{
+						//							outWriter.write("<div style=\"background: #FF9900\">");
+						writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Red\">" + ms1.getValuation() + "</font>");
+						//							outWriter.write("</div>");
+					}
+					if(ms1.getValuation().equals("Validation status Unknown"))
+					{
+						//							outWriter.write("<div style=\"background: yellow\">");
+						writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Yellow\">" + ms1.getValuation() + "</font>");
+						//							outWriter.write("</div>");
+					}
+					if(ms1.getValuation().equals("Presumably Satisfied"))
+					{
+						//							outWriter.write("<div style=\"background: yellow\">");
+						writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"#728C00\">" + ms1.getValuation() + "</font>");
+						//							outWriter.write("</div>");
+					}
+					if(ms1.getValuation().equals("Presumably Violated"))
+					{
+						//							outWriter.write("<div style=\"background: yellow\">");
+						writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Brown\">" + ms1.getValuation() + "</font>");
+						//							outWriter.write("</div>");
+					}
+					writeMonitoriLogFile("</div>");
+					currSpecStatus.setResult(new DefaultRiTHMSpecification(specList.get(j)),new DefaultRiTHMTruthValue(ms1.getValuation()));
+
+					writeMonitorPlotFile(specList.get(j) + "," + topState.gettimeStamp() + "," + ms1.getValuation() + "\n");
+
+				}
+				else
+				{
+					logger.fatal("State is null !! FSM based monitor creation for LTL failed !!");
 				}
 			}
-			outWriter.write("</body>");
-			outWriter.write("</html>");
-		}catch(IOException io)
-		{
-			logger.fatal(io.getMessage());
-		}finally{
-			try {
-				outWriter.close();
-				plotWriter.close();
-			} catch (IOException ie) {
-				// TODO Auto-generated catch block
-				logger.fatal(ie.getMessage());
-			}
+		}
+		writeMonitoriLogFile("</body>");
+		writeMonitoriLogFile("</html>");
+		try {
+			if(isLastInvocation)
+				closeVerboseFiles();
+		} catch (IOException ie) {
+			// TODO Auto-generated catch block
+			logger.fatal(ie.getMessage());
 		}
 		return currSpecStatus;
 	}

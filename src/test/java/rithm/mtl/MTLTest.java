@@ -77,7 +77,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("b", "0");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
@@ -102,7 +102,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("a", "1");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
@@ -127,7 +127,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("a", "1");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
@@ -156,7 +156,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("a", "0");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
@@ -182,7 +182,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("b", "1");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
@@ -208,7 +208,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("b", "1");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
     
@@ -240,7 +240,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("b", "1");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
 //    	System.out.println(rresColl.getResult(rSpec1).getTruthValueDescription());
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }
@@ -273,7 +273,7 @@ public class MTLTest extends TestCase {
     	ps3.setValue("b", "0");
     	mtlM.fillBuffer(ps3);
     	
-    	rresColl = mtlM.runMonitor();
+    	rresColl = mtlM.runMonitor(true);
 //    	System.out.println(rresColl.getResult(rSpec1).getTruthValueDescription());
     	assertTrue(Boolean.valueOf(rresColl.getResult(rSpec1).getTruthValueDescription()));
     }

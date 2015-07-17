@@ -37,8 +37,9 @@ public class RitHMBrewer {
 	public static void main(String args[]) throws InterruptedException, FileNotFoundException, IOException
 	{
 		Options options = new Options();
-		CommandLine cmdLine;
-		CommandLineParser parser = new GnuParser();
+		CommandLine cmdLine = null;
+		RitHMCommandHandler rCmdHandler;
+		CommandLineParser parser = new DefaultParser();
 		Option specFileOpt = OptionBuilder.withArgName("file")
 										  .hasArg()
 										  .withDescription("Path to file containing specifications")
@@ -50,8 +51,10 @@ public class RitHMBrewer {
 									   .withDescription("Specifications separated by # (if not specified with specFile)")
 									   .create("specifications");
 		options.addOption(specsOpt);
+		
 //		options.addOption("specFile",true,"file containing specifications to be verified");
 //		options.addOption("specifications",true,"specifications to be verified");
+		
 		Option dataFileOpt = OptionBuilder.withArgName("file")
 				   .hasArg()
 				   .withDescription("Path to file containing an execution trace")
@@ -94,21 +97,25 @@ public class RitHMBrewer {
 		options.addOption(specParserClassOpt);
 //		options.addOption("specParserClass", true,"specification parser plugin name (e.g. VLTL/LTL/MTL)");
 		
-		Option serverModeOpt = OptionBuilder.withArgName("boolean")
-				   .hasArg()
+		Option serverModeOpt = OptionBuilder.hasArg(false)
 				   .isRequired(false)
-				   .withDescription("Whether to start RiTHM as a server (e.g. true/false)")
+				   .withDescription("Whether to start RiTHM as a server")
 				   .create("serverMode");
 		options.addOption(serverModeOpt);
 		
 //		options.addOption("serverMode", true,"Start RiTHM as server (e.g. true/false)");
-		
-		Option pipeModeOpt = OptionBuilder.withArgName("boolean")
-				   .hasArg()
+		Option pipeModeOpt = OptionBuilder.hasArg(false)
 				   .isRequired(false)
-				   .withDescription("Whether to start RiTHM in pipe mode (e.g. true/false)")
+				   .withDescription("Whether to start RiTHM in pipe mode")
 				   .create("pipeMode");
 		options.addOption(pipeModeOpt);
+		
+		Option monEventListenerOpt = OptionBuilder.withArgName("pluginClass")
+				   .hasArg()
+				   .isRequired(false)
+				   .withDescription("A Listener which listens to changes in Monitor's Verdict ")
+				   .create("monEventListener");
+		options.addOption(monEventListenerOpt);
 		
 //		options.addOption("pipeMode", true,"Piping between monitors (e.g. true/false)");
 		
@@ -136,21 +143,31 @@ public class RitHMBrewer {
 				   .create("predicateEvaluatorScriptFile");
 		options.addOption(predicateEvaluatorScriptFileOpt);
 		
+		Option triggerOpt = OptionBuilder.withArgName("property=value")
+				   .hasArgs(2)
+				   .isRequired(false)
+				   .withDescription("Options to control Monitor Invocation")
+				   .create("T");
+		options.addOption(triggerOpt);
+		
 //		options.addOption("predicateEvaluatorScriptFile", true,"predicate evaluator script file path");
 		hlpFormatter = new HelpFormatter();
+		
 		try
 		{
 			cmdLine = parser.parse(options, args);
 		}
 		catch(ParseException pe)
 		{
-			pe.printStackTrace();
-			return;
+			
+		}finally{
+			
 		}
-		RitHMCommandHandler rCmdHandler = new RitHMCommandHandler(cmdLine, options, hlpFormatter);
+		rCmdHandler = new RitHMCommandHandler(cmdLine, options, hlpFormatter);
 		String confFile = rCmdHandler.rValidator.fetchConfigFile();
 		if(confFile != null)
 			rCmdHandler.rValidator.loadPropFile(confFile);
+		
 		if(rCmdHandler.rValidator.fetchBoolDualMode("serverMode") || rCmdHandler.rValidator.fetchBoolDualMode("pipeMode"))
 		{
 			if(confFile == null)

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Properties;
 
 import rithm.commands.RitHMMonitorCommand;
 import rithm.commands.RitHMParameters;
@@ -20,16 +21,19 @@ import rithm.commands.RitHMReplyCommand;
 import rithm.commands.RitHMSetupCommand;
 import rithm.commands.RitHMParameterValidator;
 import rithm.core.DataFactory;
+import rithm.core.MonitoringEventListener;
 import rithm.core.ParserPlugin;
 import rithm.core.PredicateEvaluator;
 import rithm.core.PredicateState;
 import rithm.core.ProgState;
 import rithm.core.RitHMMonitor;
+import rithm.core.RitHMMonitorTrigger;
 import rithm.core.RitHMResultCollection;
 import rithm.core.RitHMSpecification;
 import rithm.core.RitHMTruthValue;
 import rithm.datatools.CSVDataFactory;
 import rithm.datatools.XMLDataFactory;
+import rithm.defaultcore.DefaultMonitoringEventListener;
 import rithm.defaultcore.DefaultPredicateEvaluator;
 import rithm.defaultcore.DefaultProgramState;
 import rithm.defaultcore.DefaultRiTHMSpecification;
@@ -57,7 +61,7 @@ import com.google.gson.Gson;
 /**
  * The Class RiTHMCommandHandler.
  */
-public class RitHMCommandHandler extends Thread {
+public class RitHMCommandHandler extends Thread implements RitHMMonitorTrigger{
 	
 	/** The r validator. */
 	public RitHMParameterValidator rValidator;
@@ -79,7 +83,8 @@ public class RitHMCommandHandler extends Thread {
 	
 	/** The p evaluator. */
 	protected PredicateEvaluator pEvaluator = null;
-
+	
+	protected MonitoringEventListener mEventListener = null;
 	/** The pipe mode. */
 	protected boolean pipeMode = false;
 	
@@ -118,6 +123,39 @@ public class RitHMCommandHandler extends Thread {
 	
 	/** The Constant logger. */
 	final static Logger logger = Logger.getLogger(RitHMCommandHandler.class);
+	
+	protected enum Triggertype{
+		EVT ,
+		BUFT,
+		TT,
+		DEF
+	}
+
+	protected Triggertype myTriggerType;
+	
+	protected int eventCount = 0;
+	protected int timeInterval = 0;
+	@Override
+	public void setTriggerProperties(Properties triggerProperties) {
+		// TODO Auto-generated method stub
+		Properties tProperties;
+		myTriggerType = Triggertype.DEF;
+		if(rtParams.customArgumentsProperties.contains("T")){
+			tProperties = (Properties)rtParams.customArgumentsProperties.get("T");
+
+			if(tProperties.getProperty("eventCount") != null){
+				eventCount = Integer.parseInt((String)tProperties.get("eventCount"));
+				myTriggerType = Triggertype.BUFT;
+				return;
+			}
+			if(tProperties.getProperty("timeInterval") != null){
+				eventCount = Integer.parseInt((String)tProperties.get("timeInterval"));
+				myTriggerType = Triggertype.TT;
+				return;
+			}
+		}
+
+	}
 
 	/**
 	 * Instantiates a new ri thm command handler.
@@ -152,7 +190,8 @@ public class RitHMCommandHandler extends Thread {
 									  String monitorClass,
 									  String traceParserClass,
 									  String pEvaluatorName,
-									  String pEvaluatorPath
+									  String pEvaluatorPath,
+									  String monEventListenerName
 									  )
 	{
 		if(isProcessingDatafile){
@@ -222,8 +261,51 @@ public class RitHMCommandHandler extends Thread {
 				pEvaluator = (PredicateEvaluator)PluginLoader.loadPluginWithType(PredicateEvaluator.class, pEvaluatorName);
 				break;
 			}
+		if(monEventListenerName != null){
+			mEventListener = (MonitoringEventListener)PluginLoader.loadPluginWithType(MonitoringEventListener.class, monEventListenerName);
+		}
 	}
-	
+	public void extractPipeInfo(){
+		specPipes = new ArrayList<ArrayList<RitHMSpecification>>();
+		resSpecMap = new HashMap<>();
+		specMonMap = new HashMap<>();
+		specParserMap = new HashMap<>();   
+		specPredEvalTypeMap = new HashMap<>();
+		specPredEvalPathMap = new HashMap<>();
+		int j = 0;
+		for(int i = 0; i < rtParams.specsForPipes.size();i++)
+		{
+			String specsForthisPipe = rtParams.specsForPipes.get(i);
+			String []specsAsString = specsForthisPipe.split("#");
+			String []parsersForSpecs= rtParams.parsersForPipes.get(i).split("#");
+			String []monsForSpecs = rtParams.monitorsForPipes.get(i).split("#");
+			String predType = rtParams.predEvalNamesrPipes.get(i);
+			String predScriptPath = rtParams.predEvalsForPipes.get(i);
+			
+			ArrayList<RitHMSpecification> specListthisPipe = new ArrayList<>();
+			j = 0;
+			for(String specWithRes: Arrays.asList(specsAsString))
+			{
+				String []splitByeq = specWithRes.split("=");
+				if(splitByeq.length != 2)
+				{
+					logger.fatal("In-valid syntax " + specWithRes);
+				}	
+				RitHMSpecification currSpec = new DefaultRiTHMSpecification(splitByeq[1]);
+				specListthisPipe.add(currSpec);
+				resSpecMap.put(currSpec, splitByeq[0]);
+				logger.debug(splitByeq[0] + "=" + currSpec.getTextDescription());
+				specParserMap.put(currSpec,parsersForSpecs[j]);
+				logger.debug(currSpec.getTextDescription() + " to be parsed with "+parsersForSpecs[j]);
+				specMonMap.put(currSpec, monsForSpecs[j]);
+				logger.debug(currSpec.getTextDescription() +" to be monitored with " + monsForSpecs[j]);
+				j++;
+			}
+			specPredEvalTypeMap.put(specListthisPipe.get(0), predType);
+			specPredEvalPathMap.put(specListthisPipe.get(0), predScriptPath);
+			specPipes.add(specListthisPipe);
+		}
+	}
 	/**
 	 * Process command.
 	 *
@@ -233,60 +315,23 @@ public class RitHMCommandHandler extends Thread {
 	{
 		if(rtParams.pipeCount > 0)
 			pipeMode = true;
-		
+		setTriggerProperties(null);
 		if(!pipeMode){
+			
 			setUpMonInstance(rtParams.isProcessingDatafile,
 							 rtParams.dataFile,
 							 rtParams.specParserClass,
 							 rtParams.monitorClass,  
 							 rtParams.traceParserClass,   
 							 rtParams.pEvaluatorName, 
-							 rtParams.pEvaluatorPath  
+							 rtParams.pEvaluatorPath,
+							 rtParams.monEventListenerName
 							 );
 			runMonitor(rtParams.outFileName, rtParams.specsFromFile, true,rtParams.plotFileName, null);
 		}else{
-			specPipes = new ArrayList<ArrayList<RitHMSpecification>>();
-			resSpecMap = new HashMap<>();
-			specMonMap = new HashMap<>();
-			specParserMap = new HashMap<>();   
-			specPredEvalTypeMap = new HashMap<>();
-			specPredEvalPathMap = new HashMap<>();
-			int j = 0;
-			for(int i = 0; i < rtParams.specsForPipes.size();i++)
-			{
-				String specsForthisPipe = rtParams.specsForPipes.get(i);
-				String []specsAsString = specsForthisPipe.split("#");
-				String []parsersForSpecs= rtParams.parsersForPipes.get(i).split("#");
-				String []monsForSpecs = rtParams.monitorsForPipes.get(i).split("#");
-				String predType = rtParams.predEvalNamesrPipes.get(i);
-				String predScriptPath = rtParams.predEvalsForPipes.get(i);
-				
-				ArrayList<RitHMSpecification> specListthisPipe = new ArrayList<>();
-				j = 0;
-				for(String specWithRes: Arrays.asList(specsAsString))
-				{
-					String []splitByeq = specWithRes.split("=");
-					if(splitByeq.length != 2)
-					{
-						logger.fatal("In-valid syntax " + specWithRes);
-						return false;
-					}	
-					RitHMSpecification currSpec = new DefaultRiTHMSpecification(splitByeq[1]);
-					specListthisPipe.add(currSpec);
-					resSpecMap.put(currSpec, splitByeq[0]);
-					logger.debug(splitByeq[0] + "=" + currSpec.getTextDescription());
-					specParserMap.put(currSpec,parsersForSpecs[j]);
-					logger.debug(currSpec.getTextDescription() + " to be parsed with "+parsersForSpecs[j]);
-					specMonMap.put(currSpec, monsForSpecs[j]);
-					logger.debug(currSpec.getTextDescription() +" to be monitored with " + monsForSpecs[j]);
-					j++;
-				}
-				specPredEvalTypeMap.put(specListthisPipe.get(0), predType);
-				specPredEvalPathMap.put(specListthisPipe.get(0), predScriptPath);
-				specPipes.add(specListthisPipe);
-			}
+			extractPipeInfo();
 			ArrayList<PredicateState> nextList; 
-			int i = 0;
+			int i = 0, j = 0;
 			for(ArrayList<RitHMSpecification> specListPipe: specPipes)
 			{
 				j = 0;
@@ -312,7 +357,8 @@ public class RitHMCommandHandler extends Thread {
 							 rtParams.monitorClass,   
 							 rtParams.traceParserClass,   
 							 rtParams.pEvaluatorName, 
-							 rtParams.pEvaluatorPath  
+							 rtParams.pEvaluatorPath,
+							 rtParams.monEventListenerName
 							 );
 					runMonitor(rtParams.outFileName+ Integer.toString(i) + Integer.toString(j),
 							false,
@@ -354,10 +400,16 @@ public class RitHMCommandHandler extends Thread {
 		if(pEvaluator == null)
 			pEvaluator = new DefaultPredicateEvaluator();
 		rithmMon.setPredicateEvaluator(pEvaluator);
-		logger.debug("Log file of monitor = " + outFileName);
-		logger.debug("Plot file of monitor = " + plotFilename);
+		
+		if(outFileName != null)
+			logger.debug("Log file of monitor = " + outFileName);
+		if(plotFilename != null)
+			logger.debug("Plot file of monitor = " + plotFilename);
 		rithmMon.setOutFile(outFileName);
 		rithmMon.setPlotFile(plotFilename);
+		if(mEventListener == null)
+			mEventListener = new DefaultMonitoringEventListener();
+		rithmMon.setMonitoringEventListener(mEventListener);
 		if(rtParams.specsFromFile && !pipeMode)
 			rithmMon.synthesizeMonitors(rtParams.specFile , specsFromFile);
 		else
@@ -366,27 +418,45 @@ public class RitHMCommandHandler extends Thread {
 			if(pipeMode)
 				rithmMon.setResultPredicateName(new DefaultRiTHMSpecification(rtParams.specString),resSpecMap.get(new DefaultRiTHMSpecification(rtParams.specString)));
 		}
-		
+
 		if(rtParams.isProcessingDatafile)
 		{	
 			ProgState pState = null;
 			if(firstStage){
 				pState = dFactory.getNextProgState();
 				//add code to fill in predicatestate here when running later stages of pipe
+				int evtCnt = 0;
 				while( pState != null)
 				{
-
 					rithmMon.fillBuffer(pState);
 					pState = dFactory.getNextProgState();
-					if(pState!= null)
-						if(pState.getTimestamp()< 0)
-							rithmMon.runMonitor();
+//					if(pState!= null)
+					switch(myTriggerType){
+					case BUFT :
+						if(evtCnt >= eventCount){
+							rithmMon.runMonitor(false);
+							evtCnt = 0;
+						}
+						else
+							evtCnt++;
+						break;
+					case EVT :	
+						rithmMon.runMonitor(false);
+						break;
+					case TT:
+						//TODO not implemented yet
+						break;
+					default:
+						break;
+					}
 				}
-				rRes = rithmMon.runMonitor();
+				rRes = rithmMon.runMonitor(true);
+				dFactory.closeDataSource();
 			}else{
 				rithmMon.setBuffer(predicatesNextStage);
-				rRes = rithmMon.runMonitor();
+				rRes = rithmMon.runMonitor(true);
 			}
+
 		}
 		pEvaluator=null;
 	}

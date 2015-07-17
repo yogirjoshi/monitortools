@@ -189,46 +189,43 @@ public class RegExMon extends RitHMBaseMonitor implements RitHMMonitor{
 	 * @see rithm.core.RiTHMMonitor#runMonitor()
 	 */
 	@Override
-	public RitHMResultCollection runMonitor() {
+	public RitHMResultCollection runMonitor(boolean isLastInvocation) {
 		// TODO Auto-generated method stub
-		BufferedWriter outWriter;
-		try
+		openVerboseFiles();
+		writeMonitoriLogFile("<html>");
+		writeMonitoriLogFile("<body>");
+		for(int i =0; i < buffer.size();i++)
 		{
-			outWriter = new BufferedWriter(new FileWriter(new File(outFileName)));
-			outWriter.write("<html>");
-			outWriter.write("<body>");
-			for(int i =0; i < buffer.size();i++)
+			//				System.out.println("__________________________________________________________________");
+			//				System.out.println("Event " + Integer.toString(i));
+			writeMonitoriLogFile("Event:" + Integer.toString(i));
+			writeMonitoriLogFile("<div style=\"background: #B0B0B0 \">");
+			DefaultRegExPredicateState topState = new DefaultRegExPredicateState((DefaultPredicateState)buffer.get(i));
+			Character currAlphabet = alphabetList.get(topState.getPredicateString());
+			if(currAlphabet == null)
 			{
-//				System.out.println("__________________________________________________________________");
-//				System.out.println("Event " + Integer.toString(i));
-				outWriter.write("Event:" + Integer.toString(i));
-				outWriter.write("<div style=\"background: #B0B0B0 \">");
-				DefaultRegExPredicateState topState = new DefaultRegExPredicateState((DefaultPredicateState)buffer.get(i));
-				Character currAlphabet = alphabetList.get(topState.getPredicateString());
-				if(currAlphabet == null)
-				{
-					currAlphabet = 'x';
-				}
-				for(int j = 0; j < specCount; j++)
-				{
-					int currStatee = Integer.parseInt((specStatus.getResult(new DefaultRiTHMSpecification(regExList.get(j).toString())).getTruthValueDescription()));
-					RunAutomaton r = runAutomataList.get(j);
-					currStatee = r.step(currStatee, currAlphabet);
-					if(r.isAccept(currStatee))
-						outWriter.write("Specification: " + regExList.get(j).toString() + " => " + "<font color=\"Green\">" + "Satisfied" + "</font>");
-					else
-						outWriter.write("Specification: " + regExList.get(j).toString() + " => " + "<font color=\"Red\">" + "Not Satisfied" + "</font>");
-					specStatus.setResult(new DefaultRiTHMSpecification(regExList.get(j).toString()), new DefaultRiTHMTruthValue(Integer.toString(currStatee)));
-				}
-				outWriter.write("</div>");
+				currAlphabet = 'x';
 			}
-
-			outWriter.write("</body>");
-			outWriter.write("</html>");
-			outWriter.close();
-		}catch(IOException io)
-		{
-			logger.error(RitHMLogMessages.RITHM_ERROR + io.getMessage());
+			for(int j = 0; j < specCount; j++)
+			{
+				int currStatee = Integer.parseInt((specStatus.getResult(new DefaultRiTHMSpecification(regExList.get(j).toString())).getTruthValueDescription()));
+				RunAutomaton r = runAutomataList.get(j);
+				currStatee = r.step(currStatee, currAlphabet);
+				if(r.isAccept(currStatee))
+					writeMonitoriLogFile("Specification: " + regExList.get(j).toString() + " => " + "<font color=\"Green\">" + "Satisfied" + "</font>");
+				else
+					writeMonitoriLogFile("Specification: " + regExList.get(j).toString() + " => " + "<font color=\"Red\">" + "Not Satisfied" + "</font>");
+				specStatus.setResult(new DefaultRiTHMSpecification(regExList.get(j).toString()), new DefaultRiTHMTruthValue(Integer.toString(currStatee)));
+			}
+			writeMonitoriLogFile("</div>");
+		}
+		writeMonitoriLogFile("</body>");
+		writeMonitoriLogFile("</html>");
+		try {
+			if(isLastInvocation)
+				closeVerboseFiles();
+		} catch (IOException ioe) {
+			logger.fatal(ioe.getMessage());
 		}
 		return specStatus;
 	}
