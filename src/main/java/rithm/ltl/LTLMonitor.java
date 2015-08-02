@@ -105,7 +105,24 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 	 */
 	public boolean synthesizeMonitors(RitHMSpecificationCollection specs) {
 		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not yet supported");
+		String line;
+		ArrayList<String> Filenames = new ArrayList<String>();
+		int specCount = 0;
+        for(int i =0; i < specs.length();i++) {
+        	parser.appendSpec(specs.at(i));
+//            logger.debug(line);	
+        	String origFormat = specs.at(i).getTextDescription();
+        	line = parser.rewriteSpec(new DefaultRiTHMSpecification(specs.at(i).getTextDescription()));
+        	try {
+				createMonsfromTools(line,origFormat, Filenames, specCount);
+			} catch (IOException | InterruptedException e) {
+				// TODO Auto-generated catch block
+				logger.fatal(e.getMessage());
+			}
+        	specCount++;
+        }
+        return true;
+//		throw new UnsupportedOperationException("Not yet supported");
 	}
 	
 	/* (non-Javadoc)
@@ -386,4 +403,7 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 	}
 
 	
+	public void clearBuffer(){
+		buffer.clear();
+	}
 }

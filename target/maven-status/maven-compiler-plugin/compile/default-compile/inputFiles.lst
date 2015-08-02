@@ -1,9 +1,10 @@
-/home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RiTHMCommandHandler.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RitHMBrewer.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RitHMSecureServer.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RitHMCommandHandler.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTL4MonValuation.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/PTLTLMonitor.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RitHMAbstractServer.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/Hypothesis2.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/MonitorDriver.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTLMonitor.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTL3MonValuation.java
@@ -11,5 +12,6 @@
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/regex/RegExMon.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTL4Monitor.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/RitHMClientHandler.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/Hypothesis1.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/mtl/MTLMonitor.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/mtl/TwoValuedValuation.java

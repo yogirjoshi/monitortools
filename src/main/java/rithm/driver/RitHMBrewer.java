@@ -39,7 +39,7 @@ public class RitHMBrewer {
 		Options options = new Options();
 		CommandLine cmdLine = null;
 		RitHMCommandHandler rCmdHandler;
-		CommandLineParser parser = new DefaultParser();
+		CommandLineParser parser = new GnuParser();
 		Option specFileOpt = OptionBuilder.withArgName("file")
 										  .hasArg()
 										  .withDescription("Path to file containing specifications")
@@ -159,7 +159,8 @@ public class RitHMBrewer {
 		}
 		catch(ParseException pe)
 		{
-			
+			System.out.println("Invalid Syntax. Please Use -help option");
+			return;
 		}finally{
 			
 		}
