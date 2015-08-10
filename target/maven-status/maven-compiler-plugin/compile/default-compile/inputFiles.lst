@@ -7,6 +7,7 @@
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/Hypothesis2.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/MonitorDriver.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTLMonitor.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/mtl/RMTLMonitor.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/ltl/LTL3MonValuation.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/PluginLoader.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/regex/RegExMon.java
@@ -15,3 +16,4 @@
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/Hypothesis1.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/mtl/MTLMonitor.java
 /home/y2joshi/workspace/monitortools/src/main/java/rithm/mtl/TwoValuedValuation.java
+/home/y2joshi/workspace/monitortools/src/main/java/rithm/driver/Hypothesis3.java

@@ -43,6 +43,7 @@ import rithm.ltl.LTL4MonValuation;
 import rithm.ltl.LTL4Monitor;
 import rithm.ltl.LTLMonitor;
 import rithm.mtl.MTLMonitor;
+import rithm.mtl.RMTLMonitor;
 import rithm.mtl.TwoValuedValuation;
 import rithm.parsertools.ltl.LTLParser;
 import rithm.parsertools.ltl.VerboseLTLParser;
@@ -239,6 +240,11 @@ public class RitHMCommandHandler extends Thread implements RitHMMonitorTrigger{
 			rithmMon = new MTLMonitor();
 			rithmMon.setMonitorValuation(new TwoValuedValuation());
 			break;
+		case "RMTL":	
+			rithmMon = new RMTLMonitor();
+			rithmMon.setMonitorValuation(new TwoValuedValuation());
+			break;
+			
 		default:
 			rithmMon = (RitHMMonitor)PluginLoader.loadPluginWithType(RitHMMonitor.class, monitorClass);
 			//Assumed that valuation is set internally by the plugin
