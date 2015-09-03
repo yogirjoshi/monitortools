@@ -34,9 +34,9 @@ public class LTL3MonValuation implements MonValuation{
 		truthValues.add("yellow");
 		truthValues.add("green");
 		truthValues.add("red");
-		semantics.put("yellow", "Validation status Unknown");
-		semantics.put("green", "Satisfied");
-		semantics.put("red", "Violated");
+		semantics.put("yellow", "Unknown");
+		semantics.put("green", "Sat");
+		semantics.put("red", "UnSat");
 	}
 
 	/* (non-Javadoc)

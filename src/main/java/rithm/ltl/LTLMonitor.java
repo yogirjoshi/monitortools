@@ -82,9 +82,9 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 	{
 		buffer = new ArrayList<PredicateState>();
 		currSpecStatus = new DefaultRiTHMSpecificationResult();
-		initialStates = new HashMap<String, MonState>();
-		currentStates = new HashMap<String, MonState>();
-		mlist = new ArrayList<MonitoringEventListener>();
+		initialStates  = new HashMap<String, MonState>();
+		currentStates  = new HashMap<String, MonState>();
+		mlist		   = new ArrayList<MonitoringEventListener>();
 		propSet = new Properties();
 		try
 		{
@@ -110,7 +110,7 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 		int specCount = 0;
         for(int i =0; i < specs.length();i++) {
         	parser.appendSpec(specs.at(i));
-//            logger.debug(line);	
+           ;	
         	String origFormat = specs.at(i).getTextDescription();
         	line = parser.rewriteSpec(new DefaultRiTHMSpecification(specs.at(i).getTextDescription()));
         	try {
@@ -121,6 +121,16 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 			}
         	specCount++;
         }
+        ArrayList<DefaultMonState> states = new ArrayList<DefaultMonState>();
+		try
+		{
+			createLookupTable(states,Filenames);
+		}
+		catch(IOException e)
+		{
+			logger.debug(e.getMessage());
+			return false;
+		}
         return true;
 //		throw new UnsupportedOperationException("Not yet supported");
 	}
@@ -284,6 +294,7 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 	            logger.debug(line);	
             	String origFormat = line;
             	line = parser.rewriteSpec(new DefaultRiTHMSpecification(line));
+            	logger.debug("Rewritten:" + line);
             	createMonsfromTools(line,origFormat, Filenames, specCount);
             	specCount++;
             }
@@ -353,14 +364,14 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 					ArrayList<String> predsForthisSpec = parser.getPredsForSpec(specList.get(j));
 
 					setPredState(dpPredState, predsForthisSpec);
-					//					System.out.println(dpPredState);
+//					System.out.println(dpPredState);
 					DefaultMonState nextState = (DefaultMonState)currentStates.get(Integer.toString(j)).GetNextMonState(dpPredState);
 
 					if(nextState != null)
 					{
 
 						for(MonitoringEventListener ml: mlist)
-							if(nextState != currentStates.get(Integer.toString(j)))
+							if(nextState != currentStates.get(Integer.toString(j)) || firstRun)
 								ml.MonValuationChanged(new DefaultRiTHMSpecification(specList.get(j)), new DefaultRiTHMTruthValue(nextState.getValuation()));
 
 						if(nextState.getValuation().equals("Violated") && isResetOnViolation())
@@ -372,11 +383,11 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 						DefaultMonState ms1 = nextState;
 						writeMonitoriLogFile("<div style=\"background: #B0B0B0 \">");
 
-						if(ms1.getValuation().equals("Satisfied"))
+						if(ms1.getValuation().equals("Sat"))
 							writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Lime\">" + ms1.getValuation() + "</font>");
-						if(ms1.getValuation().equals("Violated"))
+						if(ms1.getValuation().equals("UnSat"))
 							writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Red\">" + ms1.getValuation() + "</font>");
-						if(ms1.getValuation().equals("Validation status Unknown"))
+						if(ms1.getValuation().equals("Unknown"))
 							writeMonitoriLogFile("Specification: " + specList.get(j) + " => " + "<font color=\"Yellow\">" + ms1.getValuation() + "</font>");
 						writeMonitoriLogFile("</div>");
 						currSpecStatus.setResult(new DefaultRiTHMSpecification(specList.get(j)),new DefaultRiTHMTruthValue(ms1.getValuation()));
@@ -389,6 +400,8 @@ public class LTLMonitor extends RitHMBaseMonitor implements RitHMMonitor
 						logger.fatal("State is null !! FSM based monitor creation for LTL failed !!");
 					}
 				}
+				if(firstRun)
+					firstRun = false;
 			}
 			writeMonitoriLogFile("</body>");
 			writeMonitoriLogFile("</html>");

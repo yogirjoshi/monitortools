@@ -1,4 +1,4 @@
-package rithm.driver;
+package rithm.experiments;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -148,7 +148,7 @@ class FOCCollector<T> implements Collector<MonResult, ConcurrentHashMap<ArrayLis
         return EnumSet.of(Characteristics.CONCURRENT,Characteristics.UNORDERED);
     }
 }
-public class Hypothesis2{
+public class HypothesisOLDLTLFO1{
 //	public static MonResult createIDs(){
 //		MonResult m = new MonResult();
 //		m.ObjectIDs.add("1");

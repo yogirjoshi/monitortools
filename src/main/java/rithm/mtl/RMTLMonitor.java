@@ -12,12 +12,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.antlr.v4.runtime.tree.ParseTree;
+
+import com.sun.management.OperatingSystemMXBean;
 
 import rithm.basemonitors.RitHMBaseMonitor;
 import rithm.core.MonValuation;
@@ -52,7 +56,7 @@ public class RMTLMonitor extends RitHMBaseMonitor implements RitHMMonitor{
 	protected RitHMProgStateCollection bufferProgs;
 
 	/** The mtl mon. */
-	protected RitHMMTLVisitor mtlMon;
+	protected RitHMRMTLVisitor mtlMon;
 	
 	/** The specs trees. */
 	protected HashMap<RitHMSpecification, ParseTree> specsTrees;
@@ -70,7 +74,7 @@ public class RMTLMonitor extends RitHMBaseMonitor implements RitHMMonitor{
 	{
 		currSpecStatus = new DefaultRiTHMSpecificationResult();
 		bufferProgs = new DefaultProgStateCollection();
-		mtlMon = new RitHMMTLVisitor(bufferProgs);
+		mtlMon = new RitHMRMTLVisitor(bufferProgs);
 		specsTrees = new HashMap<RitHMSpecification, ParseTree>();
 		currSpecs = new DefaultRiTHMSpecificationCollection();
 		specToTreeNode = new HashMap<>();
@@ -128,7 +132,19 @@ public class RMTLMonitor extends RitHMBaseMonitor implements RitHMMonitor{
         }
         return true;
 	}
-
+	public long getJVMCpuTime() {
+		long lastProcessCpuTime = 0;
+		try {
+			if (ManagementFactory.getOperatingSystemMXBean() instanceof OperatingSystemMXBean) {
+				lastProcessCpuTime=((com.sun.management.OperatingSystemMXBean)ManagementFactory.getOperatingSystemMXBean()).getProcessCpuTime();
+			}
+		}
+		catch (  ClassCastException e) {
+			System.out.println(e.getMessage());
+		}finally{
+			return lastProcessCpuTime;
+		}
+	}
 	/* (non-Javadoc)
 	 * @see rithm.core.RiTHMMonitor#runMonitor()
 	 */
@@ -138,7 +154,15 @@ public class RMTLMonitor extends RitHMBaseMonitor implements RitHMMonitor{
 		openVerboseFiles();	
  		for(int i =0; i < currSpecs.length();i++)
 		{
+ 			long beg = System.nanoTime();
+ 			long begCPU = getJVMCpuTime();
 			String resName = mtlMon.visit(specsTrees.get(currSpecs.at(i)));
+			long end = System.nanoTime();
+			long endCPU = getJVMCpuTime();
+			System.out.println("Exec Time RMTL:"
+			+ TimeUnit.MILLISECONDS.convert((end-beg),TimeUnit.NANOSECONDS));
+			System.out.println("CPU Time  RMTL:"
+			+ TimeUnit.MILLISECONDS.convert((endCPU-begCPU),TimeUnit.NANOSECONDS));
 			
 			RitHMTruthValue tempTval = currSpecStatus.getResult(currSpecs.at(i));
 			currSpecStatus.setResult(currSpecs.at(i), mtlMon.getTruthValuation(resName,0));
